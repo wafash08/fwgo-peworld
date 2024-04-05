@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
+import clsx from 'clsx';
 import { BellIcon, MailIcon } from './icons';
 import peworldLogo from '../assets/peworld-logo-purple.png';
 import louisTomlinson from '../assets/louis-tomlinson.png';
-import clsx from 'clsx';
 
 export default function NavbarDesktop({ hasLoggedIn = false }) {
 	return (
-		<div className='flex justify-between items-center border-debug h-[100px]'>
+		<div className='flex justify-between items-center h-[100px]'>
 			<Link to='/'>
-				<img src={peworldLogo} alt='Logo Peworld' />
+				<img src={peworldLogo} alt='Logo Peworld' width={127} height={35} />
 			</Link>
 
 			<nav>

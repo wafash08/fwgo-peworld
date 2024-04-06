@@ -5,14 +5,14 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from './pages/root.jsx';
 import ErrorPage from './pages/error-page.jsx';
 import LandingPage from './pages/landing-page';
-import HomePage from './pages/home-page';
+import HomePage, { loader as homeLoader } from './pages/home-page';
 import HirePage from './pages/hire-page';
 import CompanyProfilePage from './pages/profile-company-page';
 import WorkerProfilePage from './pages/profile-worker-page';
 import EditCompanyProfilePage from './pages/profile-company-page/edit.jsx';
 import EditWorkerProfilePage from './pages/profile-worker-page/edit.jsx';
-import LoginPage from './pages/login-page';
-import SignupPage from './pages/signup';
+import LoginPage, { action as loginAction } from './pages/login-page';
+import SignupPage, { action as signupAction } from './pages/signup';
 
 const router = createBrowserRouter([
 	{
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{ index: true, element: <LandingPage /> },
-			{ path: 'home', element: <HomePage /> },
+			{ path: 'home', element: <HomePage />, loader: homeLoader },
 			{ path: 'hire', element: <HirePage /> },
 			{
 				path: 'company-profile',
@@ -38,10 +38,12 @@ const router = createBrowserRouter([
 	{
 		path: '/login',
 		element: <LoginPage />,
+		action: loginAction,
 	},
 	{
 		path: '/signup',
 		element: <SignupPage />,
+		action: signupAction,
 	},
 ]);
 

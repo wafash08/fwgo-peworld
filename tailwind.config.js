@@ -15,9 +15,13 @@ export default {
 				'quick-silver': '#9EA0A5',
 				'azureish-white': '#E2E5ED',
 				cultured: '#F6F7F8',
+				'roman-silver': '#858D96',
 			},
 			fontFamily: {
 				'open-sans': ['"Open Sans"', ...defaultTheme.fontFamily.sans],
+			},
+			backgroundImage: {
+				login: "url('/src/assets/bg-login.png')",
 			},
 		},
 	},

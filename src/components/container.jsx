@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
-export default function Container({ children, classNames }) {
+export default function Container({ children, className }) {
 	return (
-		<div className={clsx('max-w-[1172px] w-full mx-auto px-4', classNames)}>
+		<div className={clsx('max-w-[1172px] w-full mx-auto px-4', className)}>
 			{children}
 		</div>
 	);

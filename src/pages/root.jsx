@@ -17,11 +17,13 @@ export default function Root() {
 	return (
 		<>
 			<header>
-				<Container classNames=''>
+				<Container>
 					<NavbarDesktop hasLoggedIn={hasUserLoggedIn} />
 				</Container>
 			</header>
-			<Outlet />
+			<main>
+				<Outlet />
+			</main>
 			<Footer />
 		</>
 	);

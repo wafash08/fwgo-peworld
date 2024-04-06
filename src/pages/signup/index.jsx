@@ -20,7 +20,7 @@ export async function action({ request }) {
 export default function SignupPage() {
 	return (
 		<main className='pt-10 pb-16 bg-cultured'>
-			<Container classNames='max-w-[1322px] flex gap-16'>
+			<Container className='max-w-[1322px] flex gap-16'>
 				<section className='flex-1 bg-login min-h-screen max-h-[830px] bg-primary-purple bg-no-repeat bg-cover bg-blend-overlay'>
 					<Link to='/' className='ml-11 mt-11 inline-block'>
 						<span className='sr-only'>to landing page</span>

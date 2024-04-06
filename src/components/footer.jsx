@@ -5,7 +5,7 @@ import whitePeworldLogo from '../assets/peworld-logo-white.png';
 export default function Footer() {
 	return (
 		<footer className='bg-primary-purple pt-[70px] pb-10'>
-			<Container classNames='text-white text-base md:text-lg'>
+			<Container className='text-white text-base md:text-lg'>
 				<Link to='/' className='mb-[30px] inline-block'>
 					<img
 						src={whitePeworldLogo}

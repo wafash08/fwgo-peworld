@@ -22,6 +22,7 @@ export default {
 			},
 			backgroundImage: {
 				login: "url('/src/assets/bg-login.png')",
+				'empty-avatar': "url('/src/assets/empty-avatar.png')",
 			},
 		},
 	},

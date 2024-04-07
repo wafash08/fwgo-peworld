@@ -45,12 +45,14 @@ export default function LoginPage() {
 								name='email'
 								type='email'
 								placeholder='Masukan alamat email'
+								required
 							/>
 							<Input
 								label='Kata sandi'
 								name='password'
 								type='password'
 								placeholder='Masukan kata sandi'
+								required
 							/>
 						</div>
 						<p className='text-yankees-blue text-right mb-6'>

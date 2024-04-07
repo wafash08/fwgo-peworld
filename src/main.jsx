@@ -8,7 +8,9 @@ import LandingPage from './pages/landing-page';
 import HomePage, { loader as homeLoader } from './pages/home-page';
 import HirePage from './pages/hire-page';
 import LoginPage, { action as loginAction } from './pages/login-page';
-import SignupPage, { action as signupAction } from './pages/signup';
+import SignupPage, {
+	action as signupAction,
+} from './pages/signup-page/index.jsx';
 import CompanyPage from './pages/company-page/index.jsx';
 import EditCompanyPage from './pages/company-page/edit.jsx';
 import WorkerPage from './pages/worker-page/index.jsx';
@@ -25,6 +27,7 @@ const router = createBrowserRouter([
 			{
 				path: 'workers/:workerId',
 				element: <WorkerPage />,
+				loader: WorkerPage.loader,
 			},
 			{
 				path: 'workers/:workerId/edit',

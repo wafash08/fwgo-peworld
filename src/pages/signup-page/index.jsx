@@ -49,30 +49,35 @@ export default function SignupPage() {
 								label='Nama'
 								name='name'
 								placeholder='Masukan nama panjang'
+								required
 							/>
 							<Input
 								label='Email'
 								name='email'
 								type='email'
 								placeholder='Masukan alamat email'
+								required
 							/>
 							<Input
 								label='No handphone'
 								name='phone'
 								type='tel'
 								placeholder='Masukan no handphone'
+								required
 							/>
 							<Input
 								label='Kata sandi'
 								name='password'
 								type='password'
 								placeholder='Masukan kata sandi'
+								required
 							/>
 							<Input
 								label='Konfirmasi kata sandi'
 								name='confirmPassword'
 								type='password'
 								placeholder='Masukan konfirmasi kata sandi'
+								required
 							/>
 						</div>
 						<button

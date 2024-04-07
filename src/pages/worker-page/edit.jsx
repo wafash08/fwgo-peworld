@@ -1,3 +1,3 @@
 export default function EditWorkerPage() {
-	return <h1>halaman edit worker</h1>;
+	return <h1>edit worker page</h1>;
 }

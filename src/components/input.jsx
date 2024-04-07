@@ -1,4 +1,10 @@
-export default function Input({ type = 'text', name, placeholder, label }) {
+export default function Input({
+	type = 'text',
+	name,
+	placeholder,
+	label,
+	...props
+}) {
 	const autoCompleteName =
 		name === 'password' || 'confirmPassword' ? 'current-password' : name;
 	return (
@@ -16,6 +22,7 @@ export default function Input({ type = 'text', name, placeholder, label }) {
 				name={name}
 				className='w-full p-4 text-sm text-yankees-blue placeholder:text-roman-silver border border-azureish-white rounded'
 				autoComplete={autoCompleteName}
+				{...props}
 			/>
 		</div>
 	);

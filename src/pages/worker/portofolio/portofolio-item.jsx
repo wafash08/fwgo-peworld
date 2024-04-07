@@ -1,4 +1,4 @@
-export default function ProjectItem({ src, name }) {
+export default function PortofolioItem({ src, name }) {
 	return (
 		<li>
 			<div className='rounded overflow-hidden mb-3 h-40'>

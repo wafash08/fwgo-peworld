@@ -17,6 +17,10 @@ import EditCompanyPage from './pages/company/edit';
 import WorkerPage from './pages/worker/index.jsx';
 import { loader as workerLoader } from './pages/worker/worker.loader.js';
 import EditWorkerPage from './pages/worker/edit';
+import WorkerPortofolio from './pages/worker/portofolio';
+import { loader as portofolioLoader } from './pages/worker/portofolio/portofolio.loader.js';
+import WorkerExperience from './pages/worker/experience/index.jsx';
+import { loader as experienceLoader } from './pages/worker/experience/experience.loader.js';
 
 const router = createBrowserRouter([
 	{
@@ -30,6 +34,19 @@ const router = createBrowserRouter([
 				path: 'workers/:workerId',
 				element: <WorkerPage />,
 				loader: workerLoader,
+				id: 'worker',
+				children: [
+					{
+						path: 'portofolio',
+						element: <WorkerPortofolio />,
+						loader: portofolioLoader,
+					},
+					{
+						path: 'experience',
+						element: <WorkerExperience />,
+						loader: experienceLoader,
+					},
+				],
 			},
 			{
 				path: 'workers/:workerId/edit',

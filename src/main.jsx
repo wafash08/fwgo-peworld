@@ -5,16 +5,18 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from './pages/root.jsx';
 import ErrorPage from './pages/error-page.jsx';
 import LandingPage from './pages/landing-page';
-import HomePage, { loader as homeLoader } from './pages/home-page';
-import HirePage from './pages/hire-page';
-import LoginPage, { action as loginAction } from './pages/login-page';
-import SignupPage, {
-	action as signupAction,
-} from './pages/signup-page/index.jsx';
-import CompanyPage from './pages/company-page/index.jsx';
-import EditCompanyPage from './pages/company-page/edit.jsx';
-import WorkerPage from './pages/worker-page/index.jsx';
-import EditWorkerPage from './pages/worker-page/edit.jsx';
+import HomePage from './pages/home/index.jsx';
+import { loader as homeLoader } from './pages/home/home.loader.js';
+import HirePage from './pages/hire/index.jsx';
+import LoginPage from './pages/login/index.jsx';
+import { action as loginAction } from './pages/login/login.action.js';
+import SignupPage from './pages/signup/index.jsx';
+import { action as signupAction } from './pages/signup/signup.action.js';
+import CompanyPage from './pages/company/index.jsx';
+import EditCompanyPage from './pages/company/edit';
+import WorkerPage from './pages/worker/index.jsx';
+import { loader as workerLoader } from './pages/worker/worker.loader.js';
+import EditWorkerPage from './pages/worker/edit';
 
 const router = createBrowserRouter([
 	{
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
 			{
 				path: 'workers/:workerId',
 				element: <WorkerPage />,
-				loader: WorkerPage.loader,
+				loader: workerLoader,
 			},
 			{
 				path: 'workers/:workerId/edit',

@@ -6,11 +6,6 @@ const skillsUrl = `${baseUrl}/skills`;
 const portfolioUrl = `${baseUrl}/portfolio`;
 const experienceUrl = `${baseUrl}/experience`;
 
-export async function getWorkers(limit = 10, page = 1) {
-	const result = await axios.get(`${workersUrl}/?limit=${limit}&page=${page}`);
-	return result.data;
-}
-
 export async function getWorkerById(id) {
 	const result = await axios.get(`${workersUrl}/${id}`);
 	return result.data;

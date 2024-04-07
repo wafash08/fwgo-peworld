@@ -9,7 +9,7 @@ export default function WorkerProfile({ worker, skills }) {
 			<div className='w-[150px] h-[150px] mx-auto rounded-full overflow-hidden flex items-center justify-center mb-4'>
 				<img
 					src={photo}
-					alt={name}
+					alt={photo ? name : ''}
 					className='w-full h-full object-cover bg-empty-avatar bg-center bg-cover bg-no-repeat'
 					width={150}
 					height={150}

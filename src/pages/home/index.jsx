@@ -2,15 +2,6 @@ import { Form, useLoaderData } from 'react-router-dom';
 import Container from '../../components/container';
 import WorkerItem from './worker-item';
 import Pagination from './pagination';
-import { getWorkers } from '../../services/workers';
-
-export async function loader() {
-	const workers = await getWorkers();
-	return {
-		workers: workers.data,
-		pagination: workers.pagination,
-	};
-}
 
 export default function HomePage() {
 	const { workers, pagination } = useLoaderData();

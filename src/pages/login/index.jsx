@@ -1,23 +1,9 @@
-import { Form, Link, redirect } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import Container from '../../components/container';
 import whitePeworldLogo from '../../assets/peworld-logo-white.png';
 import Input from '../../components/input';
-import { signup } from '../../services/auth';
 
-export async function action({ request }) {
-	const formData = await request.formData();
-	let newUser = {};
-	for (const [key, value] of formData) {
-		if (key === 'confirmPassword') {
-			continue;
-		}
-		newUser[key] = value;
-	}
-	await signup(newUser);
-	return redirect('/login');
-}
-
-export default function SignupPage() {
+export default function LoginPage() {
 	return (
 		<main className='pt-10 pb-16 bg-cultured'>
 			<Container className='max-w-[1322px] flex gap-16'>
@@ -46,23 +32,10 @@ export default function SignupPage() {
 					<Form method='post'>
 						<div className='grid gap-8 mb-12'>
 							<Input
-								label='Nama'
-								name='name'
-								placeholder='Masukan nama panjang'
-								required
-							/>
-							<Input
 								label='Email'
 								name='email'
 								type='email'
 								placeholder='Masukan alamat email'
-								required
-							/>
-							<Input
-								label='No handphone'
-								name='phone'
-								type='tel'
-								placeholder='Masukan no handphone'
 								required
 							/>
 							<Input
@@ -72,25 +45,21 @@ export default function SignupPage() {
 								placeholder='Masukan kata sandi'
 								required
 							/>
-							<Input
-								label='Konfirmasi kata sandi'
-								name='confirmPassword'
-								type='password'
-								placeholder='Masukan konfirmasi kata sandi'
-								required
-							/>
 						</div>
+						<p className='text-yankees-blue text-right mb-6'>
+							<Link to='/signup'>Lupa kata sandi?</Link>
+						</p>
 						<button
 							type='submit'
 							className='w-full p-4 text-white bg-primary-yellow font-bold rounded'
 						>
-							Daftar
+							Masuk
 						</button>
 					</Form>
 					<p className='mt-7 text-yankees-blue text-center'>
-						Anda sudah punya akun?{' '}
-						<Link to='/login' className='text-primary-yellow'>
-							Masuk di sini
+						Anda belum punya akun?{' '}
+						<Link to='/signup' className='text-primary-yellow'>
+							Daftar di sini
 						</Link>
 					</p>
 				</section>

@@ -2,30 +2,8 @@ import { useLoaderData, useSearchParams } from 'react-router-dom';
 import Container from '../../components/container';
 import NavLink from './nav-link';
 import ProjectItem from './project-item';
-import {
-	getExperienceByWorkerId,
-	getPortofolioByWorkerId,
-	getSkillByWorkerId,
-	getWorkerById,
-} from '../../services/workers';
 import WorkerProfile from './worker-profile';
 import ExperienceList from './experience-list';
-
-async function loader({ params }) {
-	const id = params.workerId;
-	const [worker, skills, portofolio, experience] = await Promise.all([
-		getWorkerById(id),
-		getSkillByWorkerId(id),
-		getPortofolioByWorkerId(id),
-		getExperienceByWorkerId(id),
-	]);
-	return {
-		worker: worker.data,
-		skills: skills.data,
-		portofolio: portofolio.data,
-		experiences: experience.data,
-	};
-}
 
 export default function WorkerPage() {
 	const { worker, skills, portofolio, experiences } = useLoaderData();
@@ -73,5 +51,3 @@ export default function WorkerPage() {
 		</div>
 	);
 }
-
-WorkerPage.loader = loader;

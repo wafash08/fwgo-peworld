@@ -1,22 +1,3 @@
-// const experiences = [
-// 	{
-// 		position: 'Engineer',
-// 		company: 'Tokopedia',
-// 		work_month: 'Desember',
-// 		work_year: '2023',
-// 		description:
-// 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.',
-// 	},
-// 	{
-// 		position: 'Engineer',
-// 		company: 'Tokopedia',
-// 		work_month: 'Desember',
-// 		work_year: '2023',
-// 		description:
-// 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.',
-// 	},
-// ];
-
 export default function ExperienceList({ experiences }) {
 	return (
 		<ul className='flex flex-col gap-5'>

@@ -1,13 +1,15 @@
-import { useLoaderData, useSearchParams, Outlet } from 'react-router-dom';
+import { useLoaderData, Outlet, useLocation } from 'react-router-dom';
 import Container from '../../components/container';
 import NavLink from './nav-link';
 import WorkerProfile from './worker-profile';
 
 export default function WorkerPage() {
-	const { worker, skills, experiences } = useLoaderData();
-	const [searchParams, _] = useSearchParams();
-	const search = searchParams.get('category');
-	const category = search ? search : 'portofolio';
+	const { worker, skills } = useLoaderData();
+	const { pathname } = useLocation();
+	const currentPathname = pathname.split('/')[3];
+	// memecah pathname url: ['', 'workers', 'e42b682b-3029-4cc3-98fb-f14c8fdad379', 'portofolio'];
+	const category = currentPathname ? currentPathname : 'portofolio';
+	console.log('category >> ', category);
 
 	return (
 		<div className='bg-cultured pb-24'>

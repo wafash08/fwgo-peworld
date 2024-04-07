@@ -17,9 +17,9 @@ export default function NavLink({ children, to, category }) {
 
 	// const current = currentCategory === to;
 
-	const current = category
-		? category === to.split('=')[1]
-		: to.split('=')[1] === 'portofolio';
+	const currentCategory = to === category;
+
+	console.log('currentCategory >> ', currentCategory);
 
 	return (
 		<li>
@@ -27,14 +27,14 @@ export default function NavLink({ children, to, category }) {
 				to={to}
 				className={clsx(
 					'text-[22px] font-semibold py-2 relative inline-block',
-					current ? 'text-yankees-blue' : 'text-quick-silver'
+					currentCategory ? 'text-yankees-blue' : 'text-quick-silver'
 				)}
 			>
 				{children}
 				<div
 					className={clsx(
 						'absolute bottom-0 left-0 w-full h-1 transition-transform scale-x-0 bg-primary-purple rounded-full origin-left duration-100',
-						current ? 'scale-x-100' : 'scale-x-0'
+						currentCategory ? 'scale-x-100' : 'scale-x-0'
 					)}
 				/>
 			</Link>

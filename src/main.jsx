@@ -37,6 +37,11 @@ const router = createBrowserRouter([
 				id: 'worker',
 				children: [
 					{
+						index: true,
+						element: <WorkerPortofolio />,
+						loader: portofolioLoader,
+					},
+					{
 						path: 'portofolio',
 						element: <WorkerPortofolio />,
 						loader: portofolioLoader,

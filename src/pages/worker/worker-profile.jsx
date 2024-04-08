@@ -67,7 +67,7 @@ export default function WorkerProfile({ worker, skills }) {
 							return <SkillItem key={id}>{skill_name}</SkillItem>;
 						})
 					) : (
-						<p>Ayo tambahkan skill kamu</p>
+						<p>{name} belum menambahkan skill</p>
 					)}
 				</ul>
 			</section>

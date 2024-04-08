@@ -9,7 +9,6 @@ export default function WorkerPage() {
 	const currentPathname = pathname.split('/')[3];
 	// memecah pathname url: ['', 'workers', 'e42b682b-3029-4cc3-98fb-f14c8fdad379', 'portofolio'];
 	const category = currentPathname ? currentPathname : 'portofolio';
-	console.log('category >> ', category);
 
 	return (
 		<div className='bg-cultured pb-24'>

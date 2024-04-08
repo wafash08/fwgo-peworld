@@ -5,22 +5,28 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from './pages/root.jsx';
 import ErrorPage from './pages/error-page.jsx';
 import LandingPage from './pages/landing-page';
-import HomePage from './pages/home/index.jsx';
+import HomePage from './pages/home';
 import { loader as homeLoader } from './pages/home/home.loader.js';
-import HirePage from './pages/hire/index.jsx';
-import LoginPage from './pages/login/index.jsx';
+import HirePage from './pages/hire';
+import LoginPage from './pages/login';
 import { action as loginAction } from './pages/login/login.action.js';
-import SignupPage from './pages/signup/index.jsx';
+import SignupPage from './pages/signup';
 import { action as signupAction } from './pages/signup/signup.action.js';
-import CompanyPage from './pages/company/index.jsx';
+import CompanyPage from './pages/company';
 import EditCompanyPage from './pages/company/edit';
-import WorkerPage from './pages/worker/index.jsx';
+import WorkerPage from './pages/worker';
 import { loader as workerLoader } from './pages/worker/worker.loader.js';
-import EditWorkerPage from './pages/worker/edit';
 import WorkerPortofolio from './pages/worker/portofolio';
 import { loader as portofolioLoader } from './pages/worker/portofolio/portofolio.loader.js';
-import WorkerExperience from './pages/worker/experience/index.jsx';
+import WorkerExperience from './pages/worker/experience';
 import { loader as experienceLoader } from './pages/worker/experience/experience.loader.js';
+import ProfilePage from './pages/profile';
+import { loader as profileLoader } from './pages/profile/profile.loader.js';
+import ProfilePortofolio from './pages/profile/portfolio';
+import { loader as profilePortfolioLoader } from './pages/profile/portfolio/portfolio.loader.js';
+import ProfileExperience from './pages/profile/experience';
+import { loader as profileExperienceLoader } from './pages/profile/experience/experience.loader.js';
+import EditProfile from './pages/profile/edit';
 
 const router = createBrowserRouter([
 	{
@@ -54,8 +60,28 @@ const router = createBrowserRouter([
 				],
 			},
 			{
-				path: 'workers/:workerId/edit',
-				element: <EditWorkerPage />,
+				path: 'profile',
+				element: <ProfilePage />,
+				loader: profileLoader,
+				id: 'profile',
+				children: [
+					{
+						index: true,
+						element: <ProfilePortofolio />,
+						loader: profilePortfolioLoader,
+					},
+					{
+						path: 'portfolio',
+						element: <ProfilePortofolio />,
+						loader: profilePortfolioLoader,
+					},
+					{
+						path: 'experience',
+						element: <ProfileExperience />,
+						loader: profileExperienceLoader,
+					},
+					{ path: 'edit', element: <EditProfile /> },
+				],
 			},
 			{
 				path: 'companies/:companyId',

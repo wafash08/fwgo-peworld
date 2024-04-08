@@ -2,24 +2,16 @@ import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
 export default function NavLink({ children, to, category }) {
-	// const location = useLocation();
+	const paths = to.split('/');
 
-	// const [currentCategory, setCurrentCategory] = useState(
-	// 	'?category=portofolio'
-	// );
+	let currentPath = null;
+	if (paths.length === 1) {
+		currentPath = paths[0];
+	} else {
+		currentPath = paths[2];
+	}
 
-	// useEffect(() => {
-	// 	const search = location.search;
-	// 	if (search) {
-	// 		setCurrentCategory(search);
-	// 	}
-	// }, [location]);
-
-	// const current = currentCategory === to;
-
-	const currentCategory = to === category;
-
-	console.log('currentCategory >> ', currentCategory);
+	const currentCategory = currentPath === category;
 
 	return (
 		<li>

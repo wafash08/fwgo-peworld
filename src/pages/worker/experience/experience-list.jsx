@@ -16,7 +16,7 @@ function ExperienceItem({ experience }) {
 	return (
 		<li className='group flex gap-8'>
 			<div className='w-[74px] h-[74px] rounded-full bg-empty-avatar bg-no-repeat bg-center bg-cover shrink-0' />
-			<div>
+			<div className='flex-1'>
 				<h3 className='text-xl font-semibold text-yankees-blue mb-1'>
 					{position}
 				</h3>

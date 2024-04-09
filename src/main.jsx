@@ -16,13 +16,13 @@ import CompanyPage from './pages/company';
 import EditCompanyPage from './pages/company/edit';
 import WorkerPage from './pages/worker';
 import { loader as workerLoader } from './pages/worker/worker.loader.js';
-import WorkerPortofolio from './pages/worker/portofolio';
-import { loader as portofolioLoader } from './pages/worker/portofolio/portofolio.loader.js';
+import WorkerPortfolio from './pages/worker/portfolio/index.jsx';
+import { loader as portfolioLoader } from './pages/worker/portfolio/portfolio.loader.js';
 import WorkerExperience from './pages/worker/experience';
 import { loader as experienceLoader } from './pages/worker/experience/experience.loader.js';
 import ProfilePage from './pages/profile';
 import { loader as profileLoader } from './pages/profile/profile.loader.js';
-import ProfilePortofolio from './pages/profile/portfolio';
+import ProfilePortfolio from './pages/profile/portfolio';
 import { loader as profilePortfolioLoader } from './pages/profile/portfolio/portfolio.loader.js';
 import ProfileExperience from './pages/profile/experience';
 import { loader as profileExperienceLoader } from './pages/profile/experience/experience.loader.js';
@@ -46,13 +46,13 @@ const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <WorkerPortofolio />,
-						loader: portofolioLoader,
+						element: <WorkerPortfolio />,
+						loader: portfolioLoader,
 					},
 					{
-						path: 'portofolio',
-						element: <WorkerPortofolio />,
-						loader: portofolioLoader,
+						path: 'portfolio',
+						element: <WorkerPortfolio />,
+						loader: portfolioLoader,
 					},
 					{
 						path: 'experience',
@@ -69,12 +69,12 @@ const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <ProfilePortofolio />,
+						element: <ProfilePortfolio />,
 						loader: profilePortfolioLoader,
 					},
 					{
 						path: 'portfolio',
-						element: <ProfilePortofolio />,
+						element: <ProfilePortfolio />,
 						loader: profilePortfolioLoader,
 					},
 					{

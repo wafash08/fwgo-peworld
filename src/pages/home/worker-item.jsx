@@ -50,7 +50,7 @@ export default function WorkerItem({ photo, name, domicile, skills, job, id }) {
 				)}
 			</div>
 			<Link
-				to={`/workers/${id}/portofolio`}
+				to={`/workers/${id}/portfolio`}
 				className='text-white font-semibold bg-primary-purple rounded py-4 px-8 mr-12'
 			>
 				Lihat Profil

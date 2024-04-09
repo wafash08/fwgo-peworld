@@ -5,7 +5,7 @@ export default function Profile({ profile, skills }) {
 	const { domicile, photo, email, name, job_desk, description, workplace } =
 		profile;
 	return (
-		<section className='w-[360px] p-[30px] rounded-lg bg-white h-fit'>
+		<section className='w-[360px] p-[30px] rounded-lg bg-white sticky top-24'>
 			<div className='w-[150px] h-[150px] mx-auto rounded-full overflow-hidden flex items-center justify-center mb-4'>
 				<img
 					src={photo}

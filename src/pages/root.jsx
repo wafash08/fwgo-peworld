@@ -16,12 +16,12 @@ export default function Root() {
 
 	return (
 		<>
-			<header>
+			<header className='fixed top-0 left-0 w-full z-[1000] bg-white/70 backdrop-blur'>
 				<Container>
 					<NavbarDesktop hasLoggedIn={hasUserLoggedIn} />
 				</Container>
 			</header>
-			<main>
+			<main className='pt-20'>
 				<Outlet />
 			</main>
 			<Footer />

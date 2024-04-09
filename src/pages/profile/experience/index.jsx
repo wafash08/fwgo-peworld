@@ -5,7 +5,7 @@ import ExperienceList from '../../worker/experience/experience-list';
 export default function ProfileExperience() {
 	const { experiences } = useLoaderData();
 	return (
-		<section className='flex-1 bg-white rounded-lg p-[30px] h-fit'>
+		<section className='flex-1 bg-white rounded-lg p-[30px]'>
 			<nav className='mb-7'>
 				<ul className='flex items-center gap-[30px]'>
 					<NavLink to='/profile/portfolio' category='experience'>

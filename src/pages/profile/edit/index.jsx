@@ -8,7 +8,6 @@ import EditUpload from './edit-upload';
 
 export default function EditProfile() {
 	const { profile } = useRouteLoaderData('profile');
-
 	const navigate = useNavigate();
 	return (
 		<div className='space-y-10 md:flex-1'>

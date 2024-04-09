@@ -6,7 +6,7 @@ import louisTomlinson from '../assets/louis-tomlinson.png';
 
 export default function NavbarDesktop({ hasLoggedIn = false }) {
 	return (
-		<div className='flex justify-between items-center h-[100px]'>
+		<div className='flex justify-between items-center h-20'>
 			<Link to='/'>
 				<img src={peworldLogo} alt='Logo Peworld' width={127} height={35} />
 			</Link>

@@ -1,9 +1,8 @@
-import { useRouteLoaderData, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import NavLink from '../../worker/nav-link';
 import PortfolioList from './portfolio-list';
 
 export default function ProfilePortfolio() {
-	const { profile } = useRouteLoaderData('profile');
 	const { portfolio } = useLoaderData();
 
 	return (
@@ -20,18 +19,9 @@ export default function ProfilePortfolio() {
 			</nav>
 
 			{portfolio.length > 0 ? (
-				portfolio.map(({ id, aplication_name, image }) => {
-					return (
-						<PortfolioList
-							key={id}
-							aplication_name={aplication_name}
-							id={id}
-							image={image}
-						/>
-					);
-				})
+				<PortfolioList portfolio={portfolio} />
 			) : (
-				<p>{profile.name} belum memiliki portofolio</p>
+				<p>Kamu belum memiliki portofolio</p>
 			)}
 		</section>
 	);

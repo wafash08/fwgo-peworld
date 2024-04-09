@@ -20,10 +20,25 @@ export async function getProfile() {
 	return result.data;
 }
 
+export async function updateProfile(biodata) {
+	const result = await axios.put(profileUrl, biodata, {
+		headers: { Authorization: `Bearer ${token}` },
+	});
+
+	return result.data;
+}
+
 const portfolioUrl = `${baseUrl}/portfolio`;
 
 export async function getPortfolio() {
 	const result = await axios.get(portfolioUrl, {
+		headers: { Authorization: `Bearer ${token}` },
+	});
+	return result.data;
+}
+
+export async function addPortfolio(portfolio) {
+	const result = await axios.post(portfolioUrl, portfolio, {
 		headers: { Authorization: `Bearer ${token}` },
 	});
 	return result.data;
@@ -39,10 +54,26 @@ export async function getExperience() {
 	return result.data;
 }
 
+export async function addExperience(experience) {
+	const result = await axios.post(experienceUrl, experience, {
+		headers: { Authorization: `Bearer ${token}` },
+	});
+
+	return result.data;
+}
+
 const skillsUrl = `${baseUrl}/skills`;
 
 export async function getSkills() {
 	const result = await axios.get(skillsUrl, {
+		headers: { Authorization: `Bearer ${token}` },
+	});
+
+	return result.data;
+}
+
+export async function addSkills(skill_name) {
+	const result = await axios.post(skillsUrl, skill_name, {
 		headers: { Authorization: `Bearer ${token}` },
 	});
 

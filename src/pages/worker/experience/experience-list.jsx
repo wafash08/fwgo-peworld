@@ -22,8 +22,7 @@ function ExperienceItem({ experience }) {
 				</h3>
 				<p className='text-lg text-[#46505C]'>{company}</p>
 				<p className='text-quick-silver mb-4'>
-					{work_month}
-					{work_year}
+					{work_month} {work_year}
 				</p>
 				<p className='text-sm text-yankees-blue mb-5'>{description}</p>
 				<div className='w-full h-[1px] bg-azureish-white group-last:hidden' />

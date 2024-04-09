@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import SkillItem from '../worker/skill-item';
 
 export default function Profile({ profile, skills }) {
-	console.log('profile >> ', profile);
 	const { domicile, photo, email, name, job_desk, description, workplace } =
 		profile;
 	return (

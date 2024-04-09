@@ -7,6 +7,7 @@ export default function EditInput({
 	placeholder,
 	required = true,
 	className,
+	defaultValue,
 }) {
 	return (
 		<div className={clsx('flex flex-col gap-1', className)}>
@@ -20,6 +21,7 @@ export default function EditInput({
 				id={name}
 				placeholder={placeholder}
 				required={required}
+				defaultValue={defaultValue}
 			/>
 		</div>
 	);

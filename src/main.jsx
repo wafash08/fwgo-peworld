@@ -27,6 +27,8 @@ import { loader as profilePortfolioLoader } from './pages/profile/portfolio/port
 import ProfileExperience from './pages/profile/experience';
 import { loader as profileExperienceLoader } from './pages/profile/experience/experience.loader.js';
 import EditProfile from './pages/profile/edit';
+import { action as editProfileAction } from './pages/profile/edit/edit.action.js';
+import { loader as editProfileLoader } from './pages/profile/edit/edit.loader.js';
 
 const router = createBrowserRouter([
 	{
@@ -80,7 +82,12 @@ const router = createBrowserRouter([
 						element: <ProfileExperience />,
 						loader: profileExperienceLoader,
 					},
-					{ path: 'edit', element: <EditProfile /> },
+					{
+						path: 'edit',
+						element: <EditProfile />,
+						action: editProfileAction,
+						loader: editProfileLoader,
+					},
 				],
 			},
 			{

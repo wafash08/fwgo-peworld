@@ -7,7 +7,7 @@ import ErrorPage from './pages/error-page.jsx';
 import LandingPage from './pages/landing-page';
 import HomePage from './pages/home';
 import { loader as homeLoader } from './pages/home/home.loader.js';
-import HirePage from './pages/hire';
+import HirePage from './pages/worker/hire/index.jsx';
 import LoginPage from './pages/login';
 import { action as loginAction } from './pages/login/login.action.js';
 import SignupPage from './pages/signup';
@@ -15,12 +15,15 @@ import { action as signupAction } from './pages/signup/signup.action.js';
 import CompanyPage from './pages/company';
 import EditCompanyPage from './pages/company/edit';
 import WorkerPage from './pages/worker';
+import WorkerLayout from './pages/worker/worker-layout.jsx';
 import { loader as workerLoader } from './pages/worker/worker.loader.js';
 import WorkerPortfolio from './pages/worker/portfolio/index.jsx';
 import { loader as portfolioLoader } from './pages/worker/portfolio/portfolio.loader.js';
 import WorkerExperience from './pages/worker/experience';
 import { loader as experienceLoader } from './pages/worker/experience/experience.loader.js';
+import { action as hireAction } from './pages/worker/hire/hire.action.js';
 import ProfilePage from './pages/profile';
+import ProfileLayout from './pages/profile/profile-layout.jsx';
 import { loader as profileLoader } from './pages/profile/profile.loader.js';
 import ProfilePortfolio from './pages/profile/portfolio';
 import { loader as profilePortfolioLoader } from './pages/profile/portfolio/portfolio.loader.js';
@@ -46,19 +49,32 @@ const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <WorkerPortfolio />,
+						element: (
+							<WorkerLayout>
+								<WorkerPortfolio />
+							</WorkerLayout>
+						),
 						loader: portfolioLoader,
 					},
 					{
 						path: 'portfolio',
-						element: <WorkerPortfolio />,
+						element: (
+							<WorkerLayout>
+								<WorkerPortfolio />
+							</WorkerLayout>
+						),
 						loader: portfolioLoader,
 					},
 					{
 						path: 'experience',
-						element: <WorkerExperience />,
+						element: (
+							<WorkerLayout>
+								<WorkerExperience />
+							</WorkerLayout>
+						),
 						loader: experienceLoader,
 					},
+					{ path: 'hire', element: <HirePage />, action: hireAction },
 				],
 			},
 			{
@@ -69,17 +85,29 @@ const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <ProfilePortfolio />,
+						element: (
+							<ProfileLayout>
+								<ProfilePortfolio />
+							</ProfileLayout>
+						),
 						loader: profilePortfolioLoader,
 					},
 					{
 						path: 'portfolio',
-						element: <ProfilePortfolio />,
+						element: (
+							<ProfileLayout>
+								<ProfilePortfolio />
+							</ProfileLayout>
+						),
 						loader: profilePortfolioLoader,
 					},
 					{
 						path: 'experience',
-						element: <ProfileExperience />,
+						element: (
+							<ProfileLayout>
+								<ProfileExperience />
+							</ProfileLayout>
+						),
 						loader: profileExperienceLoader,
 					},
 					{
@@ -95,7 +123,6 @@ const router = createBrowserRouter([
 				element: <CompanyPage />,
 			},
 			{ path: 'companies/:companyId/edit', element: <EditCompanyPage /> },
-			{ path: 'hire', element: <HirePage /> },
 		],
 	},
 	{

@@ -7,8 +7,8 @@ export default function WorkerPortfolio() {
 
 	return portfolio.length > 0 ? (
 		<ul className='grid grid-cols-3 gap-x-4 gap-y-[30px]'>
-			{portfolio.map(({ id, image, aplication_name }) => {
-				return <PortfolioItem key={id} src={image} name={aplication_name} />;
+			{portfolio.map(({ id, image, application_name }) => {
+				return <PortfolioItem key={id} src={image} name={application_name} />;
 			})}
 		</ul>
 	) : (

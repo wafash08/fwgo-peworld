@@ -80,12 +80,6 @@ export default function Profile({ profile, skills }) {
 					{description}
 				</p>
 			)}
-			<Link
-				to='/hire'
-				className='inline-flex items-center justify-center w-full text-white bg-primary-purple rounded font-bold p-4 mb-9'
-			>
-				Hire
-			</Link>
 
 			<section className='mb-14'>
 				<h3 className='text-[22px] text-yankees-blue font-semibold mb-5'>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import SkillItem from './skill-item';
 
-export default function WorkerProfile({ worker, skills }) {
+export default function WorkerProfile({ worker, skills, notInHirePage }) {
 	const { domicile, photo, email, name, job_desk, description, workplace } =
 		worker;
 	return (
@@ -50,12 +50,14 @@ export default function WorkerProfile({ worker, skills }) {
 			<p className='text-sm text-quick-silver mb-9 tracking-wide'>
 				{description}
 			</p>
-			<Link
-				to='/hire'
-				className='inline-flex items-center justify-center w-full text-white bg-primary-purple rounded font-bold p-4 mb-9'
-			>
-				Hire
-			</Link>
+			{notInHirePage && (
+				<Link
+					to='hire'
+					className='inline-flex items-center justify-center w-full text-white bg-primary-purple rounded font-bold p-4 mb-9'
+				>
+					Hire
+				</Link>
+			)}
 
 			<section className='mb-14'>
 				<h3 className='text-[22px] text-yankees-blue font-semibold mb-5'>

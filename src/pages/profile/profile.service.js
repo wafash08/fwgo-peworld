@@ -5,7 +5,7 @@ const baseUrl = import.meta.env.VITE_API_URL_V1;
 let token = null;
 
 export async function getToken() {
-	const userFromLocalStorage = localStorage.getItem('peworld_user');
+	const userFromLocalStorage = localStorage.getItem('peworld');
 	const user = JSON.parse(userFromLocalStorage);
 	token = user.token;
 	return;
@@ -13,7 +13,7 @@ export async function getToken() {
 
 const profileUrl = `${baseUrl}/workers/profile`;
 
-export async function getProfile() {
+export async function getProfile(token) {
 	const result = await axios.get(profileUrl, {
 		headers: { Authorization: `Bearer ${token}` },
 	});
@@ -64,7 +64,7 @@ export async function addExperience(experience) {
 
 const skillsUrl = `${baseUrl}/skills`;
 
-export async function getSkills() {
+export async function getSkills(token) {
 	const result = await axios.get(skillsUrl, {
 		headers: { Authorization: `Bearer ${token}` },
 	});

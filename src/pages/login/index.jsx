@@ -1,9 +1,14 @@
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useActionData, useLocation } from 'react-router-dom';
 import Container from '../../components/container';
 import whitePeworldLogo from '../../assets/peworld-logo-white.png';
 import Input from '../../components/input';
 
 export default function LoginPage() {
+	let location = useLocation();
+	let params = new URLSearchParams(location.search);
+	let from = params.get('from') || '/';
+
+	const error = useActionData();
 	return (
 		<main className='pt-10 pb-16 bg-cultured'>
 			<Container className='max-w-[1322px] flex gap-16'>
@@ -29,8 +34,9 @@ export default function LoginPage() {
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
 						ipsum et dui rhoncus auctor.
 					</p>
-					<Form method='post'>
+					<Form method='post' replace>
 						<div className='grid gap-8 mb-12'>
+							<input type='hidden' name='redirectTo' value={from} />
 							<Input
 								label='Email'
 								name='email'
@@ -46,6 +52,9 @@ export default function LoginPage() {
 								required
 								minLength={4}
 							/>
+							{error ? (
+								<span className='text-sm text-red-500'>{error.message}</span>
+							) : null}
 						</div>
 						<p className='text-yankees-blue text-right mb-6'>
 							<Link to='/signup'>Lupa kata sandi?</Link>

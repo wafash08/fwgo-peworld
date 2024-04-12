@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from './pages/root.jsx';
+import { loader as rootLoader } from './pages/root.loader.js';
 import ErrorPage from './pages/error-page.jsx';
 import LandingPage from './pages/landing-page';
 import HomePage from './pages/home';
@@ -32,11 +33,13 @@ import { loader as profileExperienceLoader } from './pages/profile/experience/ex
 import EditProfile from './pages/profile/edit';
 import { action as editProfileAction } from './pages/profile/edit/edit.action.js';
 import { loader as editProfileLoader } from './pages/profile/edit/edit.loader.js';
+import { loader as loginLoader } from './pages/login/login.loader.js';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Root />,
+		loader: rootLoader,
 		errorElement: <ErrorPage />,
 		children: [
 			{ index: true, element: <LandingPage /> },
@@ -129,6 +132,7 @@ const router = createBrowserRouter([
 		path: '/login',
 		element: <LoginPage />,
 		action: loginAction,
+		loader: loginLoader,
 	},
 	{
 		path: '/signup',

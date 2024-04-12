@@ -9,7 +9,6 @@ export default function Input({
 	children = null,
 	...props
 }) {
-	console.log('errors >> ', errors);
 	const autoCompleteName =
 		name === 'password' || 'confirmPassword' ? 'current-password' : name;
 

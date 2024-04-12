@@ -44,6 +44,7 @@ export default function LoginPage() {
 								type='password'
 								placeholder='Masukan kata sandi'
 								required
+								minLength={4}
 							/>
 						</div>
 						<p className='text-yankees-blue text-right mb-6'>

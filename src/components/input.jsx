@@ -1,12 +1,25 @@
+import { useEffect } from 'react';
+
 export default function Input({
 	type = 'text',
 	name,
 	placeholder,
 	label,
+	errors = null,
+	children = null,
 	...props
 }) {
+	console.log('errors >> ', errors);
 	const autoCompleteName =
 		name === 'password' || 'confirmPassword' ? 'current-password' : name;
+
+	useEffect(() => {
+		const confirmPasswordElement = document.getElementById('confirmPassword');
+		if (errors?.confirmPassword) {
+			confirmPasswordElement.focus();
+		}
+	}, [errors]);
+
 	return (
 		<div>
 			<label
@@ -24,6 +37,7 @@ export default function Input({
 				autoComplete={autoCompleteName}
 				{...props}
 			/>
+			{children}
 		</div>
 	);
 }

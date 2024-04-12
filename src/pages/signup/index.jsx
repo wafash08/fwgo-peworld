@@ -1,9 +1,18 @@
-import { Form, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useActionData } from 'react-router-dom';
+import SignupWorkerForm from './signup-worker-form';
+import SignupRecruiterForm from './signup-recruiter-form';
 import Container from '../../components/container';
 import whitePeworldLogo from '../../assets/peworld-logo-white.png';
-import Input from '../../components/input';
 
 export default function SignupPage() {
+	const errors = useActionData();
+	const [role, setRole] = useState('worker');
+
+	const handleChangeRole = role => {
+		setRole(role);
+	};
+
 	return (
 		<main className='pt-10 pb-16 bg-cultured'>
 			<Container className='max-w-[1322px] flex gap-16'>
@@ -22,57 +31,45 @@ export default function SignupPage() {
 					</h1>
 				</section>
 				<section className='flex-1'>
-					<h2 className='text-[32px] text-yankees-blue font-semibold mt-24 mb-4'>
+					<div className='mt-8'>
+						<p>Daftar sebagai:</p>
+						<div className='flex justify-start gap-8'>
+							<div className='flex items-center gap-2'>
+								<label htmlFor='worker'>Pekerja</label>
+								<input
+									type='radio'
+									name='role'
+									id='worker'
+									value='worker'
+									checked={role === 'worker'}
+									onChange={() => handleChangeRole('worker')}
+								/>
+							</div>
+							<div className='flex items-center gap-2'>
+								<label htmlFor='recruiter'>Perekrut</label>
+								<input
+									type='radio'
+									name='role'
+									id='recruiter'
+									value='recruiter'
+									checked={role === 'recruiter'}
+									onChange={() => handleChangeRole('recruiter')}
+								/>
+							</div>
+						</div>
+					</div>
+					<h2 className='text-[32px] text-yankees-blue font-semibold mt-2 mb-4'>
 						Halo, Pewpeople
 					</h2>
 					<p className='text-lg text-davys-gray mb-12'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
 						ipsum et dui rhoncus auctor.
 					</p>
-					<Form method='post'>
-						<div className='grid gap-8 mb-12'>
-							<Input
-								label='Nama'
-								name='name'
-								placeholder='Masukan nama panjang'
-								required
-							/>
-							<Input
-								label='Email'
-								name='email'
-								type='email'
-								placeholder='Masukan alamat email'
-								required
-							/>
-							<Input
-								label='No handphone'
-								name='phone'
-								type='tel'
-								placeholder='Masukan no handphone'
-								required
-							/>
-							<Input
-								label='Kata sandi'
-								name='password'
-								type='password'
-								placeholder='Masukan kata sandi'
-								required
-							/>
-							<Input
-								label='Konfirmasi kata sandi'
-								name='confirmPassword'
-								type='password'
-								placeholder='Masukan konfirmasi kata sandi'
-								required
-							/>
-						</div>
-						<button
-							type='submit'
-							className='w-full p-4 text-white bg-primary-yellow font-bold rounded'
-						>
-							Daftar
-						</button>
-					</Form>
+					{role === 'worker' ? (
+						<SignupWorkerForm role={role} errors={errors} />
+					) : (
+						<SignupRecruiterForm role={role} errors={errors} />
+					)}
 					<p className='mt-7 text-yankees-blue text-center'>
 						Anda sudah punya akun?{' '}
 						<Link to='/login' className='text-primary-yellow'>

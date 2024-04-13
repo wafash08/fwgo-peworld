@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { BellIcon, MailIcon } from './icons';
 import peworldLogo from '../assets/peworld-logo-purple.png';
-import louisTomlinson from '../assets/louis-tomlinson.png';
+import emptyAvatar from '../assets/empty-avatar.png';
 
-export default function NavbarDesktop({ isAuthenticated = false }) {
+export default function NavbarDesktop({ isAuthenticated = false, user, role }) {
 	return (
 		<div className='flex justify-between items-center h-20'>
 			<Link to='/'>
@@ -17,9 +17,9 @@ export default function NavbarDesktop({ isAuthenticated = false }) {
 						<NavItemWithIcon label='Lihat pemberitahuan' icon={<BellIcon />} />
 						<NavItemWithIcon label='Lihat pesan masuk' icon={<MailIcon />} />
 						<NavItemLinkAvatar
-							src={louisTomlinson}
-							alt='Louis Tomlinson'
-							to='/profile'
+							src={user.photo ? user.photo : emptyAvatar}
+							alt={user.name ? user.name : ''}
+							to={role === 'worker' ? 'profile' : 'recruiter/profile'}
 						/>
 					</ul>
 				) : (
@@ -77,10 +77,10 @@ function NavItemLinkAvatar({ to, src, alt }) {
 		<li>
 			<Link
 				to={to}
-				className='inline-flex items-center justify-center w-8 h-8 rounded-full'
+				className='inline-flex items-center justify-center w-8 h-8 rounded-full overflow-hidden'
 			>
 				<span className='sr-only'>Lihat profil anda</span>
-				<img src={src} alt={alt} />
+				<img src={src} alt={alt} width={32} height={32} />
 			</Link>
 		</li>
 	);

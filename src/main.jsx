@@ -122,10 +122,10 @@ const router = createBrowserRouter([
 				],
 			},
 			{
-				path: 'companies/:companyId',
+				path: 'recruiter/profile',
 				element: <CompanyPage />,
+				children: [{ path: 'edit', element: <EditCompanyPage /> }],
 			},
-			{ path: 'companies/:companyId/edit', element: <EditCompanyPage /> },
 		],
 	},
 	{

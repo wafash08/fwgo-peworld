@@ -11,7 +11,11 @@ export default function Root() {
 		<>
 			<header className='fixed top-0 left-0 w-full z-[1000] bg-white/70 backdrop-blur'>
 				<Container>
-					<NavbarDesktop isAuthenticated={isAuthenticated} />
+					<NavbarDesktop
+						isAuthenticated={isAuthenticated}
+						role={role}
+						user={user}
+					/>
 				</Container>
 			</header>
 			<main className='pt-20'>

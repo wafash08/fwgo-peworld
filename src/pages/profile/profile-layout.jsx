@@ -1,16 +1,16 @@
-import NavLink from '../worker/nav-link';
+import NavLinkProfile from './nav-link-profile';
 
 export default function ProfileLayout({ children }) {
 	return (
 		<section className='flex-1 bg-white rounded-lg p-[30px]'>
 			<nav className='mb-7'>
 				<ul className='flex items-center gap-[30px]'>
-					<NavLink to='/profile/portfolio' category='portfolio'>
+					<NavLinkProfile to='/profile/portfolio' category='portfolio'>
 						Portofolio
-					</NavLink>
-					<NavLink to='/profile/experience' category='experience'>
+					</NavLinkProfile>
+					<NavLinkProfile to='/profile/experience' category='experience'>
 						Pengalaman Kerja
-					</NavLink>
+					</NavLinkProfile>
 				</ul>
 			</nav>
 

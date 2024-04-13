@@ -16,12 +16,7 @@ import { action as signupAction } from './pages/signup/signup.action.js';
 import CompanyPage from './pages/company';
 import EditCompanyPage from './pages/company/edit';
 import WorkerPage from './pages/worker';
-import WorkerLayout from './pages/worker/worker-layout.jsx';
 import { loader as workerLoader } from './pages/worker/worker.loader.js';
-import WorkerPortfolio from './pages/worker/portfolio/index.jsx';
-import { loader as portfolioLoader } from './pages/worker/portfolio/portfolio.loader.js';
-import WorkerExperience from './pages/worker/experience';
-import { loader as experienceLoader } from './pages/worker/experience/experience.loader.js';
 import { action as hireAction } from './pages/worker/hire/hire.action.js';
 import ProfilePage from './pages/profile';
 import ProfileLayout from './pages/profile/profile-layout.jsx';
@@ -49,36 +44,7 @@ const router = createBrowserRouter([
 				element: <WorkerPage />,
 				loader: workerLoader,
 				id: 'worker',
-				children: [
-					{
-						index: true,
-						element: (
-							<WorkerLayout>
-								<WorkerPortfolio />
-							</WorkerLayout>
-						),
-						loader: portfolioLoader,
-					},
-					{
-						path: 'portfolio',
-						element: (
-							<WorkerLayout>
-								<WorkerPortfolio />
-							</WorkerLayout>
-						),
-						loader: portfolioLoader,
-					},
-					{
-						path: 'experience',
-						element: (
-							<WorkerLayout>
-								<WorkerExperience />
-							</WorkerLayout>
-						),
-						loader: experienceLoader,
-					},
-					{ path: 'hire', element: <HirePage />, action: hireAction },
-				],
+				children: [{ path: 'hire', element: <HirePage />, action: hireAction }],
 			},
 			{
 				path: 'profile',

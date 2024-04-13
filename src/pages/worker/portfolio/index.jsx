@@ -1,17 +1,9 @@
-import { useLoaderData, useRouteLoaderData } from 'react-router-dom';
-import PortfolioItem from './portfolio-item';
+import PortfolioList from './portfolio-list';
 
-export default function WorkerPortfolio() {
-	const { portfolio } = useLoaderData();
-	const { worker } = useRouteLoaderData('worker');
-
+export default function WorkerPortfolio({ portfolio, name }) {
 	return portfolio.length > 0 ? (
-		<ul className='grid grid-cols-3 gap-x-4 gap-y-[30px]'>
-			{portfolio.map(({ id, image, application_name }) => {
-				return <PortfolioItem key={id} src={image} name={application_name} />;
-			})}
-		</ul>
+		<PortfolioList portfolio={portfolio} />
 	) : (
-		<p>{worker.name} belum memiliki portofolio</p>
+		<p>{name} belum memiliki portofolio</p>
 	);
 }

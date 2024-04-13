@@ -1,13 +1,9 @@
-import { useLoaderData, useRouteLoaderData } from 'react-router-dom';
 import ExperienceList from './experience-list';
 
-export default function WorkerExperience() {
-	const { experiences } = useLoaderData();
-	const { worker } = useRouteLoaderData('worker');
-
+export default function WorkerExperience({ experiences, name }) {
 	return experiences.length > 0 ? (
 		<ExperienceList experiences={experiences} />
 	) : (
-		<p>{worker.name} belum memiliki pengalaman</p>
+		<p>{name} belum memiliki pengalaman</p>
 	);
 }

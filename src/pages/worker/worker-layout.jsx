@@ -3,15 +3,19 @@ import NavLink from './nav-link';
 
 export default function WorkerLayout({ children }) {
 	const { worker } = useRouteLoaderData('worker');
+
 	return (
 		<section className='flex-1 bg-white rounded-lg p-[30px]'>
 			<nav className='mb-7'>
 				<ul className='flex items-center gap-[30px]'>
-					<NavLink to={`/workers/${worker.id}/portfolio`} category='portfolio'>
+					<NavLink
+						to={`/workers/${worker.id}?category=portfolio`}
+						category='portfolio'
+					>
 						Portofolio
 					</NavLink>
 					<NavLink
-						to={`/workers/${worker.id}/experience`}
+						to={`/workers/${worker.id}?category=experience`}
 						category='experience'
 					>
 						Pengalaman Kerja

@@ -1,5 +1,10 @@
 import { redirect } from 'react-router-dom';
-import { getSkillByWorkerId, getWorkerById } from './worker.services';
+import {
+	getExperiencesByWorkerId,
+	getPortfolioByWorkerId,
+	getSkillByWorkerId,
+	getWorkerById,
+} from './worker.services';
 import { authProvider } from '../../auth';
 
 export async function loader({ params, request }) {
@@ -12,12 +17,16 @@ export async function loader({ params, request }) {
 		return redirect('/login?' + params.toString());
 	}
 	const id = params.workerId;
-	const [worker, skills] = await Promise.all([
+	const [worker, skills, portfolio, experiences] = await Promise.all([
 		getWorkerById(id),
 		getSkillByWorkerId(id),
+		getPortfolioByWorkerId(id),
+		getExperiencesByWorkerId(id),
 	]);
 	return {
 		worker: worker.data,
 		skills: skills.data,
+		portfolio: portfolio.data,
+		experiences: experiences.data,
 	};
 }

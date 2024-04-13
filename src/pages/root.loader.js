@@ -1,5 +1,6 @@
 import { authProvider } from '../auth';
 import { getProfile } from './profile/profile.service';
+import { getRecruiterProfile } from './root.service';
 
 export async function loader() {
 	const { role, token } = authProvider.getUser();
@@ -11,8 +12,7 @@ export async function loader() {
 			break;
 		}
 		case 'recruiter': {
-			// implementasi untuk user yang memiliki role recruiter
-			user = null;
+			user = await getRecruiterProfile(token);
 			break;
 		}
 	}

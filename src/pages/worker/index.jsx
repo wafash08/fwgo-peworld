@@ -40,7 +40,6 @@ export default function WorkerPage() {
 						)}
 					</WorkerLayout>
 				)}
-				<Outlet />
 			</Container>
 		</div>
 	);

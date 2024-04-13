@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Outlet, useLoaderData } from 'react-router-dom';
 import Container from '../components/container';
 import NavbarDesktop from '../components/navbar-desktop';

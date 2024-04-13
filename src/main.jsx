@@ -13,8 +13,6 @@ import LoginPage from './pages/login';
 import { action as loginAction } from './pages/login/login.action.js';
 import SignupPage from './pages/signup';
 import { action as signupAction } from './pages/signup/signup.action.js';
-import CompanyPage from './pages/company';
-import EditCompanyPage from './pages/company/edit';
 import WorkerPage from './pages/worker';
 import { loader as workerLoader } from './pages/worker/worker.loader.js';
 import { action as hireAction } from './pages/worker/hire/hire.action.js';
@@ -29,12 +27,17 @@ import EditProfile from './pages/profile/edit';
 import { action as editProfileAction } from './pages/profile/edit/edit.action.js';
 import { loader as editProfileLoader } from './pages/profile/edit/edit.loader.js';
 import { loader as loginLoader } from './pages/login/login.loader.js';
+import RecruiterPage from './pages/recruiter/index.jsx';
+import EditRecruiterPage from './pages/recruiter/edit/index.jsx';
+import { action as editRecruiterAction } from './pages/recruiter/edit/edit.action.js';
+import { loader as recruiterLoader } from './pages/recruiter/recruiter.loader.js';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Root />,
 		loader: rootLoader,
+		id: 'root',
 		errorElement: <ErrorPage />,
 		children: [
 			{ index: true, element: <LandingPage /> },
@@ -89,8 +92,16 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'recruiter/profile',
-				element: <CompanyPage />,
-				children: [{ path: 'edit', element: <EditCompanyPage /> }],
+				element: <RecruiterPage />,
+				loader: recruiterLoader,
+				id: 'recruiter',
+				children: [
+					{
+						path: 'edit',
+						element: <EditRecruiterPage />,
+						action: editRecruiterAction,
+					},
+				],
 			},
 		],
 	},

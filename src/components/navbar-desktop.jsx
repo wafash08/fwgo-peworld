@@ -35,7 +35,7 @@ export default function NavbarDesktop({ isAuthenticated = false, user, role }) {
 
 function NavItemWithIcon({ label, icon }) {
 	return (
-		<button type='button'>
+		<button type='button' className='text-roman-silver'>
 			<span className='sr-only'>{label}</span>
 			{icon}
 		</button>

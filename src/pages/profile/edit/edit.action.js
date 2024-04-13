@@ -10,7 +10,7 @@ import { authProvider } from '../../../auth';
 
 export async function action({ request }) {
 	const formData = await request.formData();
-	const { role, token } = authProvider.getUser();
+	const { token } = authProvider.getUser();
 	let biodata = {};
 	let skills = {};
 	let experience = {};

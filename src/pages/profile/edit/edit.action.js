@@ -6,9 +6,11 @@ import {
 	updateProfile,
 } from '../profile.service';
 import { isEmpty } from '../../../utils';
+import { authProvider } from '../../../auth';
 
 export async function action({ request }) {
 	const formData = await request.formData();
+	const { role, token } = authProvider.getUser();
 	let biodata = {};
 	let skills = {};
 	let experience = {};
@@ -52,13 +54,13 @@ export async function action({ request }) {
 	}
 
 	if (!isEmpty(biodata)) {
-		await updateProfile(biodata);
+		await updateProfile(biodata, token);
 	} else if (!isEmpty(skills)) {
-		await addSkills(skills);
+		await addSkills(skills, token);
 	} else if (!isEmpty(experience)) {
-		await addExperience(experience);
+		await addExperience(experience, token);
 	} else if (!isEmpty(portfolio)) {
-		await addPortfolio(portfolio);
+		await addPortfolio(portfolio, token);
 	}
 
 	return redirect('/profile');

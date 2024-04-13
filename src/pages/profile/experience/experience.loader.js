@@ -1,7 +1,8 @@
-import { getExperience, getToken } from '../profile.service';
+import { authProvider } from '../../../auth';
+import { getExperience } from '../profile.service';
 
 export async function loader() {
-	await getToken();
-	const experiences = await getExperience();
+	const { token } = authProvider.getUser();
+	const experiences = await getExperience(token);
 	return { experiences: experiences.data };
 }

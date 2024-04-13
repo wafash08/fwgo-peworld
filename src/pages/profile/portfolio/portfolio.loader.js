@@ -1,7 +1,8 @@
-import { getPortfolio, getToken } from '../profile.service';
+import { authProvider } from '../../../auth';
+import { getPortfolio } from '../profile.service';
 
 export async function loader() {
-	await getToken();
-	const portfolio = await getPortfolio();
+	const { token } = authProvider.getUser();
+	const portfolio = await getPortfolio(token);
 	return { portfolio: portfolio.data };
 }

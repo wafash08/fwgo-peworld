@@ -18,7 +18,6 @@ import EditTextarea from '../../profile/edit/edit-textarea';
 
 export default function EditRecruiterForm() {
 	const { recruiter } = useRouteLoaderData('recruiter');
-	console.log('recruiter >> ', recruiter);
 
 	return (
 		<div className='space-y-10 md:flex-1'>

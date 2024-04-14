@@ -3,9 +3,6 @@ import { authProvider } from '../../auth';
 import { getWorkers } from './home.service';
 
 export async function loader({ request }) {
-	// If the user is not logged in and tries to access `/protected`, we redirect
-	// them to `/login` with a `from` parameter that allows login to redirect back
-	// to this page upon successful authentication
 	const { token } = authProvider.getUser();
 
 	const isAuthenticated = token ? true : false;
@@ -14,7 +11,9 @@ export async function loader({ request }) {
 		params.set('from', new URL(request.url).pathname);
 		return redirect('/login?' + params.toString());
 	}
-	const workers = await getWorkers();
+	const url = new URL(request.url);
+	const page = url.searchParams.get('page') ?? 1;
+	const workers = await getWorkers({ limit: 10, page });
 	return {
 		workers: workers.data,
 		pagination: workers.pagination,

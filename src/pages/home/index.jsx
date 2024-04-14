@@ -5,6 +5,7 @@ import Pagination from './pagination';
 
 export default function HomePage() {
 	const { workers, pagination } = useLoaderData();
+
 	return (
 		<>
 			<section className='bg-primary-purple'>
@@ -85,7 +86,11 @@ export default function HomePage() {
 					</ul>
 
 					<nav>
-						<Pagination />
+						<Pagination
+							currentPage={pagination.currentPage}
+							totalData={pagination.totalData}
+							totalPage={pagination.totalPage}
+						/>
 					</nav>
 				</Container>
 			</section>

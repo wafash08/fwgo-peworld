@@ -11,7 +11,9 @@ export async function loader({ request }) {
 		params.set('from', new URL(request.url).pathname);
 		return redirect('/login?' + params.toString());
 	}
-	const workers = await getWorkers();
+	const url = new URL(request.url);
+	const page = url.searchParams.get('page') ?? 1;
+	const workers = await getWorkers({ limit: 10, page });
 	return {
 		workers: workers.data,
 		pagination: workers.pagination,

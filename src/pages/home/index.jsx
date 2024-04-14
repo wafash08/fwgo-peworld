@@ -5,6 +5,8 @@ import Pagination from './pagination';
 
 export default function HomePage() {
 	const { workers, pagination } = useLoaderData();
+
+	console.log('pagination >> ', pagination);
 	return (
 		<>
 			<section className='bg-primary-purple'>

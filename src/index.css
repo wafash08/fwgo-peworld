@@ -15,3 +15,11 @@
 		@apply border border-red-500;
 	}
 }
+
+#testimony-list {
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+	scrollbar-width: none; /* Firefox */
+}
+#testimony-list::-webkit-scrollbar {
+	display: none; /* Safari and Chrome */
+}

@@ -5,7 +5,7 @@ export default function Profile({ profile, skills }) {
 	const { domicile, photo, email, name, job_desk, description, workplace } =
 		profile;
 	return (
-		<section className='w-[360px] p-[30px] rounded-lg bg-white sticky top-24'>
+		<section className='w-full lg:w-[360px] lg:shrink-0 p-[30px] rounded-lg bg-white lg:sticky top-24 text-center lg:text-left'>
 			<div className='w-[150px] h-[150px] mx-auto rounded-full overflow-hidden flex items-center justify-center mb-4'>
 				<img
 					src={photo}
@@ -40,12 +40,14 @@ export default function Profile({ profile, skills }) {
 					<span>Edit</span>
 				</Link>
 			</div>
-			<h2 className='text-[22px] text-yankees-blue font-semibold mb-1'>
+			<h2 className='text-3xl lg:text-[22px] text-yankees-blue font-semibold mb-2 lg:mb-1'>
 				{name}
 			</h2>
-			<p className='text-sm text-yankees-blue mb-3'>{job_desk}</p>
+			{job_desk && (
+				<p className='lg:text-sm text-yankees-blue mb-3'>{job_desk}</p>
+			)}
 			{domicile && (
-				<div className='flex items-center gap-3 text-quick-silver mb-3'>
+				<div className='flex justify-center lg:justify-start items-center gap-3 text-quick-silver mb-3'>
 					<svg
 						width='16'
 						height='16'
@@ -69,14 +71,14 @@ export default function Profile({ profile, skills }) {
 							strokeLinejoin='round'
 						/>
 					</svg>
-					<span className='text-sm'>{domicile}</span>
+					<span className='lg:text-sm'>{domicile}</span>
 				</div>
 			)}
 			{workplace && (
-				<p className='text-quick-silver text-sm mb-[18px]'>{workplace}</p>
+				<p className='text-quick-silver lg:text-sm mb-[18px]'>{workplace}</p>
 			)}
 			{description && (
-				<p className='text-sm text-quick-silver mb-9 tracking-wide'>
+				<p className='lg:text-sm text-quick-silver mb-9 tracking-wide'>
 					{description}
 				</p>
 			)}
@@ -85,7 +87,7 @@ export default function Profile({ profile, skills }) {
 				<h3 className='text-[22px] text-yankees-blue font-semibold mb-5'>
 					Skills
 				</h3>
-				<ul className='flex flex-wrap items-center gap-x-[10px] gap-y-5'>
+				<ul className='flex flex-wrap justify-center lg:justify-start items-center gap-x-[10px] gap-y-5'>
 					{skills.length > 0 ? (
 						skills.map(({ skill_name, id }) => {
 							return <SkillItem key={id}>{skill_name}</SkillItem>;
@@ -97,7 +99,7 @@ export default function Profile({ profile, skills }) {
 			</section>
 
 			<ul>
-				<li className='text-quick-silver flex items-center gap-5'>
+				<li className='text-quick-silver flex justify-center lg:justify-start items-center gap-5'>
 					<svg
 						width='24'
 						height='24'

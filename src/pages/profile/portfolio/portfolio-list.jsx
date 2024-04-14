@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function PortfolioList({ portfolio }) {
 	return (
-		<ul className='grid grid-cols-3 gap-x-4 gap-y-[30px]'>
+		<ul className='grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-[30px]'>
 			{portfolio.map(({ id, image, application_name, link_repository }) => {
 				return (
 					<PortfolioItem
@@ -20,7 +20,12 @@ export default function PortfolioList({ portfolio }) {
 function PortfolioItem({ src, name, to }) {
 	return (
 		<li>
-			<Link to={to} target='_blank' className='rounded block'>
+			<Link
+				to={to}
+				target='_blank'
+				rel='noopener noreferrer'
+				className='rounded block'
+			>
 				<div className='rounded overflow-hidden mb-3 h-40'>
 					<img src={src} alt={name} className='h-full w-full object-cover' />
 				</div>

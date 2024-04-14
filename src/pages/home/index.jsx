@@ -17,7 +17,7 @@ export default function HomePage() {
 			<section className='mt-[50px] mb-[70px]'>
 				<Container>
 					<Form className='overflow-hidden rounded-md shadow-[0px_1px_20px_0px] shadow-[#C5C5C5]/40 p-2'>
-						<div className='flex items-center h-[70px]'>
+						<div className='flex items-center h-12 md:h-[70px]'>
 							<div className='flex-1 relative text-quick-silver'>
 								<input
 									type='text'
@@ -34,7 +34,7 @@ export default function HomePage() {
 									fill='none'
 									xmlns='http://www.w3.org/2000/svg'
 									aria-hidden='true'
-									className='absolute right-5 top-1/2 -translate-y-1/2'
+									className='absolute right-5 top-1/2 -translate-y-1/2 hidden md:block'
 								>
 									<path
 										d='M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z'
@@ -53,16 +53,16 @@ export default function HomePage() {
 								</svg>
 							</div>
 							{/* divider */}
-							<div className='w-[1px] h-14 bg-quick-silver mx-1' />
+							<div className='w-[1px] h-14 bg-quick-silver mx-1 hidden md:block' />
 							<button
 								type='button'
-								className='font-semibold text-quick-silver px-5 py-4 rounded mr-1'
+								className='font-semibold text-quick-silver px-5 py-4 rounded mr-1 hidden md:block'
 							>
 								Kategori
 							</button>
 							<button
 								type='submit'
-								className='font-semibold text-white px-8 py-4 rounded bg-primary-purple'
+								className='font-semibold text-white px-4 md:px-8 py-2 md:py-4 rounded bg-primary-purple'
 							>
 								Search
 							</button>

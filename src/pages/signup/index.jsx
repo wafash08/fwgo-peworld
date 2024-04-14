@@ -15,9 +15,12 @@ export default function SignupPage() {
 
 	return (
 		<main className='pt-10 pb-16 bg-cultured'>
-			<Container className='max-w-[1322px] flex gap-16'>
-				<section className='flex-1 bg-login min-h-screen max-h-[830px] bg-primary-purple bg-no-repeat bg-cover bg-blend-overlay'>
-					<Link to='/' className='ml-11 mt-11 inline-block'>
+			<Container className='max-w-[1322px] flex md:gap-8 lg:gap-16'>
+				<section className='hidden md:block flex-1 bg-login min-h-screen max-h-[830px] bg-primary-purple bg-no-repeat bg-cover bg-blend-overlay'>
+					<Link
+						to='/'
+						className='md:ml-5 md:mt-5 lg:ml-11 lg:mt-11 inline-block'
+					>
 						<span className='sr-only'>to landing page</span>
 						<img
 							src={whitePeworldLogo}
@@ -26,7 +29,7 @@ export default function SignupPage() {
 							height={24}
 						/>
 					</Link>
-					<h1 className='mx-16 mt-44 max-w-[456px] text-white text-[44px] font-bold'>
+					<h1 className='md:mx-8 lg:mx-16 md:mt-20 lg:mt-44 max-w-[456px] text-white md:text-4xl md:leading-relaxed lg:text-[44px] font-bold'>
 						Temukan developer berbakat & terbaik di berbagai bidang keahlian
 					</h1>
 				</section>

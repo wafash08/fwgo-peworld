@@ -6,11 +6,11 @@ export default function HeroSection() {
 	return (
 		<section className='mt-28'>
 			<Container className='flex items-center gap-14'>
-				<div className='flex-1'>
-					<h1 className='text-[44px] text-yankees-blue font-semibold max-w-lg mb-5'>
+				<div className='flex-1 text-center lg:text-left'>
+					<h1 className='text-[44px] text-yankees-blue font-semibold lg:max-w-lg mb-5'>
 						Talenta terbaik negri untuk perubahan revolusi 4.0
 					</h1>
-					<p className='text-lg text-davys-gray max-w-lg mb-14'>
+					<p className='text-lg text-davys-gray lg:max-w-lg mb-14'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
 						ipsum et dui rhoncus auctor.
 					</p>
@@ -21,7 +21,7 @@ export default function HeroSection() {
 						Mulai Dari Sekarang
 					</Link>
 				</div>
-				<div className='flex-1'>
+				<div className='hidden lg:block md:flex-1'>
 					<div className='relative w-[500px] h-[500px]'>
 						<div className='absolute w-full h-full bg-azureish-white -rotate-12 -z-10' />
 						<img

@@ -6,8 +6,8 @@ export default function EditRecruiterProfile({ recruiter }) {
 	const navigate = useNavigate();
 
 	return (
-		<div>
-			<section className='w-[360px] p-[30px] rounded-lg bg-white mb-5'>
+		<div className='w-full lg:w-[360px] lg:flex-shrink-0'>
+			<section className='p-[30px] rounded-lg bg-white mb-5 text-center lg:text-left'>
 				<div className='w-[150px] h-[150px] mx-auto rounded-full overflow-hidden flex items-center justify-center mb-4'>
 					<img
 						src={photo ?? emptyAvatar}
@@ -48,7 +48,7 @@ export default function EditRecruiterProfile({ recruiter }) {
 				</h2>
 				<p className='text-sm text-yankees-blue mb-3'>{position}</p>
 				{city && (
-					<div className='flex items-center gap-3 text-quick-silver mb-3'>
+					<div className='flex justify-center lg:justify-start items-center gap-3 text-quick-silver mb-3'>
 						<svg
 							width='16'
 							height='16'

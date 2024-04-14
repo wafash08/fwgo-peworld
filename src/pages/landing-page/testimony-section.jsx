@@ -58,10 +58,10 @@ export default function TestimonySection() {
 					Their opinion about peworld
 				</h2>
 
-				<div className='relative'>
+				<div className='relative overflow-x-hidden'>
 					<button
 						type='button'
-						className='absolute top-1/2 -translate-y-1/2 -left-[25px] w-[50px] aspect-square rounded-full bg-primary-purple flex items-center justify-center shadow-[0px_8px_16px_0px] shadow-[#CCCCCC]/75'
+						className='absolute top-1/2 -translate-y-1/2 left-2 w-[50px] aspect-square rounded-full bg-primary-purple flex items-center justify-center shadow-[0px_8px_16px_0px] shadow-[#CCCCCC]/75'
 					>
 						<span className='sr-only'>Sebelumnya</span>
 						<svg
@@ -80,7 +80,7 @@ export default function TestimonySection() {
 					</button>
 					<button
 						type='button'
-						className='absolute top-1/2 -translate-y-1/2 -right-[25px] w-[50px] aspect-square rounded-full bg-primary-purple flex items-center justify-center shadow-[0px_8px_16px_0px] shadow-[#CCCCCC]/75'
+						className='absolute top-1/2 -translate-y-1/2 right-2 w-[50px] aspect-square rounded-full bg-primary-purple flex items-center justify-center shadow-[0px_8px_16px_0px] shadow-[#CCCCCC]/75'
 					>
 						<span className='sr-only'>Selanjutnya</span>
 						<svg
@@ -109,7 +109,7 @@ function TestimonyList({ testimonyList }) {
 	return (
 		<ul
 			id='testimony-list'
-			className='overflow-x-scroll flex gap-7 snap-x snap-center'
+			className='overflow-x-scroll flex gap-7 snap-mandatory snap-x'
 		>
 			{testimonyList.map(testimony => (
 				<TestimonyItem key={testimony.id} testimony={testimony} />
@@ -120,7 +120,7 @@ function TestimonyList({ testimonyList }) {
 
 function TestimonyItem({ testimony }) {
 	return (
-		<li className='flex-shrink-0 basis-80 bg-white shadow-[0px_8px_16px_0px] shadow-[#c5c5c5]/40 rounded p-7 text-center'>
+		<li className='flex-shrink-0 w-full md:basis-80 snap-start bg-white shadow-[0px_8px_16px_0px] shadow-[#c5c5c5]/40 rounded p-7 text-center'>
 			<div className='border-debug w-[140px] aspect-square rounded-full mx-auto border-[10px] border-primary-yellow/40 flex items-center justify-center mb-4'>
 				<img
 					src={testimony.avatar}

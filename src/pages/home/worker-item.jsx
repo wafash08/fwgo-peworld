@@ -4,17 +4,17 @@ import emptyAvatar from '../../assets/empty-avatar.png';
 
 export default function WorkerItem({ photo, name, domicile, skills, job, id }) {
 	return (
-		<li className='flex items-center gap-7 px-5 py-10 border-b-2 border-b-cultured last:border-b-0'>
+		<li className='flex flex-col md:flex-row items-center gap-7 px-5 py-10 border-b-2 border-b-cultured last:border-b-0'>
 			<div className='w-[100px] h-[100px] rounded-full bg-quick-silver overflow-hidden'>
 				<img src={photo || emptyAvatar} alt={name} />
 			</div>
-			<div className='flex-1'>
+			<div className='flex-1 text-center md:text-left'>
 				<h3 className='text-[22px] font-semibold text-yankees-blue mb-1'>
 					{name}
 				</h3>
 				{job && <p className='text-sm text-quick-silver mb-2'>{job}</p>}
 				{domicile && (
-					<p className='text-sm flex items-center gap-[10px] text-quick-silver mb-4'>
+					<p className='text-sm flex justify-center md:justify-start items-center gap-[10px] text-quick-silver mb-4'>
 						<svg
 							width='16'
 							height='16'
@@ -42,7 +42,7 @@ export default function WorkerItem({ photo, name, domicile, skills, job, id }) {
 					</p>
 				)}
 				{skills.length > 0 && (
-					<ul className='flex gap-[10px] items-center flex-wrap'>
+					<ul className='flex gap-[10px] justify-center md:justify-start items-center flex-wrap'>
 						{skills.map((skill, idx) => (
 							<SkillItem key={`${skill} ke ${idx + 1}`} name={skill} />
 						))}
@@ -51,7 +51,7 @@ export default function WorkerItem({ photo, name, domicile, skills, job, id }) {
 			</div>
 			<Link
 				to={`/workers/${id}`}
-				className='text-white font-semibold bg-primary-purple rounded py-4 px-8 mr-12'
+				className='text-white font-semibold bg-primary-purple rounded py-4 px-8 lg:mr-12'
 			>
 				Lihat Profil
 			</Link>

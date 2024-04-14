@@ -8,7 +8,7 @@ export default function ProfilePage() {
 		<div className='bg-cultured pb-24'>
 			<div className='h-[350px] bg-primary-purple' />
 
-			<Container className='flex items-start gap-8 -mt-[280px]'>
+			<Container className='flex flex-col lg:flex-row items-start gap-8 -mt-[280px]'>
 				<Profile profile={profile} skills={skills} />
 				<Outlet />
 			</Container>

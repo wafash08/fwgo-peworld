@@ -10,7 +10,7 @@ export default function EditProfile() {
 	const { profile } = useRouteLoaderData('profile');
 	const navigate = useNavigate();
 	return (
-		<div className='space-y-10 md:flex-1'>
+		<div className='space-y-10 w-full'>
 			<EditForm method='put' title='Data diri'>
 				<EditInput
 					label='Nama lengkap'

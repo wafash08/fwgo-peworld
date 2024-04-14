@@ -1,7 +1,7 @@
 import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
+import clsx from 'clsx';
 import RecruiterProfile from './recruiter-profile';
 import Container from '../../components/container';
-import clsx from 'clsx';
 
 export default function RecruiterPage() {
 	const { recruiter } = useLoaderData();

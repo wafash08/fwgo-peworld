@@ -5,9 +5,9 @@ export default function WorkerLayout({ children }) {
 	const { worker } = useRouteLoaderData('worker');
 
 	return (
-		<section className='flex-1 bg-white rounded-lg p-[30px]'>
+		<section className='w-full bg-white rounded-lg p-[30px]'>
 			<nav className='mb-7'>
-				<ul className='flex items-center gap-[30px]'>
+				<ul className='flex flex-col md:flex-row items-center gap-[30px]'>
 					<NavLink
 						to={`/workers/${worker.id}?category=portfolio`}
 						category='portfolio'

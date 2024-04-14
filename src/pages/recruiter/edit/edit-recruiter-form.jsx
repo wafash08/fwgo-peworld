@@ -20,7 +20,7 @@ export default function EditRecruiterForm() {
 	const { recruiter } = useRouteLoaderData('recruiter');
 
 	return (
-		<div className='space-y-10 md:flex-1'>
+		<div className='space-y-10 w-full md:flex-1'>
 			<EditForm method='put' title='Data diri'>
 				<EditInput
 					label='Nama perusahaan'

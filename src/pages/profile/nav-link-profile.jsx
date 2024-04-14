@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 
-export default function NavLinkProfile({ children, to, category }) {
+export default function NavLinkProfile({ children, to, category, className }) {
 	let currentPath = useCurrentPath();
 	currentPath = currentPath ? currentPath : 'portfolio';
 	const currentCategory = currentPath === category;
@@ -12,7 +12,8 @@ export default function NavLinkProfile({ children, to, category }) {
 				to={to}
 				className={clsx(
 					'text-[22px] font-semibold py-2 relative inline-block',
-					currentCategory ? 'text-yankees-blue' : 'text-quick-silver'
+					currentCategory ? 'text-yankees-blue' : 'text-quick-silver',
+					className
 				)}
 			>
 				{children}

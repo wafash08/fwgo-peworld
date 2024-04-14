@@ -23,7 +23,7 @@ export default function WorkerPage() {
 		<div className='bg-cultured pb-24'>
 			<div className={clsx('h-[350px]', !inHirePage && 'bg-primary-purple')} />
 
-			<Container className='flex items-start gap-8 -mt-[280px]'>
+			<Container className='flex flex-col lg:flex-row items-start gap-8 -mt-[280px]'>
 				<WorkerProfile
 					worker={worker}
 					skills={skills}

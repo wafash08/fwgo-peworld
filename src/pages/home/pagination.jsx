@@ -6,7 +6,7 @@ export default function Pagination({ currentPage, totalPage }) {
 	const previousPage = currentPage > 1 ? currentPage - 1 : null;
 	const nextPage = currentPage < totalPage ? currentPage + 1 : null;
 	return (
-		<ul className='flex items-center justify-center gap-4 flex-wrap'>
+		<ul className='flex items-center justify-center gap-2 lg:gap-4 flex-wrap'>
 			<li>
 				{previousPage ? (
 					<Link

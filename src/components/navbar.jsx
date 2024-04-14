@@ -4,7 +4,7 @@ import { BellIcon, MailIcon } from './icons';
 import peworldLogo from '../assets/peworld-logo-purple.png';
 import emptyAvatar from '../assets/empty-avatar.png';
 
-export default function NavbarDesktop({ isAuthenticated = false, user, role }) {
+export default function Navbar({ isAuthenticated = false, user, role }) {
 	return (
 		<div className='flex justify-between items-center h-20'>
 			<Link to='/'>
@@ -13,7 +13,7 @@ export default function NavbarDesktop({ isAuthenticated = false, user, role }) {
 
 			<nav>
 				{isAuthenticated ? (
-					<ul className='flex items-center gap-10'>
+					<ul className='flex items-center gap-6 sm:gap-10'>
 						<NavItemWithIcon label='Lihat pemberitahuan' icon={<BellIcon />} />
 						<NavItemWithIcon label='Lihat pesan masuk' icon={<MailIcon />} />
 						<NavItemLinkAvatar
@@ -74,7 +74,7 @@ function NavItemLink({ to, label, variant = 'purple' }) {
 
 function NavItemLinkAvatar({ to, src, alt }) {
 	return (
-		<li>
+		<li className='flex items-center'>
 			<Link
 				to={to}
 				className='inline-flex items-center justify-center w-8 h-8 rounded-full overflow-hidden'

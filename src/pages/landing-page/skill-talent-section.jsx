@@ -5,8 +5,8 @@ import Container from '../../components/container';
 export default function SkillTalentSection() {
 	return (
 		<section className='mt-40'>
-			<Container className='flex items-start gap-10'>
-				<div className='flex-1'>
+			<Container className='flex flex-col-reverse lg:flex-row items-center lg:items-start gap-16 lg:gap-10'>
+				<div className='flex-1 text-center lg:text-left'>
 					<h2 className='text-4xl text-yankees-blue font-semibold mb-4'>
 						Skill Talent
 					</h2>
@@ -14,7 +14,7 @@ export default function SkillTalentSection() {
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
 						ipsum et dui rhoncus auctor.
 					</p>
-					<ul className='grid grid-cols-2 gap-x-4 gap-y-8'>
+					<ul className='grid justify-center md:grid-cols-2 gap-x-4 gap-y-8'>
 						<li className='flex items-center gap-6'>
 							<YellowTickIcon />
 							<span>Java</span>
@@ -50,15 +50,16 @@ export default function SkillTalentSection() {
 					</ul>
 				</div>
 				<div className='flex-1'>
-					<div className='relative w-[496px] h-[390px]'>
+					<div className='relative w-full md:w-[496px] aspect-square'>
 						<div className='bg-azureish-white w-full h-full absolute -rotate-12 -z-10' />
 						<img
 							src={skillTalentImage}
 							alt='Kenapa harus mencari tallent di peworld'
 							width='496'
 							height='390'
+							className='w-full h-full'
 						/>
-						<div className='bg-primary-yellow w-[90px] aspect-square absolute -top-9 -right-9' />
+						<div className='bg-primary-yellow w-16 md:w-[90px] aspect-square absolute -top-4 md:-top-9 -right-4 md:-right-9' />
 						<div className='absolute -bottom-8 right-8 rotate-90'>
 							<svg
 								width='73'

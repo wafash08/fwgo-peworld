@@ -5,17 +5,18 @@ import Container from '../../components/container';
 export default function AdvantagesSection() {
 	return (
 		<section className='mt-40'>
-			<Container className='flex items-start gap-14'>
+			<Container className='flex flex-col lg:flex-row items-center lg:items-start gap-14'>
 				<div className='flex-1'>
-					<div className='relative w-[496px] h-[390px]'>
+					<div className='relative w-full md:w-[496px] aspect-square'>
 						<div className='absolute w-full h-full bg-azureish-white rotate-12 -z-10' />
 						<img
 							src={advantagesImage}
 							alt='Kenapa harus mencari tallent di peworld'
 							width='496'
 							height='390'
+							className='w-full h-full'
 						/>
-						<div className='absolute w-[90px] aspect-square bg-primary-purple -top-9 -left-9' />
+						<div className='absolute w-16 md:w-[90px] aspect-square bg-primary-purple -top-4 md:-top-9 -left-4 md:-left-9' />
 						<div className='absolute -bottom-4 -left-7 rotate-90'>
 							<svg
 								width='73'
@@ -35,10 +36,10 @@ export default function AdvantagesSection() {
 					</div>
 				</div>
 				<div className='flex-1'>
-					<h2 className='text-4xl text-yankees-blue font-semibold mb-9'>
+					<h2 className='text-4xl text-yankees-blue font-semibold mb-9 max-w-md text-center lg:text-left lg:max-w-full'>
 						Kenapa harus mencari tallent di peworld
 					</h2>
-					<ul className='grid gap-7'>
+					<ul className='grid gap-7 justify-center lg:justify-start'>
 						<li className='flex items-center gap-6'>
 							<TickIcon />
 							<span>Lorem ipsum dolor sit amet.</span>

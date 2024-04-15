@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const baseUrl = import.meta.env.VITE_API_URL_V1;
 const loginUrl = `${baseUrl}/auth/login`;
+const logoutUrl = `${baseUrl}/auth/logout`;
 
 const LOCAL_STORAGE_KEY = 'peworld';
 
@@ -26,6 +27,15 @@ export const authProvider = {
 			};
 		} catch (error) {
 			return error;
+		}
+	},
+	async signout() {
+		try {
+			await axios.get(logoutUrl);
+			localStorage.removeItem(LOCAL_STORAGE_KEY);
+			return null;
+		} catch (error) {
+			throw new Error(error.response.data.message);
 		}
 	},
 };

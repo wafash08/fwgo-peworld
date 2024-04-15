@@ -31,12 +31,14 @@ import RecruiterPage from './pages/recruiter/index.jsx';
 import EditRecruiterPage from './pages/recruiter/edit/index.jsx';
 import { action as editRecruiterAction } from './pages/recruiter/edit/edit.action.js';
 import { loader as recruiterLoader } from './pages/recruiter/recruiter.loader.js';
+import { action as rootAction } from './pages/root.action.js';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Root />,
 		loader: rootLoader,
+		action: rootAction,
 		id: 'root',
 		errorElement: <ErrorPage />,
 		children: [

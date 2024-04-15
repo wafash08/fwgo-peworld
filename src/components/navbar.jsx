@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { BellIcon, MailIcon } from './icons';
 import peworldLogo from '../assets/peworld-logo-purple.png';
@@ -14,13 +14,29 @@ export default function Navbar({ isAuthenticated = false, user, role }) {
 			<nav>
 				{isAuthenticated ? (
 					<ul className='flex items-center gap-6 sm:gap-10'>
-						<NavItemWithIcon label='Lihat pemberitahuan' icon={<BellIcon />} />
-						<NavItemWithIcon label='Lihat pesan masuk' icon={<MailIcon />} />
+						<NavItemWithIcon
+							label='Lihat pemberitahuan'
+							icon={<BellIcon />}
+							className='hidden sm:block'
+						/>
+						<NavItemWithIcon
+							label='Lihat pesan masuk'
+							icon={<MailIcon />}
+							className='hidden sm:block'
+						/>
 						<NavItemLinkAvatar
 							src={user.photo ? user.photo : emptyAvatar}
 							alt={user.name ? user.name : ''}
 							to={role === 'worker' ? 'profile' : 'recruiter/profile'}
 						/>
+						<Form method='post'>
+							<button
+								type='submit'
+								className='border border-red-500 bg-red-500 text-white rounded py-2 px-4'
+							>
+								Logout
+							</button>
+						</Form>
 					</ul>
 				) : (
 					<ul className='flex items-center gap-4'>
@@ -33,9 +49,9 @@ export default function Navbar({ isAuthenticated = false, user, role }) {
 	);
 }
 
-function NavItemWithIcon({ label, icon }) {
+function NavItemWithIcon({ label, icon, className }) {
 	return (
-		<button type='button' className='text-roman-silver'>
+		<button type='button' className={clsx('text-roman-silver', className)}>
 			<span className='sr-only'>{label}</span>
 			{icon}
 		</button>

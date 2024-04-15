@@ -34,8 +34,9 @@ export default function EditUpload({ name }) {
 				type='file'
 				name={name}
 				id={name}
-				accept='image/png, image/jpeg, image/gif'
+				accept='image/*'
 				onChange={onSelecFile}
+				required
 			/>
 			<label
 				className='block cursor-pointer rounded-lg py-16 px-6 border border-quick-silver border-dashed text-center'

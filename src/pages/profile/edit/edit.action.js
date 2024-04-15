@@ -42,11 +42,11 @@ export async function action({ request }) {
 			key === 'application' ||
 			key === 'image'
 		) {
-			if (key === 'image') {
-				portfolio[key] =
-					'https://indonesiabaik.id/public/uploads/post/5399/5399-1635873823-211101_PP_Tampilan-Baru-Aplikasi-PeduliLindungi_AB3.jpg';
-				continue;
-			}
+			// if (key === 'image') {
+			// 	portfolio[key] =
+			// 		'https://indonesiabaik.id/public/uploads/post/5399/5399-1635873823-211101_PP_Tampilan-Baru-Aplikasi-PeduliLindungi_AB3.jpg';
+			// 	continue;
+			// }
 			portfolio[key] = value;
 			continue;
 		}

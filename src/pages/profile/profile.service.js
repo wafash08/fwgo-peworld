@@ -25,14 +25,19 @@ export async function getPortfolio(token) {
 	const result = await axios.get(portfolioUrl, {
 		headers: { Authorization: `Bearer ${token}` },
 	});
-	return result.data;
+	return result.data.data;
 }
 
 export async function addPortfolio(portfolio, token) {
+	console.log('portfolio object >> ', portfolio);
+	const image = await uploadImage(portfolio.image);
+	console.log('image uploaded >> ', image);
+	portfolio = { ...portfolio, image };
+	// const portfolioObj = { ...result.data.data, photo: image };
 	const result = await axios.post(portfolioUrl, portfolio, {
 		headers: { Authorization: `Bearer ${token}` },
 	});
-	return result.data;
+	return result.data.data;
 }
 
 const experienceUrl = `${baseUrl}/experience`;
@@ -69,4 +74,21 @@ export async function addSkills(skill_name, token) {
 	});
 
 	return result.data;
+}
+
+const uploadUrl = `${baseUrl}/upload`;
+
+export async function uploadImage(image) {
+	console.log('image >> ', image);
+	const result = await axios.post(
+		uploadUrl,
+		{ file: image },
+		{
+			headers: {
+				'Content-Type':
+					'multipart/form-data; boundary=<calculated when request is sent>',
+			},
+		}
+	);
+	return result.data.data.file_url;
 }

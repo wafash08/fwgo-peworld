@@ -7,6 +7,7 @@ export default function EditRadioButton({ label, name, value }) {
 				id={value}
 				className='peer'
 				value={value}
+				required
 			/>
 			<div className='absolute inset-0 bg-transparent pointer-events-none transition-colors duration-300 border border-transparent peer-checked:border-[#E2E5ED] rounded' />
 			<label

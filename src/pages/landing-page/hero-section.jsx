@@ -29,7 +29,6 @@ export default function HeroSection() {
 							alt='Talenta terbaik negri untuk perubahan revolusi 4.0'
 							width='500'
 							height='500'
-							loading='lazy'
 						/>
 						<div className='absolute w-[118px] aspect-square bg-primary-purple -bottom-[28px] -left-[38px]' />
 						<div className='absolute w-[46px] aspect-square bg-primary-yellow -bottom-[46px] left-[46px]' />

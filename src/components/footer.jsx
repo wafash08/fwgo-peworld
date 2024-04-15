@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Container from './container';
-import whitePeworldLogo from '../assets/peworld-logo-white.png';
+import whitePeworldLogo from '../assets/peworld-logo-white.webp';
 
 export default function Footer() {
 	return (

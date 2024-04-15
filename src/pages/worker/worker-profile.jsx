@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import SkillItem from './skill-item';
-import emptyAvatar from '../../assets/empty-avatar.png';
+import emptyAvatar from '../../assets/empty-avatar.webp';
 
 export default function WorkerProfile({ worker, skills, notInHirePage }) {
 	const { domicile, photo, email, name, job_desk, description, workplace } =

@@ -1,6 +1,6 @@
 import { Form, Link, useActionData, useLocation } from 'react-router-dom';
 import Container from '../../components/container';
-import whitePeworldLogo from '../../assets/peworld-logo-white.png';
+import whitePeworldLogo from '../../assets/peworld-logo-white.webp';
 import Input from '../../components/input';
 
 export default function LoginPage() {

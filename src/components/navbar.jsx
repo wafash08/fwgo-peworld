@@ -1,8 +1,8 @@
 import { Form, Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { BellIcon, MailIcon } from './icons';
-import peworldLogo from '../assets/peworld-logo-purple.png';
-import emptyAvatar from '../assets/empty-avatar.png';
+import peworldLogo from '../assets/peworld-logo-purple.webp';
+import emptyAvatar from '../assets/empty-avatar.webp';
 
 export default function Navbar({ isAuthenticated = false, user, role }) {
 	return (

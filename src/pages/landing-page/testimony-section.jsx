@@ -1,8 +1,8 @@
 import { forwardRef, useRef } from 'react';
 import Container from '../../components/container';
-import harryStylesAvatar from '../../assets/harry-styles.png';
-import louisTomlinsonAvatar from '../../assets/louis-tomlinson.png';
-import niallHoranAvatar from '../../assets/niall-horan.png';
+import harryStylesAvatar from '../../assets/harry-styles.webp';
+import louisTomlinsonAvatar from '../../assets/louis-tomlinson.webp';
+import niallHoranAvatar from '../../assets/niall-horan.webp';
 
 const TESTIMONY_LIST = [
 	{
@@ -154,6 +154,7 @@ function TestimonyItem({ testimony }) {
 					width='120'
 					height='120'
 					className='w-full h-full object-cover'
+					loading='lazy'
 				/>
 			</div>
 			<p className='text-[30px] text-yankees-blue font-semibold mb-2'>

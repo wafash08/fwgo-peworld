@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import emptyAvatar from '../../../assets/empty-avatar.png';
+import emptyAvatar from '../../../assets/empty-avatar.webp';
 
 export default function EditRecruiterProfile({ recruiter }) {
 	const { city, name, photo, position } = recruiter;

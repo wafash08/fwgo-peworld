@@ -21,9 +21,8 @@ export default {
 				'open-sans': ['"Open Sans"', ...defaultTheme.fontFamily.sans],
 			},
 			backgroundImage: {
-				login: "url('/src/assets/bg-login.png')",
-				'empty-avatar': "url('/src/assets/empty-avatar.png')",
-				wave: "url('src/assets/wave-pattern.svg')",
+				login: "url('/src/assets/bg-login.webp')",
+				'empty-avatar': "url('/src/assets/empty-avatar.webp')",
 			},
 		},
 	},

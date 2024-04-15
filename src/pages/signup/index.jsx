@@ -3,7 +3,7 @@ import { Link, useActionData } from 'react-router-dom';
 import SignupWorkerForm from './signup-worker-form';
 import SignupRecruiterForm from './signup-recruiter-form';
 import Container from '../../components/container';
-import whitePeworldLogo from '../../assets/peworld-logo-white.png';
+import whitePeworldLogo from '../../assets/peworld-logo-white.webp';
 
 export default function SignupPage() {
 	const errors = useActionData();

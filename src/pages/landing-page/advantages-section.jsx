@@ -7,7 +7,7 @@ export default function AdvantagesSection() {
 		<section className='mt-40'>
 			<Container className='flex flex-col lg:flex-row items-center lg:items-start gap-14'>
 				<div className='flex-1'>
-					<div className='relative w-full md:w-[496px] aspect-square'>
+					<div className='relative w-full md:w-[496px]'>
 						<div className='absolute w-full h-full bg-azureish-white rotate-12 -z-10' />
 						<img
 							src={advantagesImage}
@@ -15,6 +15,7 @@ export default function AdvantagesSection() {
 							width='496'
 							height='390'
 							className='w-full h-full'
+							loading='lazy'
 						/>
 						<div className='absolute w-16 md:w-[90px] aspect-square bg-primary-purple -top-4 md:-top-9 -left-4 md:-left-9' />
 						<div className='absolute -bottom-4 -left-7 rotate-90'>

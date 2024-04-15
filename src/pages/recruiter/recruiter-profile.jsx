@@ -4,7 +4,7 @@ import {
 	MailIcon,
 	PhoneIcon,
 } from '../../components/icons';
-import emptyAvatar from '../../assets/empty-avatar.png';
+import emptyAvatar from '../../assets/empty-avatar.webp';
 import { Link } from 'react-router-dom';
 
 export default function RecruiterProfile({ recruiter }) {

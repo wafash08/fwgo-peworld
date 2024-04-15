@@ -50,7 +50,7 @@ export default function SkillTalentSection() {
 					</ul>
 				</div>
 				<div className='flex-1'>
-					<div className='relative w-full md:w-[496px] aspect-square'>
+					<div className='relative w-full md:w-[496px]'>
 						<div className='bg-azureish-white w-full h-full absolute -rotate-12 -z-10' />
 						<img
 							src={skillTalentImage}
@@ -58,6 +58,7 @@ export default function SkillTalentSection() {
 							width='496'
 							height='390'
 							className='w-full h-full'
+							loading='lazy'
 						/>
 						<div className='bg-primary-yellow w-16 md:w-[90px] aspect-square absolute -top-4 md:-top-9 -right-4 md:-right-9' />
 						<div className='absolute -bottom-8 right-8 rotate-90'>

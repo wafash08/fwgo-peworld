@@ -41,7 +41,7 @@ export default function Navbar({ isAuthenticated = false, user, role }) {
 				) : (
 					<ul className='flex items-center gap-4'>
 						<NavItemLink to='/login' label='Masuk' variant='ghost' />
-						<NavItemLink to='/register' label='Daftar' />
+						<NavItemLink to='/signup' label='Daftar' />
 					</ul>
 				)}
 			</nav>

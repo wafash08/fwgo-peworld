@@ -5,5 +5,5 @@ const workersUrl = `${baseUrl}/workers`;
 
 export async function getWorkers({ limit, page }) {
 	const result = await axios.get(`${workersUrl}/?limit=${limit}&page=${page}`);
-	return result.data;
+	return { workers: result.data.data, pagination: result.data.pagination };
 }

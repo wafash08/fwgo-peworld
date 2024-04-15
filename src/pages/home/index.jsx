@@ -1,10 +1,28 @@
-import { Form, useLoaderData } from 'react-router-dom';
+import {
+	Form,
+	useLoaderData,
+	useNavigation,
+	useSubmit,
+} from 'react-router-dom';
 import Container from '../../components/container';
 import WorkerItem from './worker-item';
 import Pagination from './pagination';
+import { useEffect } from 'react';
+import clsx from 'clsx';
 
 export default function HomePage() {
-	const { workers, pagination } = useLoaderData();
+	const { workers, pagination, q } = useLoaderData();
+	const submit = useSubmit();
+	const navigation = useNavigation();
+
+	const searching =
+		navigation.location &&
+		new URLSearchParams(navigation.location.search).has('q');
+
+	useEffect(() => {
+		const searchInput = document.getElementById('q');
+		searchInput.value = q;
+	}, [q]);
 
 	return (
 		<>
@@ -16,7 +34,10 @@ export default function HomePage() {
 
 			<section className='mt-[50px] mb-[70px]'>
 				<Container>
-					<Form className='overflow-hidden rounded-md shadow-[0px_1px_20px_0px] shadow-[#C5C5C5]/40 p-2'>
+					<Form
+						role='search'
+						className='overflow-hidden rounded-md shadow-[0px_1px_20px_0px] shadow-[#C5C5C5]/40 p-2'
+					>
 						<div className='flex items-center h-12 md:h-[70px]'>
 							<div className='flex-1 relative text-quick-silver'>
 								<input
@@ -25,7 +46,17 @@ export default function HomePage() {
 									id='q'
 									aria-label='Search skill'
 									placeholder='Search for any skill'
-									className='px-5 w-full h-full focus:outline-none text-yankees-blue'
+									defaultValue={q}
+									onChange={event => {
+										const isFirstSearch = q == null;
+										submit(event.currentTarget.form, {
+											replace: !isFirstSearch,
+										});
+									}}
+									className={clsx(
+										'px-5 w-full h-full focus:outline-none text-yankees-blue',
+										searching ? 'loading' : ''
+									)}
 								/>
 								<svg
 									width='24'
@@ -51,6 +82,7 @@ export default function HomePage() {
 										strokeLinejoin='round'
 									/>
 								</svg>
+								<div id='search-spinner' aria-hidden hidden={!searching} />
 							</div>
 							{/* divider */}
 							<div className='w-[1px] h-14 bg-quick-silver mx-1 hidden md:block' />
@@ -69,21 +101,27 @@ export default function HomePage() {
 						</div>
 					</Form>
 
-					<ul className='shadow-[0px_1px_20px_0px] shadow-[#C5C5C5]/40 mt-[50px] rounded-md overflow-hidden mb-[50px]'>
-						{workers.map(({ id, domicile, photo, name, skills, job_desk }) => {
-							return (
-								<WorkerItem
-									key={id}
-									domicile={domicile}
-									photo={photo}
-									name={name}
-									skills={skills}
-									job={job_desk}
-									id={id}
-								/>
-							);
-						})}
-					</ul>
+					{workers?.length > 0 ? (
+						<ul className='shadow-[0px_1px_20px_0px] shadow-[#C5C5C5]/40 mt-[50px] rounded-md overflow-hidden mb-[50px]'>
+							{workers.map(
+								({ id, domicile, photo, name, skills, job_desk }) => {
+									return (
+										<WorkerItem
+											key={id}
+											domicile={domicile}
+											photo={photo}
+											name={name}
+											skills={skills}
+											job={job_desk}
+											id={id}
+										/>
+									);
+								}
+							)}
+						</ul>
+					) : (
+						<p>Pekerja dengan skill {q} tidak ditemukan</p>
+					)}
 
 					<nav>
 						<Pagination

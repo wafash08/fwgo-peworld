@@ -13,7 +13,7 @@ export default function Root() {
 					<Navbar isAuthenticated={isAuthenticated} role={role} user={user} />
 				</Container>
 			</header>
-			<main className='pt-20'>
+			<main className='pt-20 overflow-x-hidden'>
 				<Outlet />
 			</main>
 			<Footer />

@@ -1,3 +1,4 @@
+import { forwardRef, useRef } from 'react';
 import Container from '../../components/container';
 import harryStylesAvatar from '../../assets/harry-styles.png';
 import louisTomlinsonAvatar from '../../assets/louis-tomlinson.png';
@@ -51,6 +52,25 @@ const TESTIMONY_LIST = [
 ];
 
 export default function TestimonySection() {
+	const carouselRef = useRef(null);
+
+	const nextSlide = e => {
+		e.preventDefault();
+		carouselRef.current.scrollBy({
+			left: carouselRef.current.clientWidth,
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
+	const prevSlide = e => {
+		e.preventDefault();
+		carouselRef.current.scrollBy({
+			left: -carouselRef.current.clientWidth,
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
+
 	return (
 		<section className='mt-40 bg-azureish-white/40 py-20'>
 			<Container>
@@ -61,6 +81,7 @@ export default function TestimonySection() {
 				<div className='relative overflow-x-hidden'>
 					<button
 						type='button'
+						onClick={prevSlide}
 						className='absolute top-1/2 -translate-y-1/2 left-2 w-[50px] aspect-square rounded-full bg-primary-purple flex items-center justify-center shadow-[0px_8px_16px_0px] shadow-[#CCCCCC]/75'
 					>
 						<span className='sr-only'>Sebelumnya</span>
@@ -80,6 +101,7 @@ export default function TestimonySection() {
 					</button>
 					<button
 						type='button'
+						onClick={nextSlide}
 						className='absolute top-1/2 -translate-y-1/2 right-2 w-[50px] aspect-square rounded-full bg-primary-purple flex items-center justify-center shadow-[0px_8px_16px_0px] shadow-[#CCCCCC]/75'
 					>
 						<span className='sr-only'>Selanjutnya</span>
@@ -98,25 +120,29 @@ export default function TestimonySection() {
 						</svg>
 					</button>
 
-					<TestimonyList testimonyList={TESTIMONY_LIST} />
+					<TestimonyList testimonyList={TESTIMONY_LIST} ref={carouselRef} />
 				</div>
 			</Container>
 		</section>
 	);
 }
 
-function TestimonyList({ testimonyList }) {
+const TestimonyList = forwardRef(function TestimonyList(
+	{ testimonyList },
+	ref
+) {
 	return (
 		<ul
 			id='testimony-list'
 			className='overflow-x-scroll flex gap-7 snap-mandatory snap-x'
+			ref={ref}
 		>
 			{testimonyList.map(testimony => (
 				<TestimonyItem key={testimony.id} testimony={testimony} />
 			))}
 		</ul>
 	);
-}
+});
 
 function TestimonyItem({ testimony }) {
 	return (

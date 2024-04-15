@@ -29,9 +29,7 @@ export async function getPortfolio(token) {
 }
 
 export async function addPortfolio(portfolio, token) {
-	console.log('portfolio object >> ', portfolio);
 	const image = await uploadImage(portfolio.image);
-	console.log('image uploaded >> ', image);
 	portfolio = { ...portfolio, image };
 	// const portfolioObj = { ...result.data.data, photo: image };
 	const result = await axios.post(portfolioUrl, portfolio, {
@@ -79,7 +77,6 @@ export async function addSkills(skill_name, token) {
 const uploadUrl = `${baseUrl}/upload`;
 
 export async function uploadImage(image) {
-	console.log('image >> ', image);
 	const result = await axios.post(
 		uploadUrl,
 		{ file: image },

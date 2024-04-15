@@ -5,7 +5,7 @@ import { getRecruiterProfile } from '../root.service';
 export async function loader() {
 	const { token, role } = authProvider.getUser();
 
-	if (role === 'worker') {
+	if (role !== 'recruiter') {
 		return redirect('/profile');
 	}
 	const recruiter = await getRecruiterProfile(token);

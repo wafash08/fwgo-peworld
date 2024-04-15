@@ -12,7 +12,7 @@ export async function loader({ request }) {
 		return redirect('/login?' + params.toString());
 	}
 
-	if (role === 'recruiter') {
+	if (role !== 'worker') {
 		return redirect('/recruiter/profile');
 	}
 

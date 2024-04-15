@@ -43,18 +43,32 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{ index: true, element: <LandingPage /> },
-			{ path: 'home', element: <HomePage />, loader: homeLoader },
+			{
+				path: 'home',
+				element: <HomePage />,
+				loader: homeLoader,
+				errorElement: <ErrorPage />,
+			},
 			{
 				path: 'workers/:workerId',
 				element: <WorkerPage />,
 				loader: workerLoader,
+				errorElement: <ErrorPage />,
 				id: 'worker',
-				children: [{ path: 'hire', element: <HirePage />, action: hireAction }],
+				children: [
+					{
+						path: 'hire',
+						element: <HirePage />,
+						action: hireAction,
+						errorElement: <ErrorPage />,
+					},
+				],
 			},
 			{
 				path: 'profile',
 				element: <ProfilePage />,
 				loader: profileLoader,
+				errorElement: <ErrorPage />,
 				id: 'profile',
 				children: [
 					{
@@ -64,6 +78,7 @@ const router = createBrowserRouter([
 								<ProfilePortfolio />
 							</ProfileLayout>
 						),
+						errorElement: <ErrorPage />,
 						loader: profilePortfolioLoader,
 					},
 					{
@@ -73,6 +88,7 @@ const router = createBrowserRouter([
 								<ProfilePortfolio />
 							</ProfileLayout>
 						),
+						errorElement: <ErrorPage />,
 						loader: profilePortfolioLoader,
 					},
 					{
@@ -82,6 +98,7 @@ const router = createBrowserRouter([
 								<ProfileExperience />
 							</ProfileLayout>
 						),
+						errorElement: <ErrorPage />,
 						loader: profileExperienceLoader,
 					},
 					{
@@ -89,6 +106,7 @@ const router = createBrowserRouter([
 						element: <EditProfile />,
 						action: editProfileAction,
 						loader: editProfileLoader,
+						errorElement: <ErrorPage />,
 					},
 				],
 			},
@@ -97,11 +115,13 @@ const router = createBrowserRouter([
 				element: <RecruiterPage />,
 				loader: recruiterLoader,
 				id: 'recruiter',
+				errorElement: <ErrorPage />,
 				children: [
 					{
 						path: 'edit',
 						element: <EditRecruiterPage />,
 						action: editRecruiterAction,
+						errorElement: <ErrorPage />,
 					},
 				],
 			},
@@ -112,11 +132,13 @@ const router = createBrowserRouter([
 		element: <LoginPage />,
 		action: loginAction,
 		loader: loginLoader,
+		errorElement: <ErrorPage />,
 	},
 	{
 		path: '/signup',
 		element: <SignupPage />,
 		action: signupAction,
+		errorElement: <ErrorPage />,
 	},
 ]);
 

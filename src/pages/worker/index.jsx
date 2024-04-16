@@ -3,15 +3,17 @@ import {
 	Outlet,
 	useLocation,
 	useSearchParams,
+	useRouteLoaderData,
 } from 'react-router-dom';
+import clsx from 'clsx';
 import Container from '../../components/container';
 import WorkerProfile from './worker-profile';
-import clsx from 'clsx';
 import WorkerLayout from './worker-layout';
 import WorkerPortfolio from './portfolio';
 import WorkerExperience from './experience';
 
 export default function WorkerPage() {
+	const { role } = useRouteLoaderData('root');
 	const { worker, skills, portfolio, experiences } = useLoaderData();
 	const location = useLocation();
 	const [searchParams, _] = useSearchParams();
@@ -28,6 +30,7 @@ export default function WorkerPage() {
 					worker={worker}
 					skills={skills}
 					notInHirePage={!inHirePage}
+					isRecruiter={role === 'recruiter'}
 				/>
 				{inHirePage ? (
 					<Outlet />

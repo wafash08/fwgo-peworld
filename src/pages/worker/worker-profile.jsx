@@ -2,7 +2,12 @@ import { Link } from 'react-router-dom';
 import SkillItem from './skill-item';
 import emptyAvatar from '../../assets/empty-avatar.webp';
 
-export default function WorkerProfile({ worker, skills, notInHirePage }) {
+export default function WorkerProfile({
+	worker,
+	skills,
+	notInHirePage,
+	isRecruiter,
+}) {
 	const { domicile, photo, email, name, job_desk, description, workplace } =
 		worker;
 	return (
@@ -59,14 +64,14 @@ export default function WorkerProfile({ worker, skills, notInHirePage }) {
 					{description}
 				</p>
 			)}
-			{notInHirePage && (
+			{notInHirePage && isRecruiter ? (
 				<Link
 					to='hire'
 					className='inline-flex items-center justify-center w-full text-white bg-primary-purple rounded font-bold p-4 mb-9'
 				>
 					Hire
 				</Link>
-			)}
+			) : null}
 
 			<section className='mb-14'>
 				<h3 className='text-[22px] text-yankees-blue font-semibold mb-5'>

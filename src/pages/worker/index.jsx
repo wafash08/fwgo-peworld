@@ -29,7 +29,7 @@ export default function WorkerPage() {
 				<WorkerProfile
 					worker={worker}
 					skills={skills}
-					notInHirePage={!inHirePage}
+					inHirePage={inHirePage}
 					isRecruiter={role === 'recruiter'}
 				/>
 				{inHirePage ? (

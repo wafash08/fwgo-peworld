@@ -5,7 +5,7 @@ import emptyAvatar from '../../assets/empty-avatar.webp';
 export default function WorkerProfile({
 	worker,
 	skills,
-	notInHirePage,
+	inHirePage,
 	isRecruiter,
 }) {
 	const { domicile, photo, email, name, job_desk, description, workplace } =
@@ -64,7 +64,7 @@ export default function WorkerProfile({
 					{description}
 				</p>
 			)}
-			{notInHirePage && isRecruiter ? (
+			{!inHirePage && isRecruiter ? (
 				<Link
 					to='hire'
 					className='inline-flex items-center justify-center w-full text-white bg-primary-purple rounded font-bold p-4 mb-9'

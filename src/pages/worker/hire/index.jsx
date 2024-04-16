@@ -1,7 +1,8 @@
-import { Form, useRouteLoaderData } from 'react-router-dom';
+import { Form, useNavigate, useRouteLoaderData } from 'react-router-dom';
 import Input from '../../../components/input';
 export default function HirePage() {
 	const { worker } = useRouteLoaderData('worker');
+	const navigate = useNavigate();
 	return (
 		<section>
 			<h1 className='text-4xl font-semibold text-yankees-blue mb-5'>
@@ -76,6 +77,15 @@ export default function HirePage() {
 						className='text-base border border-primary-yellow font-bold p-4 rounded text-white bg-primary-yellow mt-5'
 					>
 						Hire
+					</button>
+					<button
+						type='button'
+						className='font-bold text-primary-purple p-3 bg-transparent border border-primary-purple rounded max-w-32 w-full'
+						onClick={() => {
+							navigate(-1);
+						}}
+					>
+						Batal
 					</button>
 				</div>
 			</Form>

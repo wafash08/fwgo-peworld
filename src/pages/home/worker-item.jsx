@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import SkillItem from './skill-item';
 import emptyAvatar from '../../assets/empty-avatar.webp';
 
-export default function WorkerItem({ photo, name, domicile, skills, job, id }) {
+export default function WorkerItem({ worker }) {
+	const { photo, name, domicile, skills, job, id } = worker;
 	return (
 		<li className='flex flex-col md:flex-row items-center gap-7 px-5 py-10 border-b-2 border-b-cultured last:border-b-0'>
 			<div className='w-[100px] h-[100px] rounded-full bg-quick-silver overflow-hidden'>

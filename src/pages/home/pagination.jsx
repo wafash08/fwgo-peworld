@@ -1,16 +1,25 @@
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 
-export default function Pagination({ currentPage, totalPage }) {
+export default function Pagination({ currentPage, totalPage, params }) {
 	const range = Array.from({ length: totalPage }, (_, i) => i + 1);
 	const previousPage = currentPage > 1 ? currentPage - 1 : null;
 	const nextPage = currentPage < totalPage ? currentPage + 1 : null;
+
+	const urlWithNextPage = params.search
+		? `?search=${params.search}&page=${nextPage}`
+		: `?page=${nextPage}`;
+
+	const urlWithPreviousPage = params.search
+		? `?search=${params.search}&page=${previousPage}`
+		: `?page=${previousPage}`;
+
 	return (
 		<ul className='flex items-center justify-center gap-2 lg:gap-4 flex-wrap'>
 			<li>
 				{previousPage ? (
 					<Link
-						to={`?page=${previousPage}`}
+						to={`${urlWithPreviousPage}`}
 						className={clsx(
 							'w-14 h-14 border text-lg flex items-center justify-center rounded',
 							'bg-white text-quick-silver border-azureish-white hover:bg-primary-purple hover:text-white'
@@ -56,6 +65,7 @@ export default function Pagination({ currentPage, totalPage }) {
 						key={r}
 						label={r}
 						page={r}
+						params={params}
 						current={r === currentPage}
 					/>
 				);
@@ -63,7 +73,7 @@ export default function Pagination({ currentPage, totalPage }) {
 			<li>
 				{nextPage ? (
 					<Link
-						to={`?page=${nextPage}`}
+						to={`${urlWithNextPage}`}
 						className={clsx(
 							'w-14 h-14 border text-lg flex items-center justify-center rounded',
 							'bg-white text-quick-silver border-azureish-white hover:bg-primary-purple hover:text-white'
@@ -107,11 +117,15 @@ export default function Pagination({ currentPage, totalPage }) {
 	);
 }
 
-function PaginationItem({ label, current, page }) {
+function PaginationItem({ label, page, params, current }) {
+	const urlWithPage = params.search
+		? `search=${params.search}&page=${page}`
+		: `page=${page}`;
+
 	return (
 		<li>
 			<Link
-				to={`?page=${page}`}
+				to={`${urlWithPage}`}
 				className={clsx(
 					'w-14 h-14 border text-lg flex items-center justify-center rounded transition-colors duration-300',
 					current

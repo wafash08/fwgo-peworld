@@ -14,17 +14,19 @@ export async function loader({ request }) {
 	}
 	const url = new URL(request.url);
 	const page = url.searchParams.get('page') ?? 1;
-	let { workers, pagination } = await getWorkers({ limit: 10, page });
-
-	const q = url.searchParams.get('q');
-
-	if (q) {
-		workers = matchSorter(workers, q, { keys: [item => item.skills] });
-	}
+	const search = url.searchParams.get('search');
+	const sort = url.searchParams.get('sort');
+	const params = {
+		limit: 10,
+		page,
+		sort,
+		search,
+	};
+	const { workers, pagination } = await getWorkers(params);
 
 	return {
 		workers,
 		pagination,
-		q,
+		params,
 	};
 }

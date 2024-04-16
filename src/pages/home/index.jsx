@@ -11,18 +11,19 @@ import { useEffect } from 'react';
 import clsx from 'clsx';
 
 export default function HomePage() {
-	const { workers, pagination, q } = useLoaderData();
+	const { workers, pagination, params } = useLoaderData();
 	const submit = useSubmit();
 	const navigation = useNavigation();
+	const { search } = params;
 
 	const searching =
 		navigation.location &&
-		new URLSearchParams(navigation.location.search).has('q');
+		new URLSearchParams(navigation.location.search).has('search');
 
 	useEffect(() => {
-		const searchInput = document.getElementById('q');
-		searchInput.value = q;
-	}, [q]);
+		const searchInput = document.getElementById('search');
+		searchInput.value = search;
+	}, [search]);
 
 	return (
 		<>
@@ -42,13 +43,13 @@ export default function HomePage() {
 							<div className='flex-1 relative text-quick-silver'>
 								<input
 									type='text'
-									name='q'
-									id='q'
+									name='search'
+									id='search'
 									aria-label='Search skill'
 									placeholder='Search for any skill'
-									defaultValue={q}
+									defaultValue={search}
 									onChange={event => {
-										const isFirstSearch = q == null;
+										const isFirstSearch = search == null;
 										submit(event.currentTarget.form, {
 											replace: !isFirstSearch,
 										});
@@ -103,31 +104,19 @@ export default function HomePage() {
 
 					{workers?.length > 0 ? (
 						<ul className='shadow-[0px_1px_20px_0px] shadow-[#C5C5C5]/40 mt-[50px] rounded-md overflow-hidden mb-[50px]'>
-							{workers.map(
-								({ id, domicile, photo, name, skills, job_desk }) => {
-									return (
-										<WorkerItem
-											key={id}
-											domicile={domicile}
-											photo={photo}
-											name={name}
-											skills={skills}
-											job={job_desk}
-											id={id}
-										/>
-									);
-								}
-							)}
+							{workers.map(worker => {
+								return <WorkerItem key={worker.id} worker={worker} />;
+							})}
 						</ul>
 					) : (
-						<p>Pekerja dengan skill {q} tidak ditemukan</p>
+						<p>Pekerja dengan nama {search} tidak ditemukan</p>
 					)}
 
 					<nav>
 						<Pagination
 							currentPage={pagination.currentPage}
-							totalData={pagination.totalData}
 							totalPage={pagination.totalPage}
+							params={params}
 						/>
 					</nav>
 				</Container>

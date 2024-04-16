@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useLoaderData } from 'react-router-dom';
 import Container from '../components/container';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
@@ -15,6 +15,7 @@ export default function Root() {
 			</header>
 			<main className='pt-20 overflow-x-hidden'>
 				<Outlet />
+				<ScrollRestoration />
 			</main>
 			<Footer />
 		</>

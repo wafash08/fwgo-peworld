@@ -34,7 +34,14 @@ export default function SignupPage() {
 					</h1>
 				</section>
 				<section className='flex-1'>
-					<div className='mt-8'>
+					<h2 className='text-[32px] text-yankees-blue font-semibold mt-8 mb-4'>
+						Halo, Pewpeople
+					</h2>
+					<p className='text-lg text-davys-gray mb-4'>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
+						ipsum et dui rhoncus auctor.
+					</p>
+					<div className='mb-6'>
 						<p>Daftar sebagai:</p>
 						<div className='flex justify-start gap-8'>
 							<div className='flex items-center gap-2'>
@@ -61,13 +68,6 @@ export default function SignupPage() {
 							</div>
 						</div>
 					</div>
-					<h2 className='text-[32px] text-yankees-blue font-semibold mt-2 mb-4'>
-						Halo, Pewpeople
-					</h2>
-					<p className='text-lg text-davys-gray mb-12'>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-						ipsum et dui rhoncus auctor.
-					</p>
 					{role === 'worker' ? (
 						<SignupWorkerForm role={role} errors={errors} />
 					) : (

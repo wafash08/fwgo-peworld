@@ -24,6 +24,7 @@ export default function UploadPhotoProfil({ label, name }) {
 
 		return () => URL.revokeObjectURL(objectUrl);
 	}, [selectedFile]);
+
 	return (
 		<div className='flex flex-col gap-2'>
 			{selectedFile && (

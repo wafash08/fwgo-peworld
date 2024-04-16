@@ -10,7 +10,9 @@ export default function Input({
 	...props
 }) {
 	const autoCompleteName =
-		name === 'password' || 'confirmPassword' ? 'current-password' : name;
+		name === 'password' || name === 'confirmPassword'
+			? 'current-password'
+			: name;
 
 	useEffect(() => {
 		const confirmPasswordElement = document.getElementById('confirmPassword');

@@ -119,8 +119,8 @@ export default function Pagination({ currentPage, totalPage, params }) {
 
 function PaginationItem({ label, page, params, current }) {
 	const urlWithPage = params.search
-		? `search=${params.search}&page=${page}`
-		: `page=${page}`;
+		? `?search=${params.search}&page=${page}`
+		: `?page=${page}`;
 
 	return (
 		<li>

@@ -42,15 +42,14 @@ export default function SignupWorker({ role, errors }) {
 					placeholder='Masukan konfirmasi kata sandi'
 					required
 					errors={errors}
-					children={
-						errors?.confirmPassword && (
-							<span className='text-sm text-red-500 mt-1'>
-								{errors.confirmPassword}
-							</span>
-						)
-					}
 					minLength={4}
-				/>
+				>
+					{errors?.confirmPassword && (
+						<span className='text-sm text-red-500 mt-1'>
+							{errors.confirmPassword}
+						</span>
+					)}
+				</Input>
 			</div>
 			<button
 				type='submit'

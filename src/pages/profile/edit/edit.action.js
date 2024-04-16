@@ -3,6 +3,7 @@ import {
 	addExperience,
 	addPortfolio,
 	addSkills,
+	updatePhotoProfile,
 	updateProfile,
 } from '../profile.service';
 import { isEmpty } from '../../../utils';
@@ -15,6 +16,7 @@ export async function action({ request }) {
 	let skills = {};
 	let experience = {};
 	let portfolio = {};
+	let photoProfile = {};
 	for (let [key, value] of formData) {
 		if (key === 'skill_name') {
 			skills[key] = value;
@@ -49,6 +51,9 @@ export async function action({ request }) {
 			// }
 			portfolio[key] = value;
 			continue;
+		} else if (key === 'photo') {
+			photoProfile[key] = value;
+			continue;
 		}
 		biodata[key] = value;
 	}
@@ -61,6 +66,8 @@ export async function action({ request }) {
 		await addExperience(experience, token);
 	} else if (!isEmpty(portfolio)) {
 		await addPortfolio(portfolio, token);
+	} else if (!isEmpty(photoProfile)) {
+		await updatePhotoProfile(photoProfile, token);
 	}
 
 	return redirect('/profile');

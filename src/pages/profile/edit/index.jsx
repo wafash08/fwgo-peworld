@@ -5,12 +5,17 @@ import EditTextarea from './edit-textarea';
 import EditSubmitButton from './edit-submit-button';
 import EditRadioButton from './edit-radio-button';
 import EditUpload from './edit-upload';
+import UploadPhotoProfil from '../../../components/upload-photo-profil';
 
 export default function EditProfile() {
 	const { profile } = useRouteLoaderData('profile');
 	const navigate = useNavigate();
 	return (
 		<div className='space-y-10 w-full'>
+			<EditForm method='put' title='Foto profil' uploadFile={true}>
+				<UploadPhotoProfil label='Ubah foto profil' name='photo' />
+				<EditSubmitButton variant='ghost'>Simpan</EditSubmitButton>
+			</EditForm>
 			<EditForm method='put' title='Data diri'>
 				<EditInput
 					label='Nama lengkap'

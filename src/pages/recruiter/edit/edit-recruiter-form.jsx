@@ -2,6 +2,7 @@ import { useRouteLoaderData } from 'react-router-dom';
 import EditForm from '../../profile/edit/edit-form';
 import EditInput from '../../profile/edit/edit-input';
 import EditTextarea from '../../profile/edit/edit-textarea';
+import UploadPhotoProfil from '../../../components/upload-photo-profil';
 
 /*
 {
@@ -21,7 +22,7 @@ export default function EditRecruiterForm() {
 
 	return (
 		<div className='space-y-10 w-full md:flex-1'>
-			<EditForm method='put' title='Data diri'>
+			<EditForm method='put' title='Data diri' uploadFile={true}>
 				<EditInput
 					label='Nama perusahaan'
 					name='company'
@@ -64,12 +65,7 @@ export default function EditRecruiterForm() {
 					placeholder='Masukkan akun linkedin'
 					defaultValue={recruiter.linkedin}
 				/>
-				<EditInput
-					label='Foto'
-					name='photo'
-					placeholder='Masukkan url photo'
-					defaultValue={recruiter.photo}
-				/>
+				<UploadPhotoProfil label='Ubah foto profil' name='photo' />
 				<button
 					type='submit'
 					className='text-base border border-primary-purple font-bold p-4 rounded text-white bg-primary-purple'

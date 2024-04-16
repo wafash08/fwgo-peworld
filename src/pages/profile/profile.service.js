@@ -19,6 +19,18 @@ export async function updateProfile(biodata, token) {
 	return result.data;
 }
 
+const photoProfileUrl = `${baseUrl}/workers/profile/photo`;
+export async function updatePhotoProfile(photo, token) {
+	const result = await axios.put(photoProfileUrl, photo, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+			'Content-Type':
+				'multipart/form-data; boundary=<calculated when request is sent>',
+		},
+	});
+	return result.data.data.photo;
+}
+
 const portfolioUrl = `${baseUrl}/portfolio`;
 
 export async function getPortfolio(token) {

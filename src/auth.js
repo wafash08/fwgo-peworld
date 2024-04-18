@@ -7,7 +7,6 @@ const logoutUrl = `${baseUrl}/auth/logout`;
 const LOCAL_STORAGE_KEY = 'peworld';
 
 export const authProvider = {
-	isAuthenticated: false,
 	async signin(user) {
 		try {
 			const result = await axios.post(loginUrl, user);
@@ -26,6 +25,7 @@ export const authProvider = {
 				role,
 			};
 		} catch (error) {
+			// throw new Error(error.body.message);
 			return error;
 		}
 	},

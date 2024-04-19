@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import SkillItem from '../worker/skill-item';
+import SkillItem from '../../components/skill-item';
 
 export default function Profile({ profile, skills }) {
 	const { domicile, photo, email, name, job_desk, description, workplace } =
@@ -87,15 +87,15 @@ export default function Profile({ profile, skills }) {
 				<h3 className='text-[22px] text-yankees-blue font-semibold mb-5'>
 					Skills
 				</h3>
-				<ul className='flex flex-wrap justify-center lg:justify-start items-center gap-x-[10px] gap-y-5'>
-					{skills.length > 0 ? (
-						skills.map(({ skill_name, id }) => {
-							return <SkillItem key={id}>{skill_name}</SkillItem>;
-						})
-					) : (
-						<p>Ayo tambahkan skill kamu</p>
-					)}
-				</ul>
+				{skills.length > 0 ? (
+					<ul className='flex flex-wrap justify-center lg:justify-start items-center gap-x-[10px] gap-y-5'>
+						{skills.map(({ skill_name, id }) => {
+							return <SkillItem key={id} skill={skill_name} />;
+						})}
+					</ul>
+				) : (
+					<p>Ayo tambahkan skill kamu</p>
+				)}
 			</section>
 
 			<ul>

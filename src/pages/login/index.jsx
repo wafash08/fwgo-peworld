@@ -2,6 +2,7 @@ import { Form, Link, useActionData, useLocation } from 'react-router-dom';
 import Container from '../../components/container';
 import whitePeworldLogo from '../../assets/peworld-logo-white.webp';
 import Input from '../../components/input';
+import Button from '../../components/button';
 
 export default function LoginPage() {
 	let location = useLocation();
@@ -62,12 +63,9 @@ export default function LoginPage() {
 						<p className='text-yankees-blue text-right mb-6'>
 							<Link to='/signup'>Lupa kata sandi?</Link>
 						</p>
-						<button
-							type='submit'
-							className='w-full p-4 text-white bg-primary-yellow font-bold rounded'
-						>
+						<Button type='submit' fullWidth>
 							Masuk
-						</button>
+						</Button>
 					</Form>
 					<p className='mt-7 text-yankees-blue text-center'>
 						Anda belum punya akun?{' '}

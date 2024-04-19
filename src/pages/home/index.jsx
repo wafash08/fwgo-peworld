@@ -10,6 +10,7 @@ import clsx from 'clsx';
 import Container from '../../components/container';
 import WorkerItem from './worker-item';
 import Pagination from './pagination';
+import WorkerList from './worker-list';
 
 export default function HomePage() {
 	const { workers, pagination, params } = useLoaderData();
@@ -132,16 +133,7 @@ export default function HomePage() {
 					</div>
 
 					{workers?.length > 0 ? (
-						<ul
-							className={clsx(
-								'bg-white shadow-[0px_1px_20px_0px] shadow-[#C5C5C5]/40 mt-[50px] rounded-md overflow-hidden mb-[50px]',
-								searching && 'animate-pulse'
-							)}
-						>
-							{workers.map(worker => {
-								return <WorkerItem key={worker.id} worker={worker} />;
-							})}
-						</ul>
+						<WorkerList workers={workers} searching={searching} />
 					) : (
 						<p>Pekerja dengan nama {search} tidak ditemukan</p>
 					)}

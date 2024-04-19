@@ -1,4 +1,4 @@
-import PortfolioList from './portfolio-list';
+import PortfolioList from '../../../components/portfolio-list';
 
 export default function WorkerPortfolio({ portfolio, name }) {
 	return portfolio.length > 0 ? (

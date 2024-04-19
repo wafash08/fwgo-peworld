@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import ExperienceList from '../../worker/experience/experience-list';
+import ExperienceList from '../../../components/experience-list';
 
 export default function ProfileExperience() {
 	const { experiences } = useLoaderData();

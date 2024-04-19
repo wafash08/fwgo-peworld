@@ -1,9 +1,8 @@
 import { useRouteLoaderData } from 'react-router-dom';
-import EditForm from '../../profile/edit/edit-form';
-import EditInput from '../../profile/edit/edit-input';
-import EditTextarea from '../../profile/edit/edit-textarea';
 import UploadPhotoProfil from '../../../components/upload-photo-profil';
-
+import { EditForm, EditTextarea } from '../../../components/edit';
+import Input from '../../../components/input';
+import Button from '../../../components/button';
 /*
 {
   "company": "PT. CDA",
@@ -23,19 +22,19 @@ export default function EditRecruiterForm() {
 	return (
 		<div className='space-y-10 w-full md:flex-1'>
 			<EditForm method='put' title='Data diri' uploadFile={true}>
-				<EditInput
+				<Input
 					label='Nama perusahaan'
 					name='company'
 					placeholder='Masukkan perusahaan'
 					defaultValue={recruiter.company}
 				/>
-				<EditInput
+				<Input
 					label='Jabatan'
 					name='position'
 					placeholder='Masukkan jabatan'
 					defaultValue={recruiter.position}
 				/>
-				<EditInput
+				<Input
 					label='Kota'
 					name='city'
 					placeholder='Masukkan kota'
@@ -47,31 +46,31 @@ export default function EditRecruiterForm() {
 					placeholder='Tuliskan deskripsi singkat'
 					defaultValue={recruiter.description}
 				/>
-				<EditInput
+				<Input
 					label='Nomor handphone'
 					name='phone'
 					placeholder='Masukkan nomor handphone'
+					type='tel'
 					defaultValue={recruiter.phone}
 				/>
-				<EditInput
+				<Input
 					label='Instagram'
 					name='instagram'
 					placeholder='Masukkan akun instagram'
+					type='url'
 					defaultValue={recruiter.instagram}
 				/>
-				<EditInput
+				<Input
 					label='Linkedin'
 					name='linkedin'
 					placeholder='Masukkan akun linkedin'
+					type='url'
 					defaultValue={recruiter.linkedin}
 				/>
 				<UploadPhotoProfil label='Ubah foto profil' name='photo' />
-				<button
-					type='submit'
-					className='text-base border border-primary-purple font-bold p-4 rounded text-white bg-primary-purple'
-				>
+				<Button type='submit' variant='purple' fullWidth>
 					Simpan
-				</button>
+				</Button>
 			</EditForm>
 		</div>
 	);

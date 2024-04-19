@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import PortfolioList from './portfolio-list';
+import PortfolioList from '../../../components/portfolio-list';
 
 export default function ProfilePortfolio() {
 	const { portfolio } = useLoaderData();

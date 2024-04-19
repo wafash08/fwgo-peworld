@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import SkillItem from './skill-item';
 import emptyAvatar from '../../assets/empty-avatar.webp';
+import SkillItem from '../../components/skill-item';
 
 export default function WorkerProfile({
 	worker,
@@ -77,15 +77,15 @@ export default function WorkerProfile({
 				<h3 className='text-[22px] text-yankees-blue font-semibold mb-5'>
 					Skills
 				</h3>
-				<ul className='flex flex-wrap justify-center lg:justify-start items-center gap-x-[10px] gap-y-5'>
-					{skills.length > 0 ? (
-						skills.map(({ skill_name, id }) => {
-							return <SkillItem key={id}>{skill_name}</SkillItem>;
-						})
-					) : (
-						<p>{name} belum menambahkan skill</p>
-					)}
-				</ul>
+				{skills.length > 0 ? (
+					<ul className='flex flex-wrap justify-center lg:justify-start items-center gap-x-[10px] gap-y-5'>
+						{skills.map(({ skill_name, id }) => {
+							return <SkillItem key={id} skill={skill_name} />;
+						})}
+					</ul>
+				) : (
+					<p>{name} belum menambahkan skill</p>
+				)}
 			</section>
 
 			<ul className='grid justify-center lg:justify-start'>

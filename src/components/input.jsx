@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
+import clsx from 'clsx';
 
 export default function Input({
-	type = 'text',
 	name,
-	placeholder,
 	label,
 	errors = null,
 	children = null,
+	className,
 	...props
 }) {
 	const autoCompleteName =
@@ -22,7 +22,7 @@ export default function Input({
 	}, [errors]);
 
 	return (
-		<div>
+		<div className={clsx(className)}>
 			<label
 				htmlFor={name}
 				className='text-xs text-quick-silver block mb-1 ml-1'
@@ -30,9 +30,7 @@ export default function Input({
 				{label}
 			</label>
 			<input
-				type={type}
 				id={name}
-				placeholder={placeholder}
 				name={name}
 				className='w-full p-4 text-sm text-yankees-blue placeholder:text-roman-silver border border-azureish-white rounded'
 				autoComplete={autoCompleteName}

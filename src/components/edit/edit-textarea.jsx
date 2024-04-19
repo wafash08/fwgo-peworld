@@ -1,13 +1,7 @@
-export default function EditTextarea({
-	label,
-	name,
-	placeholder,
-	required = true,
-	defaultValue,
-}) {
+export default function EditTextarea({ label, name, ...props }) {
 	return (
 		<div className='flex flex-col gap-1'>
-			<label className='text-xs text-[#9EA0A5]' htmlFor='deskripsi'>
+			<label className='text-xs text-[#9EA0A5]' htmlFor={name}>
 				{label}
 			</label>
 			<textarea
@@ -16,9 +10,7 @@ export default function EditTextarea({
 				id={name}
 				cols='30'
 				rows='5'
-				placeholder={placeholder}
-				required={required}
-				defaultValue={defaultValue}
+				{...props}
 			></textarea>
 		</div>
 	);

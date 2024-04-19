@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Container from '../../components/container';
+import CustomLink from '../../components/custom-link';
 
 export default function GetStartedSection() {
 	return (
@@ -9,12 +10,9 @@ export default function GetStartedSection() {
 					<h2 className='text-center md:text-left text-2xl md:text-4xl font-semibold max-w-xs md:leading-relaxed'>
 						Lorem ipsum dolor sit amet
 					</h2>
-					<Link
-						to='home'
-						className='inline-flex justify-center items-center text-center py-5 px-6 text-primary-purple font-bold border border-white bg-white rounded'
-					>
+					<CustomLink to='home' variant='white'>
 						Mulai dari sekarang
-					</Link>
+					</CustomLink>
 				</div>
 			</Container>
 		</section>

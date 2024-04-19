@@ -1,6 +1,6 @@
 import Container from '../../components/container';
 import talentTerbaik from '../../assets/talenta-terbaik.webp';
-import { Link } from 'react-router-dom';
+import CustomLink from '../../components/custom-link';
 
 export default function HeroSection() {
 	return (
@@ -14,12 +14,7 @@ export default function HeroSection() {
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
 						ipsum et dui rhoncus auctor.
 					</p>
-					<Link
-						to='home'
-						className='inline-flex justify-center items-center py-5 px-6 text-white font-bold border border-primary-purple bg-primary-purple rounded'
-					>
-						Mulai Dari Sekarang
-					</Link>
+					<CustomLink to='home'>Mulai dari sekarang</CustomLink>
 				</div>
 				<div className='hidden lg:block md:flex-1'>
 					<div className='relative w-[500px]'>

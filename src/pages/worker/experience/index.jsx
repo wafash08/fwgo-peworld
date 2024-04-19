@@ -1,4 +1,4 @@
-import ExperienceList from './experience-list';
+import ExperienceList from '../../../components/experience-list';
 
 export default function WorkerExperience({ experiences, name }) {
 	return experiences.length > 0 ? (

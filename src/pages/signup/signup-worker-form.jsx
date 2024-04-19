@@ -1,5 +1,6 @@
 import { Form } from 'react-router-dom';
 import Input from '../../components/input';
+import Button from '../../components/button';
 
 export default function SignupWorker({ role, errors }) {
 	return (
@@ -51,12 +52,9 @@ export default function SignupWorker({ role, errors }) {
 					)}
 				</Input>
 			</div>
-			<button
-				type='submit'
-				className='w-full p-4 text-white bg-primary-yellow font-bold rounded'
-			>
+			<Button type='submit' fullWidth>
 				Daftar
-			</button>
+			</Button>
 		</Form>
 	);
 }

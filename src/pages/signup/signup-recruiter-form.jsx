@@ -1,5 +1,6 @@
 import { Form } from 'react-router-dom';
 import Input from '../../components/input';
+import Button from '../../components/button';
 // {
 //   "email": "dodi2@gmail.com",
 //   "password": "abcd1234",
@@ -70,12 +71,9 @@ export default function SignupRecruiterForm({ role, errors }) {
 					)}
 				</Input>
 			</div>
-			<button
-				type='submit'
-				className='w-full p-4 text-white bg-primary-yellow font-bold rounded'
-			>
+			<Button type='submit' fullWidth>
 				Daftar
-			</button>
+			</Button>
 		</Form>
 	);
 }

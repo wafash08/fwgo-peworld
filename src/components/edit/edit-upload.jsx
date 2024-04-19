@@ -1,6 +1,6 @@
-import typeFileUpload from '../../../assets/type-file-upload.png';
-import sizeUpload from '../../../assets/size-upload.png';
 import { useEffect, useState } from 'react';
+import typeFileUpload from '../../assets/type-file-upload.png';
+import sizeUpload from '../../assets/size-upload.png';
 
 export default function EditUpload({ name }) {
 	const [selectedFile, setSelectedFile] = useState(null);

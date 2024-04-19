@@ -41,7 +41,13 @@ export default function UploadPhotoProfil({ label, name }) {
 				<label htmlFor={name} className='text-xs text-quick-silver'>
 					{label}
 				</label>
-				<input type='file' name={name} id={name} onChange={onSelecFile} />
+				<input
+					type='file'
+					name={name}
+					id={name}
+					onChange={onSelecFile}
+					required
+				/>
 			</div>
 		</div>
 	);

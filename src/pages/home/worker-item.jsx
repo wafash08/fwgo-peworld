@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
-import SkillItem from './skill-item';
 import emptyAvatar from '../../assets/empty-avatar.webp';
+import SkillItem from '../../components/skill-item';
 
 export default function WorkerItem({ worker }) {
 	const { photo, name, domicile, skills, job, id } = worker;
+
+	console.log('skills home >> ', skills);
+
 	return (
 		<li className='flex flex-col md:flex-row items-center gap-7 px-5 py-10 border-b-2 border-b-cultured last:border-b-0'>
 			<div className='w-[100px] h-[100px] rounded-full bg-quick-silver overflow-hidden'>
@@ -45,7 +48,7 @@ export default function WorkerItem({ worker }) {
 				{skills.length > 0 && (
 					<ul className='flex gap-[10px] justify-center md:justify-start items-center flex-wrap'>
 						{skills.map((skill, idx) => (
-							<SkillItem key={`${skill} ke ${idx + 1}`} name={skill} />
+							<SkillItem key={`${skill} ke ${idx + 1}`} skill={skill} />
 						))}
 					</ul>
 				)}

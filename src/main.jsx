@@ -11,7 +11,6 @@ import { loader as homeLoader } from './pages/home/home.loader.js';
 import HirePage from './pages/worker/hire/index.jsx';
 import LoginPage from './pages/login';
 import SignupPage from './pages/signup';
-import { action as signupAction } from './pages/signup/signup.action.js';
 import WorkerPage from './pages/worker';
 import { loader as workerLoader } from './pages/worker/worker.loader.js';
 import { action as hireAction } from './pages/worker/hire/hire.action.js';
@@ -137,7 +136,6 @@ const router = createBrowserRouter([
 	{
 		path: '/signup',
 		element: <SignupPage />,
-		action: signupAction,
 		errorElement: <ErrorPage />,
 	},
 ]);

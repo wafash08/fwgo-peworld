@@ -19,9 +19,19 @@ export function getTokenFromLocalStorage() {
 	return token;
 }
 
+export function getRoleFromLocalStorage() {
+	const userFromLocalStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
+	if (!userFromLocalStorage) {
+		return null;
+	}
+	const { role } = JSON.parse(userFromLocalStorage);
+	return role;
+}
+
 export function createNewUser(formData) {
 	const newUser = {};
 	for (const [key, value] of formData) {
+		// properti confirmPassword dan role tidak perlu diikutsertakan
 		if (key === 'confirmPassword' || key === 'role') {
 			continue;
 		}

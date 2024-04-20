@@ -1,51 +1,13 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Input from '../../components/input';
 import Button from '../../components/button';
-import { userSignedUp } from '../../redux/actions/user.actions';
 
-export default function SignupWorker({ role }) {
-	const [validationError, setValidationError] = useState(null);
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+export default function SignupWorker({ role, validationError }) {
 	const status = useSelector(state => state.user.status);
 	const error = useSelector(state => state.user.error);
 
-	const handleSignupWorker = async e => {
-		e.preventDefault();
-		const formData = new FormData(e.target);
-		const role = formData.get('role');
-		const password = formData.get('password');
-		const confirmPassword = formData.get('confirmPassword');
-
-		if (confirmPassword !== password) {
-			setValidationError(
-				'Konfirmasi kata sandi tidak sesuai dengan kata sandi'
-			);
-			return;
-		}
-
-		const user = {};
-		for (const [key, value] of formData) {
-			if (key === 'role' || key === 'confirmPassword') {
-				continue;
-			}
-			user[key] = value;
-		}
-		try {
-			await dispatch(userSignedUp(user, role));
-			navigate('/login');
-		} catch (error) {
-			dispatch({
-				type: 'user/userFailed',
-				payload: error.message,
-			});
-		}
-	};
-
 	return (
-		<form method='post' onSubmit={handleSignupWorker}>
+		<>
 			<div className='grid gap-8 mb-12'>
 				<input type='hidden' id='role' name='role' value={role} readOnly />
 				<Input
@@ -111,6 +73,6 @@ export default function SignupWorker({ role }) {
 					'Daftar'
 				)}
 			</Button>
-		</form>
+		</>
 	);
 }

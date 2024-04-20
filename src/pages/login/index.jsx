@@ -4,7 +4,7 @@ import Container from '../../components/container';
 import whitePeworldLogo from '../../assets/peworld-logo-white.webp';
 import Input from '../../components/input';
 import Button from '../../components/button';
-import { userLoggedIn } from '../../redux/actions/user.actions';
+import { authFailed, authLoggedIn } from '../../redux/actions/auth.action';
 
 export default function LoginPage() {
 	const navigate = useNavigate();
@@ -22,13 +22,10 @@ export default function LoginPage() {
 		const password = formData.get('password');
 		const redirectTo = formData.get('redirectTo');
 		try {
-			await dispatch(userLoggedIn({ email, password }));
+			await dispatch(authLoggedIn({ email, password }));
 			navigate(redirectTo);
 		} catch (error) {
-			dispatch({
-				type: 'user/userFailed',
-				payload: error.message,
-			});
+			dispatch(authFailed(error.message));
 		}
 	};
 

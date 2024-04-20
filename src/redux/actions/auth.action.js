@@ -20,34 +20,47 @@ export async function signupRecruiter(newRecruiter) {
 	return axios.post(recruiterSignupUrl, newRecruiter);
 }
 
-// === user action creator ===
+// === auth action creator ===
 
-export function userLoggedIn({ email, password }) {
+export function authLoggedIn({ email, password }) {
 	return async dispatch => {
 		try {
-			dispatch({ type: 'user/userLoading' });
+			dispatch(authLoading());
 			const user = await login({ email, password });
 			const { role, token } = user;
 			localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ role, token }));
-			dispatch({ type: 'user/userLoggedIn', payload: { role, token } });
+			dispatch({ type: 'auth/authLoggedIn', payload: { role, token } });
 		} catch (error) {
 			throw new Error(error.response.data.message);
 		}
 	};
 }
 
-export function userSignedUp(user, role) {
+export function authSignedUp(user, role) {
 	return async dispatch => {
 		try {
-			dispatch({ type: 'user/userLoading' });
+			dispatch(authLoading());
 			if (role === 'recruiter') {
 				await signupRecruiter(user);
 			} else if (role === 'worker') {
 				await signupWorker(user);
 			}
-			dispatch({ type: 'user/userSignedUp' });
+			dispatch({ type: 'auth/authSignedUp' });
 		} catch (error) {
 			throw new Error(error.response.data.message);
 		}
+	};
+}
+
+export function authFailed(errorMessage) {
+	return {
+		type: 'auth/authFailed',
+		payload: errorMessage,
+	};
+}
+
+export function authLoading() {
+	return {
+		type: 'auth/authLoading',
 	};
 }

@@ -8,40 +8,40 @@ const initialState = {
 };
 
 /*
-daftar user action
-1. user/userLoggedIn
+daftar auth action
+1. auth/authLoggedIn
 	- menyimpan role dan token
 	- mengubah status menjadi succeed
-2. user/userSignedUp
+2. auth/authSignedUp
 	- mengubah status menjadi succeed
-3. user/userLoading
+3. auth/authLoading
 	- mengubah status menjadi loading
-4. user/userFailed
+4. auth/authFailed
 	- mengubah status menjadi failed
 */
 
-export function userReducer(state = initialState, action) {
+export function authReducer(state = initialState, action) {
 	switch (action.type) {
-		case 'user/userLoggedIn': {
+		case 'auth/authLoggedIn': {
 			return {
 				...state,
-				user: action.payload,
+				credentials: action.payload,
 				status: 'succeed',
 			};
 		}
-		case 'user/userSignedUp': {
+		case 'auth/authSignedUp': {
 			return {
 				...state,
 				status: 'succeed',
 			};
 		}
-		case 'user/userLoading': {
+		case 'auth/authLoading': {
 			return {
 				...state,
 				status: 'loading',
 			};
 		}
-		case 'user/userFailed': {
+		case 'auth/authFailed': {
 			return {
 				...state,
 				status: 'failed',

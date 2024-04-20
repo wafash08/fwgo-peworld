@@ -1,10 +1,9 @@
 import { redirect } from 'react-router-dom';
-import { authProvider } from '../../auth';
+import { getTokenFromLocalStorage } from '../../utils';
 
 export async function loader() {
-	const { token } = authProvider.getUser();
-	const isAuthenticated = token ? true : false;
-	if (isAuthenticated) {
+	const token = getTokenFromLocalStorage();
+	if (token) {
 		return redirect('/');
 	}
 	return null;

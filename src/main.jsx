@@ -10,7 +10,6 @@ import HomePage from './pages/home';
 import { loader as homeLoader } from './pages/home/home.loader.js';
 import HirePage from './pages/worker/hire/index.jsx';
 import LoginPage from './pages/login';
-import { action as loginAction } from './pages/login/login.action.js';
 import SignupPage from './pages/signup';
 import { action as signupAction } from './pages/signup/signup.action.js';
 import WorkerPage from './pages/worker';
@@ -32,6 +31,8 @@ import EditRecruiterPage from './pages/recruiter/edit/index.jsx';
 import { action as editRecruiterAction } from './pages/recruiter/edit/edit.action.js';
 import { loader as recruiterLoader } from './pages/recruiter/recruiter.loader.js';
 import { action as rootAction } from './pages/root.action.js';
+import { Provider } from 'react-redux';
+import { store } from './redux/store.js';
 
 const router = createBrowserRouter([
 	{
@@ -130,7 +131,6 @@ const router = createBrowserRouter([
 	{
 		path: '/login',
 		element: <LoginPage />,
-		action: loginAction,
 		loader: loginLoader,
 		errorElement: <ErrorPage />,
 	},
@@ -144,6 +144,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<Provider store={store}>
+			<RouterProvider router={router} />
+		</Provider>
 	</React.StrictMode>
 );

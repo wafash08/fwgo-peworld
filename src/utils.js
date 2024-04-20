@@ -18,3 +18,14 @@ export function getTokenFromLocalStorage() {
 	const { token } = JSON.parse(userFromLocalStorage);
 	return token;
 }
+
+export function createNewUser(formData) {
+	const newUser = {};
+	for (const [key, value] of formData) {
+		if (key === 'confirmPassword' || key === 'role') {
+			continue;
+		}
+		newUser[key] = value;
+	}
+	return newUser;
+}

@@ -12,9 +12,11 @@ daftar user action
 1. user/userLoggedIn
 	- menyimpan role dan token
 	- mengubah status menjadi succeed
-2. user/userLoading
+2. user/userSignedUp
+	- mengubah status menjadi succeed
+3. user/userLoading
 	- mengubah status menjadi loading
-3. user/userFailed
+4. user/userFailed
 	- mengubah status menjadi failed
 */
 
@@ -24,6 +26,12 @@ export function userReducer(state = initialState, action) {
 			return {
 				...state,
 				user: action.payload,
+				status: 'succeed',
+			};
+		}
+		case 'user/userSignedUp': {
+			return {
+				...state,
 				status: 'succeed',
 			};
 		}

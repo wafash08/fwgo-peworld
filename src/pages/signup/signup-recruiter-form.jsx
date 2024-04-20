@@ -11,7 +11,7 @@ import Button from '../../components/button';
 // }
 export default function SignupRecruiterForm({ role, errors }) {
 	return (
-		<Form method='post'>
+		<form method='post'>
 			<div className='grid gap-8 mb-12'>
 				<input type='hidden' id='role' name='role' value={role} readOnly />
 
@@ -74,6 +74,6 @@ export default function SignupRecruiterForm({ role, errors }) {
 			<Button type='submit' fullWidth>
 				Daftar
 			</Button>
-		</Form>
+		</form>
 	);
 }

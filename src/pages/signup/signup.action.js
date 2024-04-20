@@ -40,14 +40,3 @@ export async function action({ request }) {
 	}
 	return redirect('/login');
 }
-
-function createNewUser(formData) {
-	const newUser = {};
-	for (const [key, value] of formData) {
-		if (key === 'confirmPassword' || key === 'role') {
-			continue;
-		}
-		newUser[key] = value;
-	}
-	return newUser;
-}

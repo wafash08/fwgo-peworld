@@ -21,10 +21,7 @@ export function profileReducer(state = initialState, action) {
 		case 'profile/profileLoaded': {
 			return {
 				...state,
-				profile: {
-					...state.profile,
-					...action.payload,
-				},
+				profile: action.payload,
 				status: 'succeed',
 			};
 		}

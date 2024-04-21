@@ -17,7 +17,7 @@ export function skillsReducer(state = initialState, action) {
 		case 'skills/skillsLoaded': {
 			return {
 				...state,
-				skills: [...state.skills, ...action.payload],
+				skills: action.payload,
 				status: 'succeed',
 			};
 		}

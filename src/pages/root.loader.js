@@ -1,9 +1,10 @@
-import { authProvider } from '../auth';
-import { getProfile } from './profile/profile.service';
+import { getProfile } from '../redux/actions/profile.action';
+import { getRoleFromLocalStorage, getTokenFromLocalStorage } from '../utils';
 import { getRecruiterProfile } from './root.service';
 
 export async function loader() {
-	const { role, token } = authProvider.getUser();
+	const token = getTokenFromLocalStorage();
+	const role = getRoleFromLocalStorage();
 	let user = null;
 	switch (role) {
 		case 'worker': {

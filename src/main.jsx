@@ -18,7 +18,6 @@ import ProfilePage from './pages/profile';
 import ProfileLayout from './pages/profile/profile-layout.jsx';
 import { loader as profileLoader } from './pages/profile/profile.loader.js';
 import ProfilePortfolio from './pages/profile/portfolio';
-import { loader as profilePortfolioLoader } from './pages/profile/portfolio/portfolio.loader.js';
 import ProfileExperience from './pages/profile/experience';
 import { loader as profileExperienceLoader } from './pages/profile/experience/experience.loader.js';
 import EditProfile from './pages/profile/edit';
@@ -79,7 +78,6 @@ const router = createBrowserRouter([
 							</ProfileLayout>
 						),
 						errorElement: <ErrorPage />,
-						loader: profilePortfolioLoader,
 					},
 					{
 						path: 'portfolio',
@@ -89,7 +87,6 @@ const router = createBrowserRouter([
 							</ProfileLayout>
 						),
 						errorElement: <ErrorPage />,
-						loader: profilePortfolioLoader,
 					},
 					{
 						path: 'experience',
@@ -141,9 +138,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	// <React.StrictMode>
-	<Provider store={store}>
-		<RouterProvider router={router} />
-	</Provider>
-	// </React.StrictMode>
+	<React.StrictMode>
+		<Provider store={store}>
+			<RouterProvider router={router} />
+		</Provider>
+	</React.StrictMode>
 );

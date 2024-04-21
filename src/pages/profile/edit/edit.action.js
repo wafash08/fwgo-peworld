@@ -2,12 +2,12 @@ import { redirect } from 'react-router-dom';
 import {
 	addExperience,
 	addPortfolio,
-	addSkills,
 	updatePhotoProfile,
 	updateProfile,
 } from '../profile.service';
 import { isEmpty } from '../../../utils';
 import { authProvider } from '../../../auth';
+import { addSkills } from '../../../redux/actions/skills.action';
 
 export async function action({ request }) {
 	const formData = await request.formData();

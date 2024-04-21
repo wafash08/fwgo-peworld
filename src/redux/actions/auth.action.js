@@ -20,7 +20,7 @@ export async function signupRecruiter(newRecruiter) {
 	return axios.post(recruiterSignupUrl, newRecruiter);
 }
 
-// === auth action creator ===
+// === auth action creators ===
 
 export function authLoggedIn({ email, password }) {
 	return async dispatch => {

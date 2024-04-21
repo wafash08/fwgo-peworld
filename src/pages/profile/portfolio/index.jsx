@@ -12,6 +12,7 @@ export default function ProfilePortfolio() {
 	const dispatch = useDispatch();
 	const portfolio = useSelector(state => state.portfolio.portfolio);
 	const status = useSelector(state => state.portfolio.status);
+	const error = useSelector(state => state.portfolio.error);
 
 	useEffect(() => {
 		const token = getTokenFromLocalStorage();
@@ -24,6 +25,10 @@ export default function ProfilePortfolio() {
 
 	if (status === 'loading') {
 		return <PortfolioSkeleton />;
+	}
+
+	if (status === 'failed') {
+		return <p className='text-red-500'>{error}</p>;
 	}
 
 	return portfolio.length > 0 ? (

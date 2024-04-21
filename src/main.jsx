@@ -19,7 +19,6 @@ import ProfileLayout from './pages/profile/profile-layout.jsx';
 import { loader as profileLoader } from './pages/profile/profile.loader.js';
 import ProfilePortfolio from './pages/profile/portfolio';
 import ProfileExperience from './pages/profile/experience';
-import { loader as profileExperienceLoader } from './pages/profile/experience/experience.loader.js';
 import EditProfile from './pages/profile/edit';
 import { action as editProfileAction } from './pages/profile/edit/edit.action.js';
 import { loader as editProfileLoader } from './pages/profile/edit/edit.loader.js';
@@ -96,7 +95,6 @@ const router = createBrowserRouter([
 							</ProfileLayout>
 						),
 						errorElement: <ErrorPage />,
-						loader: profileExperienceLoader,
 					},
 					{
 						path: 'edit',

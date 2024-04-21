@@ -1,9 +1,44 @@
 import { Link } from 'react-router-dom';
 import SkillItem from '../../components/skill-item';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import {
+	profileFailed,
+	profileLoaded,
+} from '../../redux/actions/profile.action';
+import ProfileSkeleton from '../../components/profile-skeleton';
+import { getTokenFromLocalStorage } from '../../utils';
+import { skillsFailed, skillsLoaded } from '../../redux/actions/skills.action';
 
-export default function Profile({ profile, skills }) {
+export default function Profile() {
+	const dispatch = useDispatch();
+	const profile = useSelector(state => state.profile.profile);
+	const statusProfile = useSelector(state => state.profile.status);
+	const errorProfile = useSelector(state => state.profile.error);
+	const skills = useSelector(state => state.skills.skills);
+
+	useEffect(() => {
+		const token = getTokenFromLocalStorage();
+		try {
+			dispatch(profileLoaded(token));
+			dispatch(skillsLoaded(token));
+		} catch (error) {
+			dispatch(profileFailed(error.message));
+			dispatch(skillsFailed(error.message));
+		}
+	}, []);
+
+	if (statusProfile === 'loading') {
+		return <ProfileSkeleton />;
+	}
+
+	if (statusProfile === 'failed') {
+		return <p className='text-red-500'>{errorProfile}</p>;
+	}
+
 	const { domicile, photo, email, name, job_desk, description, workplace } =
 		profile;
+
 	return (
 		<section className='w-full lg:w-[360px] lg:shrink-0 p-[30px] rounded-lg bg-white text-center lg:text-left'>
 			<div className='w-[150px] h-[150px] mx-auto rounded-full overflow-hidden flex items-center justify-center mb-4'>

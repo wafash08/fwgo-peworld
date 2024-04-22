@@ -5,8 +5,6 @@ import SkillItem from '../../components/skill-item';
 export default function WorkerItem({ worker }) {
 	const { photo, name, domicile, skills, job, id } = worker;
 
-	console.log('skills home >> ', skills);
-
 	return (
 		<li className='flex flex-col md:flex-row items-center gap-7 px-5 py-10 border-b-2 border-b-cultured last:border-b-0'>
 			<div className='w-[100px] h-[100px] rounded-full bg-quick-silver overflow-hidden'>

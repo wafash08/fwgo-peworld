@@ -21,8 +21,15 @@ export function portfolioReducer(state = initialState, action) {
 		case 'portfolio/portfolioLoaded': {
 			return {
 				...state,
-				portfolio: action.payload,
 				status: 'succeed',
+				portfolio: action.payload,
+			};
+		}
+		case 'portfolio/portfolioAdded': {
+			return {
+				...state,
+				status: 'succeed',
+				portfolio: [action.payload, ...state.portfolio],
 			};
 		}
 		case 'portfolio/portfolioLoading': {

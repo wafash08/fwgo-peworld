@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UploadPhotoProfil from '../../../components/upload-photo-profil';
 import Button from '../../../components/button';
 import Input from '../../../components/input';
@@ -13,11 +15,7 @@ import {
 	profileFailed,
 } from '../../../redux/actions/profile.action';
 import { getTokenFromLocalStorage } from '../../../utils';
-import {
-	skillAdded,
-	skillsFailed,
-	skillsLoaded,
-} from '../../../redux/actions/skills.action';
+import { skillAdded, skillsFailed } from '../../../redux/actions/skills.action';
 import SkillItemWithDelete from '../../../components/skill-item-with-delete';
 import {
 	experienceAdded,
@@ -25,22 +23,31 @@ import {
 	experienceLoaded,
 } from '../../../redux/actions/experience.action';
 import ExperienceList from '../../../components/experience-list';
-import { useEffect } from 'react';
 import ExperienceSkeleton from '../../../components/experience-loader';
+import {
+	portfolioAdded,
+	portfolioFailed,
+	portfolioLoaded,
+} from '../../../redux/actions/portfolio.action';
+import PortfolioSkeleton from '../../../components/portfolio-skeleton';
+import PortfolioList from '../../../components/portfolio-list';
 
 export default function EditProfile() {
 	const dispatch = useDispatch();
-	const profile = useSelector(state => state.profile.profile);
-	const status = useSelector(state => state.profile.status);
-	const skills = useSelector(state => state.skills.skills);
-	const skillsStatus = useSelector(state => state.skills.status);
+	const navigate = useNavigate();
+	const { profile } = useSelector(state => state.profile);
+	const { skills, status: skillsStatus } = useSelector(state => state.skills);
 	const { experiences, status: experiencesStatus } = useSelector(
 		state => state.experiences
+	);
+	const { portfolio, status: portfolioStatus } = useSelector(
+		state => state.portfolio
 	);
 
 	useEffect(() => {
 		const token = getTokenFromLocalStorage();
 		dispatch(experienceLoaded(token));
+		dispatch(portfolioLoaded(token));
 	}, []);
 
 	const handleSubmitBiodata = e => {
@@ -71,7 +78,8 @@ export default function EditProfile() {
 
 	const handleAddExperience = async e => {
 		e.preventDefault();
-		const formData = new FormData(e.target);
+		const form = e.target;
+		const formData = new FormData(form);
 		const token = getTokenFromLocalStorage();
 		const experience = {};
 		for (let [key, value] of formData) {
@@ -88,8 +96,23 @@ export default function EditProfile() {
 		}
 		try {
 			await dispatch(experienceAdded(experience, token));
+			form.reset();
 		} catch (error) {
 			dispatch(experienceFailed(error.message));
+		}
+	};
+
+	const handleAddPortfolio = async e => {
+		e.preventDefault();
+		const form = e.target;
+		const token = getTokenFromLocalStorage();
+		const formData = new FormData(form);
+		const data = Object.fromEntries(formData);
+		try {
+			dispatch(portfolioAdded(data, token));
+			form.reset();
+		} catch (error) {
+			dispatch(portfolioFailed(error.message));
 		}
 	};
 
@@ -238,7 +261,11 @@ export default function EditProfile() {
 					<p>Kamu belum memiliki pengalaman</p>
 				)}
 			</EditForm>
-			<EditForm title='Portofolio' uploadFile={true}>
+			<EditForm
+				title='Portofolio'
+				uploadFile={true}
+				onSubmit={handleAddPortfolio}
+			>
 				<Input
 					label='Nama aplikasi'
 					name='application_name'
@@ -274,6 +301,14 @@ export default function EditProfile() {
 				<Button fullWidth variant='ghost-yellow' type='submit'>
 					Tambah portofolio
 				</Button>
+
+				{portfolioStatus === 'loading' ? (
+					<PortfolioSkeleton />
+				) : portfolio.length > 0 ? (
+					<PortfolioList portfolio={portfolio} />
+				) : (
+					<p>Kamu belum memiliki portofolio</p>
+				)}
 			</EditForm>
 			<div className='grid gap-4'>
 				<Button

@@ -29,6 +29,7 @@ import { loader as recruiterLoader } from './pages/recruiter/recruiter.loader.js
 import { action as rootAction } from './pages/root.action.js';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
+import { loader as signupLoader } from './pages/signup/signup.loader.js';
 
 const router = createBrowserRouter([
 	{
@@ -129,6 +130,7 @@ const router = createBrowserRouter([
 	{
 		path: '/signup',
 		element: <SignupPage />,
+		loader: signupLoader,
 		errorElement: <ErrorPage />,
 	},
 ]);

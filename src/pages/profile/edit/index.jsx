@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
 	profileBiodataEdited,
 	profileFailed,
+	profilePhotoUpdated,
 } from '../../../redux/actions/profile.action';
 import { getTokenFromLocalStorage } from '../../../utils';
 import { skillAdded, skillsFailed } from '../../../redux/actions/skills.action';
@@ -49,6 +50,21 @@ export default function EditProfile() {
 		dispatch(experienceLoaded(token));
 		dispatch(portfolioLoaded(token));
 	}, []);
+
+	const handleUpdatePhoto = async e => {
+		e.preventDefault();
+		const token = getTokenFromLocalStorage();
+		const form = e.target;
+		const formData = new FormData(form);
+		const data = Object.fromEntries(formData);
+
+		try {
+			dispatch(profilePhotoUpdated(data, token));
+			form.reset();
+		} catch (error) {
+			dispatch(profileFailed(error.message));
+		}
+	};
 
 	const handleSubmitBiodata = e => {
 		e.preventDefault();
@@ -118,7 +134,12 @@ export default function EditProfile() {
 
 	return (
 		<div className='space-y-10 w-full'>
-			<EditForm method='put' title='Foto profil' uploadFile={true}>
+			<EditForm
+				method='put'
+				title='Foto profil'
+				uploadFile={true}
+				onSubmit={handleUpdatePhoto}
+			>
 				<UploadPhotoProfil label='Ubah foto profil' name='photo' />
 				<Button fullWidth variant='ghost-yellow' type='submit'>
 					Simpan

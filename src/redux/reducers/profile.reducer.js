@@ -12,18 +12,28 @@ export function profileReducer(state = initialState, action) {
 		case 'profile/profileLoaded': {
 			return {
 				...state,
-				profile: action.payload,
 				status: 'succeed',
+				profile: action.payload,
 			};
 		}
 		case 'profile/profileBiodataEdited': {
 			return {
 				...state,
+				status: 'succeed',
 				profile: {
 					...state.profile,
 					...action.payload,
 				},
+			};
+		}
+		case 'profile/profilePhotoUpdated': {
+			return {
+				...state,
 				status: 'succeed',
+				profile: {
+					...state.profile,
+					...action.payload,
+				},
 			};
 		}
 		case 'profile/profileLoading': {

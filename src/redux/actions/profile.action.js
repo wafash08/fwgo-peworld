@@ -19,6 +19,18 @@ export async function updateProfile(biodata, token) {
 	return result.data.data;
 }
 
+const photoProfileUrl = `${baseUrl}/workers/profile/photo`;
+export async function updatePhotoProfile(photo, token) {
+	const result = await axios.put(photoProfileUrl, photo, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+			'Content-Type':
+				'multipart/form-data; boundary=<calculated when request is sent>',
+		},
+	});
+	return result.data.data;
+}
+
 // === profile action creators ===
 export function profileLoaded(token) {
 	return async dispatch => {
@@ -38,6 +50,17 @@ export function profileBiodataEdited(data, token) {
 			dispatch(profileLoading());
 			const biodata = await updateProfile(data, token);
 			dispatch({ type: 'profile/profileBiodataEdited', payload: biodata });
+		} catch (error) {
+			throw new Error(error.response.data.message);
+		}
+	};
+}
+
+export function profilePhotoUpdated(data, token) {
+	return async dispatch => {
+		try {
+			const photo = await updatePhotoProfile(data, token);
+			dispatch({ type: 'profile/profilePhotoUpdated', payload: photo });
 		} catch (error) {
 			throw new Error(error.response.data.message);
 		}

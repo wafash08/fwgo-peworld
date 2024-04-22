@@ -20,6 +20,14 @@ export async function addSkills(skill_name, token) {
 	return result.data.data;
 }
 
+export async function deleteSkill(id, token) {
+	const result = await axios.delete(`${skillsUrl}/${id}`, {
+		headers: { Authorization: `Bearer ${token}` },
+	});
+
+	return result.data.data;
+}
+
 // === profile action creators ===
 export function skillsLoaded(token) {
 	return async dispatch => {
@@ -28,6 +36,29 @@ export function skillsLoaded(token) {
 			const result = await getSkills(token);
 			const skills = result.map(({ id, skill_name }) => ({ id, skill_name }));
 			dispatch({ type: 'skills/skillsLoaded', payload: skills });
+		} catch (error) {
+			throw new Error(error.response.data.message);
+		}
+	};
+}
+
+export function skillAdded(data, token) {
+	return async dispatch => {
+		try {
+			dispatch(skillsLoading());
+			const skill = await addSkills(data, token);
+			dispatch({ type: 'skills/skillAdded', payload: skill });
+		} catch (error) {
+			throw new Error(error.response.data.message);
+		}
+	};
+}
+
+export function skillDeleted(id, token) {
+	return async dispatch => {
+		try {
+			const { id: idOfDeletedskill } = await deleteSkill(id, token);
+			dispatch({ type: 'skills/skillDeleted', payload: idOfDeletedskill });
 		} catch (error) {
 			throw new Error(error.response.data.message);
 		}

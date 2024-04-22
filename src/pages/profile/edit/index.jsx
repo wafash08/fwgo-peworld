@@ -1,4 +1,3 @@
-import { useNavigate, useRouteLoaderData } from 'react-router-dom';
 import UploadPhotoProfil from '../../../components/upload-photo-profil';
 import Button from '../../../components/button';
 import Input from '../../../components/input';
@@ -8,10 +7,92 @@ import {
 	EditTextarea,
 	EditUpload,
 } from '../../../components/edit';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+	profileBiodataEdited,
+	profileFailed,
+} from '../../../redux/actions/profile.action';
+import { getTokenFromLocalStorage } from '../../../utils';
+import {
+	skillAdded,
+	skillsFailed,
+	skillsLoaded,
+} from '../../../redux/actions/skills.action';
+import SkillItemWithDelete from '../../../components/skill-item-with-delete';
+import {
+	experienceAdded,
+	experienceFailed,
+	experienceLoaded,
+} from '../../../redux/actions/experience.action';
+import ExperienceList from '../../../components/experience-list';
+import { useEffect } from 'react';
+import ExperienceSkeleton from '../../../components/experience-loader';
 
 export default function EditProfile() {
-	const { profile } = useRouteLoaderData('profile');
-	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const profile = useSelector(state => state.profile.profile);
+	const status = useSelector(state => state.profile.status);
+	const skills = useSelector(state => state.skills.skills);
+	const skillsStatus = useSelector(state => state.skills.status);
+	const { experiences, status: experiencesStatus } = useSelector(
+		state => state.experiences
+	);
+
+	useEffect(() => {
+		const token = getTokenFromLocalStorage();
+		dispatch(experienceLoaded(token));
+	}, []);
+
+	const handleSubmitBiodata = e => {
+		e.preventDefault();
+		const token = getTokenFromLocalStorage();
+		const formData = new FormData(e.target);
+		const biodata = Object.fromEntries(formData);
+		try {
+			dispatch(profileBiodataEdited(biodata, token));
+		} catch (error) {
+			dispatch(profileFailed(error.message));
+		}
+	};
+
+	const handleAddSkill = async e => {
+		e.preventDefault();
+		const form = e.target;
+		const token = getTokenFromLocalStorage();
+		const formData = new FormData(form);
+		const skill = Object.fromEntries(formData);
+		try {
+			await dispatch(skillAdded(skill, token));
+			form.reset();
+		} catch (error) {
+			dispatch(skillsFailed(error.message));
+		}
+	};
+
+	const handleAddExperience = async e => {
+		e.preventDefault();
+		const formData = new FormData(e.target);
+		const token = getTokenFromLocalStorage();
+		const experience = {};
+		for (let [key, value] of formData) {
+			if (key === 'work_year') {
+				value = value.split(' ');
+				experience['work_month'] = value[0];
+				experience[key] = value[1];
+				continue;
+			} else if (key === 'experience_description') {
+				experience['description'] = value;
+				continue;
+			}
+			experience[key] = value;
+		}
+		try {
+			await dispatch(experienceAdded(experience, token));
+		} catch (error) {
+			dispatch(experienceFailed(error.message));
+		}
+	};
+
 	return (
 		<div className='space-y-10 w-full'>
 			<EditForm method='put' title='Foto profil' uploadFile={true}>
@@ -20,7 +101,7 @@ export default function EditProfile() {
 					Simpan
 				</Button>
 			</EditForm>
-			<EditForm method='put' title='Data diri'>
+			<EditForm method='put' title='Data diri' onSubmit={handleSubmitBiodata}>
 				<Input
 					label='Nama lengkap'
 					name='name'
@@ -56,10 +137,27 @@ export default function EditProfile() {
 					defaultValue={profile.description}
 				/>
 				<Button fullWidth variant='ghost-yellow' type='submit'>
-					Simpan
+					{status === 'loading' ? (
+						<>
+							<svg
+								width='20'
+								height='20'
+								fill='currentColor'
+								className='mr-2 animate-spin'
+								viewBox='0 0 1792 1792'
+								xmlns='http://www.w3.org/2000/svg'
+								aria-hidden='true'
+							>
+								<path d='M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z'></path>
+							</svg>
+							<span>Menyimpan</span>
+						</>
+					) : (
+						'Simpan'
+					)}
 				</Button>
 			</EditForm>
-			<EditForm title='Skill'>
+			<EditForm title='Skill' onSubmit={handleAddSkill}>
 				<div className='flex flex-col md:flex-row gap-[10px]'>
 					<input
 						className='p-4 border border-[#E2E5ED] placeholder:text-sm placeholder:text-[#858D96] rounded text-sm text-[#1F2A36] md:flex-1'
@@ -70,7 +168,24 @@ export default function EditProfile() {
 						required
 					/>
 					<Button variant='yellow' type='submit'>
-						Simpan
+						{skillsStatus === 'loading' ? (
+							<>
+								<svg
+									width='20'
+									height='20'
+									fill='currentColor'
+									className='animate-spin'
+									viewBox='0 0 1792 1792'
+									xmlns='http://www.w3.org/2000/svg'
+									aria-hidden='true'
+								>
+									<path d='M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z'></path>
+								</svg>
+								<span className='sr-only'>Menyimpan</span>
+							</>
+						) : (
+							'Simpan'
+						)}
 					</Button>
 					{/* 
 						1. tampilkan list skill
@@ -78,8 +193,19 @@ export default function EditProfile() {
 						3. tambahkan fungsionalitas delete
 					*/}
 				</div>
+				{skills.length > 0 ? (
+					<ul className='flex flex-wrap justify-start items-center gap-x-[10px] gap-y-5'>
+						{skills.map(({ skill_name, id }) => {
+							return (
+								<SkillItemWithDelete key={id} skill={skill_name} id={id} />
+							);
+						})}
+					</ul>
+				) : (
+					<p>Ayo tambahkan skill kamu</p>
+				)}
 			</EditForm>
-			<EditForm title='Pengalaman Kerja'>
+			<EditForm title='Pengalaman Kerja' onSubmit={handleAddExperience}>
 				<Input label='Posisi' name='position' placeholder='Web Developer' />
 				<div className='flex flex-col md:flex-row gap-8 md:gap-5'>
 					<Input
@@ -104,6 +230,13 @@ export default function EditProfile() {
 				<Button fullWidth variant='ghost-yellow' type='submit'>
 					Tambah pengalaman kerja
 				</Button>
+				{experiencesStatus === 'loading' ? (
+					<ExperienceSkeleton />
+				) : experiences.length > 0 ? (
+					<ExperienceList experiences={experiences} />
+				) : (
+					<p>Kamu belum memiliki pengalaman</p>
+				)}
 			</EditForm>
 			<EditForm title='Portofolio' uploadFile={true}>
 				<Input

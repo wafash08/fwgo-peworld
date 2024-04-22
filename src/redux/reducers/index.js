@@ -6,7 +6,7 @@ import { portfolioReducer } from './portfolio.reducer';
 import { experienceReducer } from './experience.reducer';
 
 const rootReducers = combineReducers({
-	user: authReducer,
+	auth: authReducer,
 	profile: profileReducer,
 	skills: skillsReducer,
 	portfolio: portfolioReducer,

@@ -11,6 +11,14 @@ export async function getProfile(token) {
 	return result.data.data;
 }
 
+export async function updateProfile(biodata, token) {
+	const result = await axios.put(profileUrl, biodata, {
+		headers: { Authorization: `Bearer ${token}` },
+	});
+
+	return result.data.data;
+}
+
 // === profile action creators ===
 export function profileLoaded(token) {
 	return async dispatch => {
@@ -18,6 +26,18 @@ export function profileLoaded(token) {
 			dispatch(profileLoading());
 			const profile = await getProfile(token);
 			dispatch({ type: 'profile/profileLoaded', payload: profile });
+		} catch (error) {
+			throw new Error(error.response.data.message);
+		}
+	};
+}
+
+export function profileBiodataEdited(data, token) {
+	return async dispatch => {
+		try {
+			dispatch(profileLoading());
+			const biodata = await updateProfile(data, token);
+			dispatch({ type: 'profile/profileBiodataEdited', payload: biodata });
 		} catch (error) {
 			throw new Error(error.response.data.message);
 		}

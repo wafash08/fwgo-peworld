@@ -1,11 +1,40 @@
-import { Form, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { BellIcon, MailIcon } from './icons';
 import peworldLogo from '../assets/peworld-logo-purple.webp';
 import emptyAvatar from '../assets/empty-avatar.webp';
 import CustomLink from './custom-link';
+import { authFailed, authLoggedOut } from '../redux/actions/auth.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { profileFailed, profileLoaded } from '../redux/actions/profile.action';
+import { getRoleFromLocalStorage, getTokenFromLocalStorage } from '../utils';
 
-export default function Navbar({ isAuthenticated = false, user, role }) {
+export default function Navbar() {
+	const user = useSelector(state => state.profile.profile);
+	const token = getTokenFromLocalStorage();
+	const role = getRoleFromLocalStorage();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		try {
+			dispatch(profileLoaded(token));
+		} catch (error) {
+			dispatch(profileFailed(error.message));
+		}
+	}, []);
+
+	const handleLogout = async e => {
+		e.preventDefault();
+		try {
+			await dispatch(authLoggedOut());
+			navigate('/');
+		} catch (error) {
+			authFailed(error.message);
+		}
+	};
+
 	return (
 		<div className='flex justify-between items-center h-20'>
 			<Link to='/'>
@@ -14,7 +43,7 @@ export default function Navbar({ isAuthenticated = false, user, role }) {
 
 			<nav>
 				<ul className='flex items-center gap-4 sm:gap-6'>
-					{isAuthenticated ? (
+					{token ? (
 						<>
 							<NavItemWithIcon
 								label='Lihat pemberitahuan'
@@ -31,14 +60,14 @@ export default function Navbar({ isAuthenticated = false, user, role }) {
 								alt={user.name ? user.name : ''}
 								to={role === 'worker' ? 'profile' : 'recruiter/profile'}
 							/>
-							<Form method='post'>
+							<form method='post' onSubmit={handleLogout}>
 								<button
 									type='submit'
-									className='border border-red-500 bg-red-500 text-white rounded py-2 px-4'
+									className='border border-red-500 bg-red-500 text-white rounded inline-flex justify-center items-center w-20 h-10 text-sm font-bold'
 								>
 									Logout
 								</button>
-							</Form>
+							</form>
 						</>
 					) : (
 						<>

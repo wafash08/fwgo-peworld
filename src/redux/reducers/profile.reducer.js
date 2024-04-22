@@ -1,14 +1,5 @@
 const initialState = {
-	profile: {
-		description: '',
-		domicile: '',
-		email: '',
-		job_desk: '',
-		name: '',
-		phone: '',
-		photo: '',
-		workplace: '',
-	},
+	profile: {},
 	status: 'idle', // loading, succeed, failed
 	error: null,
 };
@@ -22,6 +13,16 @@ export function profileReducer(state = initialState, action) {
 			return {
 				...state,
 				profile: action.payload,
+				status: 'succeed',
+			};
+		}
+		case 'profile/profileBiodataEdited': {
+			return {
+				...state,
+				profile: {
+					...state.profile,
+					...action.payload,
+				},
 				status: 'succeed',
 			};
 		}

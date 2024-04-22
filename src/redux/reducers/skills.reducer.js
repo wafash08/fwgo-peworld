@@ -1,10 +1,5 @@
 const initialState = {
-	skills: [
-		// {
-		// 	skill_name: '',
-		// 	id: '',
-		// },
-	],
+	skills: [],
 	status: 'idle', // loading, succeed, failed
 	error: null,
 };
@@ -18,6 +13,23 @@ export function skillsReducer(state = initialState, action) {
 			return {
 				...state,
 				skills: action.payload,
+				status: 'succeed',
+			};
+		}
+		case 'skills/skillAdded': {
+			return {
+				...state,
+				skills: [...state.skills, action.payload],
+				status: 'succeed',
+			};
+		}
+		case 'skills/skillDeleted': {
+			const skillsWithoutDeletedOne = state.skills.filter(
+				({ id }) => id !== action.payload
+			);
+			return {
+				...state,
+				skills: skillsWithoutDeletedOne,
 				status: 'succeed',
 			};
 		}

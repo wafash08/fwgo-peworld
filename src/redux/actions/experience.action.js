@@ -33,6 +33,18 @@ export function experienceLoaded(token) {
 	};
 }
 
+export function experienceAdded(data, token) {
+	return async dispatch => {
+		try {
+			dispatch(experienceLoading());
+			const experience = await addExperience(data, token);
+			dispatch({ type: 'experience/experienceAdded', payload: experience });
+		} catch (error) {
+			throw new Error(error.response.data.message);
+		}
+	};
+}
+
 export function experienceLoading() {
 	return {
 		type: 'experience/experienceLoading',

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from './pages/root.jsx';
-import { loader as rootLoader } from './pages/root.loader.js';
 import ErrorPage from './pages/error-page.jsx';
 import LandingPage from './pages/landing-page';
 import HomePage from './pages/home';
@@ -35,7 +34,6 @@ const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Root />,
-		loader: rootLoader,
 		action: rootAction,
 		id: 'root',
 		errorElement: <ErrorPage />,

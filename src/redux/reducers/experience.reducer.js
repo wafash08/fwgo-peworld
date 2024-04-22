@@ -16,6 +16,13 @@ export function experienceReducer(state = initialState, action) {
 				status: 'succeed',
 			};
 		}
+		case 'experience/experienceAdded': {
+			return {
+				...state,
+				experiences: [action.payload, ...state.experiences],
+				status: 'succeed',
+			};
+		}
 		case 'experience/experienceLoading': {
 			return {
 				...state,

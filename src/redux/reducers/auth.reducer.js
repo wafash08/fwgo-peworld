@@ -1,8 +1,4 @@
 const initialState = {
-	credentials: {
-		role: null,
-		token: null,
-	},
 	status: 'idle', // idle, loading, succeed, failed
 	error: null,
 };
@@ -25,7 +21,12 @@ export function authReducer(state = initialState, action) {
 		case 'auth/authLoggedIn': {
 			return {
 				...state,
-				credentials: action.payload,
+				status: 'succeed',
+			};
+		}
+		case 'auth/authLoggedOut': {
+			return {
+				...state,
 				status: 'succeed',
 			};
 		}

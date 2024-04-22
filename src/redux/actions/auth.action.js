@@ -29,7 +29,18 @@ export function authLoggedIn({ email, password }) {
 			const user = await login({ email, password });
 			const { role, token } = user;
 			localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ role, token }));
-			dispatch({ type: 'auth/authLoggedIn', payload: { role, token } });
+			dispatch({ type: 'auth/authLoggedIn' });
+		} catch (error) {
+			throw new Error(error.response.data.message);
+		}
+	};
+}
+
+export function authLoggedOut() {
+	return async dispatch => {
+		try {
+			localStorage.removeItem(LOCAL_STORAGE_KEY);
+			dispatch({ type: 'auth/authLoggedOut' });
 		} catch (error) {
 			throw new Error(error.response.data.message);
 		}

@@ -42,56 +42,59 @@ export default function Profile() {
 				<ProfileSection profile={profile} />
 			)}
 
-			<section className='mb-14'>
-				<h3 className='text-[22px] text-yankees-blue font-semibold mb-5'>
-					Skills
-				</h3>
-				{statusSkills === 'loading' ? (
-					<SkillSkeleton />
-				) : skills.length > 0 ? (
-					<ul className='flex flex-wrap justify-center lg:justify-start items-center gap-x-[10px] gap-y-5'>
-						{skills.map(({ skill_name, id }, idx) => {
-							return (
-								<SkillItem
-									key={id ?? `${skill_name} - ${idx}`}
-									skill={skill_name}
+			{statusSkills === 'loading' ? (
+				<SkillSkeleton />
+			) : (
+				<>
+					<section className='mb-14'>
+						<h3 className='text-[22px] text-yankees-blue font-semibold mb-5'>
+							Skills
+						</h3>
+						{skills.length > 0 ? (
+							<ul className='flex flex-wrap justify-center lg:justify-start items-center gap-x-[10px] gap-y-5'>
+								{skills.map(({ skill_name, id }, idx) => {
+									return (
+										<SkillItem
+											key={id ?? `${skill_name} - ${idx}`}
+											skill={skill_name}
+										/>
+									);
+								})}
+							</ul>
+						) : (
+							<p>Ayo tambahkan skill kamu</p>
+						)}
+					</section>
+					<ul>
+						<li className='text-quick-silver flex justify-center lg:justify-start items-center gap-5'>
+							<svg
+								width='24'
+								height='24'
+								viewBox='0 0 24 24'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'
+								aria-hidden
+							>
+								<path
+									d='M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z'
+									stroke='currentColor'
+									strokeWidth='2.33333'
+									strokeLinecap='round'
+									strokeLinejoin='round'
 								/>
-							);
-						})}
+								<path
+									d='M22 6L12 13L2 6'
+									stroke='currentColor'
+									strokeWidth='2.33333'
+									strokeLinecap='round'
+									strokeLinejoin='round'
+								/>
+							</svg>
+							<span className='text-sm'>{profile.email}</span>
+						</li>
 					</ul>
-				) : (
-					<p>Ayo tambahkan skill kamu</p>
-				)}
-			</section>
-
-			<ul>
-				<li className='text-quick-silver flex justify-center lg:justify-start items-center gap-5'>
-					<svg
-						width='24'
-						height='24'
-						viewBox='0 0 24 24'
-						fill='none'
-						xmlns='http://www.w3.org/2000/svg'
-						aria-hidden
-					>
-						<path
-							d='M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z'
-							stroke='currentColor'
-							strokeWidth='2.33333'
-							strokeLinecap='round'
-							strokeLinejoin='round'
-						/>
-						<path
-							d='M22 6L12 13L2 6'
-							stroke='currentColor'
-							strokeWidth='2.33333'
-							strokeLinecap='round'
-							strokeLinejoin='round'
-						/>
-					</svg>
-					<span className='text-sm'>{profile.email}</span>
-				</li>
-			</ul>
+				</>
+			)}
 		</section>
 	);
 }

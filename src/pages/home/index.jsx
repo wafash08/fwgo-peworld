@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 import clsx from 'clsx';
 import Container from '../../components/container';
-import WorkerItem from './worker-item';
 import Pagination from './pagination';
 import WorkerList from './worker-list';
 

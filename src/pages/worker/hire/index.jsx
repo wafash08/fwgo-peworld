@@ -1,22 +1,34 @@
-import { Form, useNavigate, useRouteLoaderData } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getTokenFromLocalStorage } from '../../../utils';
 import Input from '../../../components/input';
+import { hireFailed, hireSentAdded } from '../../../redux/actions/hire.action';
+
 export default function HirePage() {
-	const { worker } = useRouteLoaderData('worker');
+	const token = getTokenFromLocalStorage();
+	const { workerId } = useParams();
+	const { profile } = useSelector(state => state.worker.data);
+	const status = useSelector(state => state.hire.status);
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const handleHire = e => {
 		e.preventDefault();
-		console.log('woeee');
 		const form = e.target;
 		const formData = new FormData(form);
 		const data = Object.fromEntries(formData);
-		console.table(data);
+
+		try {
+			dispatch(hireSentAdded({ ...data, worker_id: workerId }, token));
+		} catch (error) {
+			dispatch(hireFailed(error.message));
+		}
 	};
 
 	return (
 		<section>
 			<h1 className='text-4xl font-semibold text-yankees-blue mb-5'>
-				Hubungi {worker.name}
+				Hubungi {profile.name}
 			</h1>
 			<p className='text-lg text-davys-gray mb-10'>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
@@ -48,14 +60,14 @@ export default function HirePage() {
 					/>
 					<div className='relative'>
 						<label
-							htmlFor='description'
+							htmlFor='desciption'
 							className='text-xs text-quick-silver block mb-1 ml-1'
 						>
 							Deskripsi
 						</label>
 						<textarea
-							name='description'
-							id='description'
+							name='desciption'
+							id='desciption'
 							rows='10'
 							placeholder='Deskripsikan/jelaskan lebih detail'
 							className='w-full p-4 text-sm placeholder:text-sm text-roman-silver placeholder:text-roman-silver border border-azureish-white rounded'
@@ -84,9 +96,26 @@ export default function HirePage() {
 					</div>
 					<button
 						type='submit'
-						className='text-base border border-primary-yellow font-bold p-4 rounded text-white bg-primary-yellow mt-5'
+						className='text-base border border-primary-yellow font-bold p-4 rounded text-white bg-primary-yellow mt-5 flex items-center justify-center gap-2'
 					>
-						Hire
+						{status === 'loading' ? (
+							<>
+								<svg
+									width='20'
+									height='20'
+									fill='currentColor'
+									className='mr-2 animate-spin'
+									viewBox='0 0 1792 1792'
+									xmlns='http://www.w3.org/2000/svg'
+									aria-hidden='true'
+								>
+									<path d='M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z'></path>
+								</svg>
+								<span>Mengirim</span>
+							</>
+						) : (
+							'Hire'
+						)}
 					</button>
 					<button
 						type='button'

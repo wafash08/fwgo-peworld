@@ -25,6 +25,7 @@ export default function Navbar() {
 		try {
 			if (role === 'worker') {
 				dispatch(profileLoaded(token));
+				dispatch();
 			} else if (role === 'recruiter') {
 				dispatch(recruiterLoaded(token));
 			}
@@ -53,16 +54,20 @@ export default function Navbar() {
 				<ul className='flex items-center gap-4 sm:gap-6'>
 					{token ? (
 						<>
-							<NavItemWithIcon
-								label='Lihat pemberitahuan'
-								icon={<BellIcon />}
-								className='hidden sm:block'
-							/>
-							<NavItemWithIcon
-								label='Lihat pesan masuk'
-								icon={<MailIcon />}
-								className='hidden sm:block'
-							/>
+							<li className='relative'>
+								<NavItemWithIcon
+									label='Lihat pemberitahuan'
+									icon={<BellIcon />}
+									className='hidden sm:block'
+								/>
+							</li>
+							<li>
+								<NavItemWithIcon
+									label='Lihat pesan masuk'
+									icon={<MailIcon />}
+									className='hidden sm:block'
+								/>
+							</li>
 							<NavItemLinkAvatar
 								src={user.photo ? user.photo : emptyAvatar}
 								alt={user.name ? user.name : ''}
@@ -93,9 +98,13 @@ export default function Navbar() {
 	);
 }
 
-function NavItemWithIcon({ label, icon, className }) {
+function NavItemWithIcon({ label, icon, className, ...props }) {
 	return (
-		<button type='button' className={clsx('text-roman-silver', className)}>
+		<button
+			type='button'
+			className={clsx('text-roman-silver', className)}
+			{...props}
+		>
 			<span className='sr-only'>{label}</span>
 			{icon}
 		</button>

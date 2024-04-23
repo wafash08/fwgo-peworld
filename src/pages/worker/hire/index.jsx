@@ -3,6 +3,16 @@ import Input from '../../../components/input';
 export default function HirePage() {
 	const { worker } = useRouteLoaderData('worker');
 	const navigate = useNavigate();
+
+	const handleHire = e => {
+		e.preventDefault();
+		console.log('woeee');
+		const form = e.target;
+		const formData = new FormData(form);
+		const data = Object.fromEntries(formData);
+		console.table(data);
+	};
+
 	return (
 		<section>
 			<h1 className='text-4xl font-semibold text-yankees-blue mb-5'>
@@ -13,7 +23,7 @@ export default function HirePage() {
 				ipsum et dui rhoncus auctor.
 			</p>
 
-			<Form method='post'>
+			<form method='post' onSubmit={handleHire}>
 				<div className='grid gap-8'>
 					<Input
 						label='Tujuan tentang pesan ini'
@@ -88,7 +98,7 @@ export default function HirePage() {
 						Batal
 					</button>
 				</div>
-			</Form>
+			</form>
 		</section>
 	);
 }

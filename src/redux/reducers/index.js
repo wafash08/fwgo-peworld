@@ -5,6 +5,7 @@ import { skillsReducer } from './skills.reducer';
 import { portfolioReducer } from './portfolio.reducer';
 import { experienceReducer } from './experience.reducer';
 import { workerReducer } from './worker.reducer';
+import { recruiterReducer } from './recruiter.reducer';
 
 const rootReducers = combineReducers({
 	auth: authReducer,
@@ -13,6 +14,7 @@ const rootReducers = combineReducers({
 	portfolio: portfolioReducer,
 	experiences: experienceReducer,
 	worker: workerReducer,
+	recruiter: recruiterReducer,
 });
 
 export default rootReducers;

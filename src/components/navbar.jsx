@@ -9,18 +9,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { profileFailed, profileLoaded } from '../redux/actions/profile.action';
 import { getRoleFromLocalStorage, getTokenFromLocalStorage } from '../utils';
+import { recruiterLoaded } from '../redux/actions/recruiter.action';
 
 export default function Navbar() {
-	const user = useSelector(state => state.profile.profile);
+	const { profile } = useSelector(state => state.profile);
+	const { recruiter } = useSelector(state => state.recruiter);
 	const token = getTokenFromLocalStorage();
 	const role = getRoleFromLocalStorage();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	const user = role === 'worker' ? profile : recruiter;
+
 	useEffect(() => {
 		try {
 			if (role === 'worker') {
 				dispatch(profileLoaded(token));
+			} else if (role === 'recruiter') {
+				dispatch(recruiterLoaded(token));
 			}
 		} catch (error) {
 			dispatch(profileFailed(error.message));

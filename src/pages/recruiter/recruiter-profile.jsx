@@ -10,7 +10,7 @@ import {
 import emptyAvatar from '../../assets/empty-avatar.webp';
 import { getTokenFromLocalStorage } from '../../utils';
 import { recruiterLoaded } from '../../redux/actions/recruiter.action';
-import { RecruiterSkeleton } from '../../components';
+import RecruiterSkeleton from '../../components/recruiter-skeleton';
 
 export default function RecruiterProfile() {
 	const dispatch = useDispatch();

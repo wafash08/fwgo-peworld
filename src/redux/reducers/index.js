@@ -7,9 +7,11 @@ import { experienceReducer } from './experience.reducer';
 import { workerReducer } from './worker.reducer';
 import { recruiterReducer } from './recruiter.reducer';
 import { hireReducer } from './hire.reducer';
+import { homeReducer } from './home.reducer';
 
 const rootReducers = combineReducers({
 	auth: authReducer,
+	home: homeReducer,
 	profile: profileReducer,
 	skills: skillsReducer,
 	portfolio: portfolioReducer,

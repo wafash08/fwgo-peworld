@@ -1,17 +1,16 @@
 import clsx from 'clsx';
-import WorkerItem from './worker-item';
+import { useSelector } from 'react-redux';
 
-export default function WorkerList({ workers, searching }) {
+export default function WorkerList({ children }) {
+	const { status } = useSelector(state => state.home);
 	return (
 		<ul
 			className={clsx(
 				'bg-white shadow-[0px_1px_20px_0px] shadow-[#C5C5C5]/40 mt-[50px] rounded-md overflow-hidden mb-[50px]',
-				searching && 'animate-pulse'
+				status === 'loading' && 'animate-pulse'
 			)}
 		>
-			{workers.map(worker => {
-				return <WorkerItem key={worker.id} worker={worker} />;
-			})}
+			{children}
 		</ul>
 	);
 }

@@ -1,16 +1,44 @@
 import { useState } from 'react';
-import { Link, useActionData } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SignupWorkerForm from './signup-worker-form';
 import SignupRecruiterForm from './signup-recruiter-form';
 import Container from '../../components/container';
 import whitePeworldLogo from '../../assets/peworld-logo-white.webp';
+import { useDispatch } from 'react-redux';
+import { authFailed, authSignedUp } from '../../redux/actions/auth.action';
+import { createNewUser } from '../../utils';
 
 export default function SignupPage() {
-	const errors = useActionData();
 	const [role, setRole] = useState('worker');
+	const [validationError, setValidationError] = useState(null);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleChangeRole = role => {
 		setRole(role);
+	};
+
+	const handleSignup = async e => {
+		e.preventDefault();
+		const formData = new FormData(e.target);
+		const role = formData.get('role');
+		const password = formData.get('password');
+		const confirmPassword = formData.get('confirmPassword');
+
+		if (confirmPassword !== password) {
+			setValidationError(
+				'Konfirmasi kata sandi tidak sesuai dengan kata sandi'
+			);
+			return;
+		}
+
+		const user = createNewUser(formData);
+		try {
+			await dispatch(authSignedUp(user, role));
+			navigate('/login');
+		} catch (error) {
+			dispatch(authFailed(error.message));
+		}
 	};
 
 	return (
@@ -68,11 +96,16 @@ export default function SignupPage() {
 							</div>
 						</div>
 					</div>
-					{role === 'worker' ? (
-						<SignupWorkerForm role={role} errors={errors} />
-					) : (
-						<SignupRecruiterForm role={role} errors={errors} />
-					)}
+					<form method='post' onSubmit={handleSignup}>
+						{role === 'worker' ? (
+							<SignupWorkerForm role={role} validationError={validationError} />
+						) : (
+							<SignupRecruiterForm
+								role={role}
+								validationError={validationError}
+							/>
+						)}
+					</form>
 					<p className='mt-7 text-yankees-blue text-center'>
 						Anda sudah punya akun?{' '}
 						<Link to='/login' className='text-primary-yellow'>

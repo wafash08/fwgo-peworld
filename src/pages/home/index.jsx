@@ -1,32 +1,68 @@
 import { useEffect, useState } from 'react';
-import {
-	Form,
-	Link,
-	useLoaderData,
-	useNavigation,
-	useSubmit,
-} from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import clsx from 'clsx';
 import Container from '../../components/container';
-import WorkerItem from './worker-item';
 import Pagination from './pagination';
 import WorkerList from './worker-list';
+import WorkerItem from './worker-item';
+import { useDispatch, useSelector } from 'react-redux';
+import { homeLoaded } from '../../redux/actions/home.action';
+import { WorkerSkeleton } from '../../components';
+import { useDebounce } from '../../hooks';
 
 export default function HomePage() {
-	const { workers, pagination, params } = useLoaderData();
+	const [params, setParams] = useState({
+		limit: 10,
+		page: 1,
+		search: '',
+		sort: '',
+		sortBy: 'DESC',
+	});
+	const debouncedSearch = useDebounce(params.search, 500);
+	const { workers, pagination, status } = useSelector(state => state.home);
+	const dispatch = useDispatch();
 	const [openSort, setOpenSort] = useState(false);
-	const submit = useSubmit();
-	const navigation = useNavigation();
-	const { search } = params;
-
-	const searching =
-		navigation.location &&
-		new URLSearchParams(navigation.location.search).has('search');
 
 	useEffect(() => {
-		const searchInput = document.getElementById('search');
-		searchInput.value = search;
-	}, [search]);
+		dispatch(homeLoaded(params));
+	}, [params.page, params.sort, params.sortBy, debouncedSearch]);
+
+	const handlePrev = () => {
+		setParams({
+			...params,
+			page: params.page - 1,
+		});
+	};
+	const handleNext = () => {
+		setParams({
+			...params,
+			page: params.page + 1,
+		});
+	};
+	const handleToPage = to => {
+		setParams({
+			...params,
+			page: to,
+		});
+	};
+	const handleSearch = e => {
+		setParams({
+			...params,
+			search: e.target.value,
+		});
+	};
+	const handleSort = sort => {
+		setParams({
+			...params,
+			sort,
+		});
+	};
+	const handleSortBy = order => {
+		setParams({
+			...params,
+			sortBy: order,
+		});
+	};
 
 	return (
 		<div className='bg-cultured pb-[70px]'>
@@ -51,16 +87,9 @@ export default function HomePage() {
 										id='search'
 										aria-label='Search skill'
 										placeholder='Search for any skill'
-										defaultValue={search}
-										onChange={event => {
-											const isFirstSearch = search == null;
-											submit(event.currentTarget.form, {
-												replace: !isFirstSearch,
-											});
-										}}
+										onChange={handleSearch}
 										className={clsx(
-											'px-5 w-full h-full focus:outline-none text-yankees-blue bg-transparent',
-											searching ? 'loading' : ''
+											'px-5 w-full h-full focus:outline-none text-yankees-blue bg-transparent'
 										)}
 									/>
 									<svg
@@ -71,8 +100,7 @@ export default function HomePage() {
 										xmlns='http://www.w3.org/2000/svg'
 										aria-hidden='true'
 										className={clsx(
-											'absolute right-5 top-1/2 -translate-y-1/2 hidden md:block',
-											searching && 'hidden md:hidden'
+											'absolute right-5 top-1/2 -translate-y-1/2 hidden md:block'
 										)}
 									>
 										<path
@@ -90,9 +118,7 @@ export default function HomePage() {
 											strokeLinejoin='round'
 										/>
 									</svg>
-									<div id='search-spinner' aria-hidden hidden={!searching} />
 								</div>
-								{/* divider */}
 								<div className='w-[1px] h-14 bg-quick-silver mx-1 hidden md:block' />
 								<div className='mr-1 hidden md:block'>
 									<button
@@ -129,20 +155,46 @@ export default function HomePage() {
 							</div>
 						</Form>
 
-						{openSort && <SortList sortList={sortList} />}
+						{openSort && (
+							<SortList
+								sortList={sortList}
+								onSort={handleSort}
+								onSortBy={handleSortBy}
+								sortCategory={params.sort}
+								sortByCategory={params.sortBy}
+							/>
+						)}
 					</div>
 
-					{workers?.length > 0 ? (
-						<WorkerList workers={workers} searching={searching} />
-					) : (
-						<p>Pekerja dengan nama {search} tidak ditemukan</p>
-					)}
+					<WorkerList>
+						{status === 'loading' ? (
+							<>
+								<WorkerSkeleton />
+								<WorkerSkeleton />
+								<WorkerSkeleton />
+								<WorkerSkeleton />
+								<WorkerSkeleton />
+								<WorkerSkeleton />
+								<WorkerSkeleton />
+								<WorkerSkeleton />
+								<WorkerSkeleton />
+								<WorkerSkeleton />
+							</>
+						) : workers?.length > 0 ? (
+							workers.map(worker => {
+								return <WorkerItem key={worker.id} worker={worker} />;
+							})
+						) : (
+							<p>Pekerja dengan nama {params.search} tidak ditemukan</p>
+						)}
+					</WorkerList>
 
 					<nav>
 						<Pagination
-							currentPage={pagination.currentPage}
-							totalPage={pagination.totalPage}
-							params={params}
+							onNext={handleNext}
+							onPrev={handlePrev}
+							onPage={handleToPage}
+							pagination={pagination}
 						/>
 					</nav>
 				</Container>
@@ -166,25 +218,67 @@ const sortList = [
 	},
 ];
 
-function SortList({ sortList }) {
+function SortList({
+	sortList,
+	onSort,
+	onSortBy,
+	sortCategory,
+	sortByCategory,
+}) {
 	return (
 		<ul className='sort-list z-50 bg-white rounded absolute top-[calc(100%+36px)] right-10 shadow-[0px_0px_20px_0px] shadow-[#afafaf]/25'>
+			<li className='flex justify-evenly gap-2 border-b border-b-[#F2F3F4] py-2 px-6'>
+				<button
+					type='button'
+					onClick={() => onSortBy('ASC')}
+					className={clsx(
+						'text-sm rounded border border-yankees-blue px-3 py-1',
+						sortByCategory === 'ASC'
+							? 'text-white bg-yankees-blue'
+							: 'text-yankees-blue bg-transparent'
+					)}
+				>
+					ASC
+				</button>
+				<button
+					type='button'
+					onClick={() => onSortBy('DESC')}
+					className={clsx(
+						'text-sm rounded border border-yankees-blue px-3 py-1 transition-colors duration-300',
+						sortByCategory === 'DESC'
+							? 'text-white bg-yankees-blue'
+							: 'text-yankees-blue bg-transparent'
+					)}
+				>
+					DESC
+				</button>
+			</li>
 			{sortList.map(({ label, sort }) => {
-				return <SortItem key={sort} label={label} sort={sort} />;
+				return (
+					<SortItem
+						key={sort}
+						label={label}
+						sort={sort}
+						onSort={onSort}
+						sortCategory={sortCategory}
+					/>
+				);
 			})}
 		</ul>
 	);
 }
 
-function SortItem({ label, sort }) {
+function SortItem({ label, sort, onSort, sortCategory }) {
 	return (
 		<li className='border-b border-b-[#F2F3F4] last:border-b-0'>
-			<Link
-				to={`?sort=${sort}`}
-				className='block px-6 py-5 text-sm text-yankees-blue'
+			<button
+				type='button'
+				className='flex justify-between gap-2 px-6 py-5 text-sm text-yankees-blue'
+				onClick={() => onSort(sort)}
 			>
-				Sortir berdasarkan {label}
-			</Link>
+				<span>Sortir berdasarkan {label}</span>
+				{sort === sortCategory && <span>✔️</span>}
+			</button>
 		</li>
 	);
 }

@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
 import clsx from 'clsx';
 
 export default function Input({
 	name,
 	label,
-	errors = null,
 	children = null,
 	className,
 	...props
@@ -13,13 +11,6 @@ export default function Input({
 		name === 'password' || name === 'confirmPassword'
 			? 'current-password'
 			: name;
-
-	useEffect(() => {
-		const confirmPasswordElement = document.getElementById('confirmPassword');
-		if (errors?.confirmPassword) {
-			confirmPasswordElement.focus();
-		}
-	}, [errors]);
 
 	return (
 		<div className={clsx(className)}>

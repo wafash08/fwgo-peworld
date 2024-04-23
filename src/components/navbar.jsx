@@ -19,7 +19,9 @@ export default function Navbar() {
 
 	useEffect(() => {
 		try {
-			dispatch(profileLoaded(token));
+			if (role === 'worker') {
+				dispatch(profileLoaded(token));
+			}
 		} catch (error) {
 			dispatch(profileFailed(error.message));
 		}

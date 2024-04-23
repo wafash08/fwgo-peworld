@@ -34,7 +34,9 @@ export function skillsLoaded(token) {
 		try {
 			dispatch(skillsLoading());
 			const result = await getSkills(token);
-			const skills = result.map(({ id, skill_name }) => ({ id, skill_name }));
+			const skills = result.sort((a, b) => {
+				return new Date(a.created_at) - new Date(b.created_at);
+			});
 			dispatch({ type: 'skills/skillsLoaded', payload: skills });
 		} catch (error) {
 			throw new Error(error.response.data.message);
@@ -48,6 +50,7 @@ export function skillAdded(data, token) {
 			dispatch(skillsLoading());
 			const skill = await addSkills(data, token);
 			dispatch({ type: 'skills/skillAdded', payload: skill });
+			dispatch(skillsLoaded(token));
 		} catch (error) {
 			throw new Error(error.response.data.message);
 		}

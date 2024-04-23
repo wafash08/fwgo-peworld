@@ -16,7 +16,11 @@ import {
 	profilePhotoUpdated,
 } from '../../../redux/actions/profile.action';
 import { getTokenFromLocalStorage } from '../../../utils';
-import { skillAdded, skillsFailed } from '../../../redux/actions/skills.action';
+import {
+	skillAdded,
+	skillsFailed,
+	skillsLoaded,
+} from '../../../redux/actions/skills.action';
 import SkillItemWithDelete from '../../../components/skill-item-with-delete';
 import {
 	experienceAdded,

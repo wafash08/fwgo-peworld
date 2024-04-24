@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { sortPortfolioByName } from '../../utils';
 
 const baseUrl = import.meta.env.VITE_API_URL_V1;
 
@@ -39,11 +40,13 @@ export function workerLoaded(id) {
 				getExperiencesByWorkerId(id),
 				getSkillsByWorkerId(id),
 			]);
+			experiences.sort((a, b) => b.work_year - a.work_year);
+			const portfolioSorted = sortPortfolioByName(portfolio);
 			dispatch({
 				type: 'worker/workerLoaded',
 				payload: {
 					profile,
-					portfolio,
+					portfolio: portfolioSorted,
 					experiences,
 					skills,
 				},

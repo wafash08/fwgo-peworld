@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { sortPortfolioByName } from '../../utils';
 
 const baseUrl = import.meta.env.VITE_API_URL_V1;
 
@@ -43,7 +44,8 @@ export function portfolioLoaded(token) {
 		try {
 			dispatch(portfolioLoading());
 			const portfolio = await getPortfolio(token);
-			dispatch({ type: 'portfolio/portfolioLoaded', payload: portfolio });
+			const portfolioSorted = sortPortfolioByName(portfolio);
+			dispatch({ type: 'portfolio/portfolioLoaded', payload: portfolioSorted });
 		} catch (error) {
 			throw new Error(error.response.data.message);
 		}

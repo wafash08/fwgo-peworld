@@ -73,7 +73,8 @@ export default function Navbar() {
 								alt={user.name ? user.name : ''}
 								to={role === 'worker' ? 'profile' : 'recruiter/profile'}
 							/>
-							<form method='post' onSubmit={handleLogout}>
+							{/* ubah method */}
+							<form method='get' onSubmit={handleLogout}>
 								<button
 									type='submit'
 									className='border border-red-500 bg-red-500 text-white rounded inline-flex justify-center items-center w-20 h-10 text-sm font-bold'

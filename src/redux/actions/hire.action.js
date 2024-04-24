@@ -18,7 +18,6 @@ export function hireSentAdded(data, token) {
 		try {
 			dispatch(hireLoading());
 			const hireSent = await addHire(data, token);
-			console.table(hireSent);
 			dispatch({ type: 'hire/hireSentAdded', payload: hireSent });
 		} catch (error) {
 			throw new Error(error.response.data.message);

@@ -26,6 +26,7 @@ export function experienceLoaded(token) {
 		try {
 			dispatch(experienceLoading());
 			const experience = await getExperience(token);
+			experience.sort((a, b) => b.work_year - a.work_year);
 			dispatch({ type: 'experience/experienceLoaded', payload: experience });
 		} catch (error) {
 			throw new Error(error.response.data.message);

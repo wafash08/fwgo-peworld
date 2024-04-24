@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 
-export default function WorkerList({ children }) {
+function WorkerList({ children }) {
 	const { status } = useSelector(state => state.home);
 	return (
 		<ul
@@ -14,3 +14,5 @@ export default function WorkerList({ children }) {
 		</ul>
 	);
 }
+
+export default WorkerList;

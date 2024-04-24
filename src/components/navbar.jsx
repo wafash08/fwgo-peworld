@@ -12,7 +12,7 @@ import { getRoleFromLocalStorage, getTokenFromLocalStorage } from '../utils';
 import { recruiterLoaded } from '../redux/actions/recruiter.action';
 
 export default function Navbar() {
-	const { profile } = useSelector(state => state.profile);
+	const profile = useSelector(state => state.profile.profile);
 	const { recruiter } = useSelector(state => state.recruiter);
 	const token = getTokenFromLocalStorage();
 	const role = getRoleFromLocalStorage();

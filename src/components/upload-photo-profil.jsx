@@ -46,7 +46,7 @@ export default function UploadPhotoProfil({ label, name }) {
 					name={name}
 					id={name}
 					onChange={onSelecFile}
-					required={photo ? false : true}
+					required
 				/>
 			</div>
 		</div>

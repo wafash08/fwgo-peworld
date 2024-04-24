@@ -25,6 +25,40 @@ export default function HirePage() {
 		}
 	};
 
+	if (status === 'succeed') {
+		return (
+			<div className='flex flex-col w-full items-center gap-8'>
+				<h1 className='text-center text-yankees-blue'>
+					Permintaan rekrut kamu berhasil terkirim
+				</h1>
+				<button
+					type='reset'
+					onClick={() => window.location.reload()}
+					className='block border border-quick-silver rounded px-6 py-3'
+				>
+					refresh
+				</button>
+			</div>
+		);
+	}
+
+	if (status === 'failed') {
+		return (
+			<div className='flex flex-col w-full items-center gap-8'>
+				<h1 className='text-center text-red-500'>
+					Permintaan rekrut kamu gagal terkirim
+				</h1>
+				<button
+					type='reset'
+					onClick={() => window.location.reload()}
+					className='block border border-quick-silver rounded px-6 py-3'
+				>
+					refresh
+				</button>
+			</div>
+		);
+	}
+
 	return (
 		<section>
 			<h1 className='text-4xl font-semibold text-yankees-blue mb-5'>

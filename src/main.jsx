@@ -19,8 +19,6 @@ import { loader as profileLoader } from './pages/profile/profile.loader.js';
 import ProfilePortfolio from './pages/profile/portfolio';
 import ProfileExperience from './pages/profile/experience';
 import EditProfile from './pages/profile/edit';
-import { action as editProfileAction } from './pages/profile/edit/edit.action.js';
-import { loader as editProfileLoader } from './pages/profile/edit/edit.loader.js';
 import { loader as loginLoader } from './pages/login/login.loader.js';
 import RecruiterPage from './pages/recruiter/index.jsx';
 import EditRecruiterPage from './pages/recruiter/edit/index.jsx';
@@ -98,8 +96,6 @@ const router = createBrowserRouter([
 					{
 						path: 'edit',
 						element: <EditProfile />,
-						action: editProfileAction,
-						loader: editProfileLoader,
 						errorElement: <ErrorPage />,
 					},
 				],

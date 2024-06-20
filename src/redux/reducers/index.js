@@ -8,6 +8,7 @@ import { workerReducer } from './worker.reducer';
 import { recruiterReducer } from './recruiter.reducer';
 import { hireReducer } from './hire.reducer';
 import { homeReducer } from './home.reducer';
+import { notificationsReducer } from './notification.reducer';
 
 const rootReducers = combineReducers({
 	auth: authReducer,
@@ -19,6 +20,7 @@ const rootReducers = combineReducers({
 	worker: workerReducer,
 	recruiter: recruiterReducer,
 	hire: hireReducer,
+	notifications: notificationsReducer,
 });
 
 export default rootReducers;

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { LOCAL_STORAGE_KEY } from './config/constants';
 
 export function isEmpty(obj) {
@@ -54,4 +55,39 @@ export function sortPortfolioByName(portfolio) {
 		// names must be equal
 		return 0;
 	});
+}
+
+export function sortByCreatedAtDesc(list) {
+	return list.toSorted((a, b) => {
+		const createdAtA = new Date(a.created_at);
+		const createdAtB = new Date(b.created_at);
+		const timeA = createdAtA.getTime();
+		const timeB = createdAtB.getTime();
+		return timeB - timeA;
+	});
+}
+
+export function formatDate(createdAt) {
+	const now = moment();
+	const date = moment(createdAt);
+
+	const diffMinutes = now.diff(date, 'minutes');
+	const diffHours = now.diff(date, 'hours');
+	const diffDays = now.diff(date, 'days');
+	const diffMonths = now.diff(date, 'months');
+	const diffYears = now.diff(date, 'years');
+
+	if (diffMinutes < 1) {
+		return 'just now';
+	} else if (diffMinutes < 60) {
+		return diffMinutes + ' minutes ago';
+	} else if (diffHours < 24) {
+		return diffHours + ' hours ago';
+	} else if (diffDays < 30) {
+		return diffDays + ' days ago';
+	} else if (diffMonths < 12) {
+		return diffMonths + ' months ago';
+	} else {
+		return diffYears + ' years ago';
+	}
 }

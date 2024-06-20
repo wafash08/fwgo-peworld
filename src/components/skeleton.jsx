@@ -28,3 +28,31 @@ export function WorkerSkeleton() {
 		</div>
 	);
 }
+
+export function NotificationsSkeleton() {
+	return (
+		<ul className='w-full max-w-3xl mx-auto border border-azureish-white rounded-md overflow-hidden animate-pulse'>
+			<li className='border-b border-b-azureish-white last:border-b-0 p-6 w-full flex flex-col gap-4 sm:flex-row justify-between sm:items-center bg-white'>
+				<div className='flex items-center gap-4'>
+					<div className='shrink-0 w-12 aspect-square rounded-full bg-slate-300' />
+					<div className='w-60 max-w-80 h-6 rounded bg-slate-300' />
+				</div>
+				<div className='w-20 h-6 rounded bg-slate-300' />
+			</li>
+			<li className='border-b border-b-azureish-white last:border-b-0 p-6 w-full flex flex-col gap-4 sm:flex-row justify-between sm:items-center bg-white'>
+				<div className='flex items-center gap-4'>
+					<div className='shrink-0 w-12 aspect-square rounded-full bg-slate-300' />
+					<div className='w-60 max-w-80 h-6 rounded bg-slate-300' />
+				</div>
+				<div className='w-20 h-6 rounded bg-slate-300' />
+			</li>
+			<li className='border-b border-b-azureish-white last:border-b-0 p-6 w-full flex flex-col gap-4 sm:flex-row justify-between sm:items-center bg-white'>
+				<div className='flex items-center gap-4'>
+					<div className='shrink-0 w-12 aspect-square rounded-full bg-slate-300' />
+					<div className='w-60 max-w-80 h-6 rounded bg-slate-300' />
+				</div>
+				<div className='w-20 h-6 rounded bg-slate-300' />
+			</li>
+		</ul>
+	);
+}

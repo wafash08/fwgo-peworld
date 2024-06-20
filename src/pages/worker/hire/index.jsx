@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getTokenFromLocalStorage } from '../../../utils';
 import Input from '../../../components/input';
 import { hireFailed, hireSentAdded } from '../../../redux/actions/hire.action';
+import toast from 'react-hot-toast';
 
 export default function HirePage() {
 	const token = getTokenFromLocalStorage();
@@ -20,27 +21,23 @@ export default function HirePage() {
 
 		try {
 			dispatch(hireSentAdded({ ...data, worker_id: workerId }, token));
+			toast('Permintaan rekrut kamu berhasil terkirim', {
+				position: 'top-right',
+				icon: '🤗',
+				style: { backgroundColor: '#4ade80', color: '#fff' },
+			});
+			setTimeout(() => {
+				navigate(-1);
+			}, [500]);
 		} catch (error) {
+			toast('Permintaan rekrut kamu berhasil terkirim', {
+				position: 'top-right',
+				icon: '🤗',
+				style: { backgroundColor: '#ef4444', color: '#fff' },
+			});
 			dispatch(hireFailed(error.message));
 		}
 	};
-
-	if (status === 'succeed') {
-		return (
-			<div className='flex flex-col w-full items-center gap-8'>
-				<h1 className='text-center text-yankees-blue'>
-					Permintaan rekrut kamu berhasil terkirim
-				</h1>
-				<button
-					type='reset'
-					onClick={() => window.location.reload()}
-					className='block border border-quick-silver rounded px-6 py-3'
-				>
-					refresh
-				</button>
-			</div>
-		);
-	}
 
 	if (status === 'failed') {
 		return (

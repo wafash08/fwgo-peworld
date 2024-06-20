@@ -28,6 +28,8 @@ import { action as rootAction } from './pages/root.action.js';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
 import { loader as signupLoader } from './pages/signup/signup.loader.js';
+import NotificationsPage from './pages/notifications/index.jsx';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
 	{
@@ -115,6 +117,11 @@ const router = createBrowserRouter([
 					},
 				],
 			},
+			{
+				path: 'notifications',
+				element: <NotificationsPage />,
+				errorElement: <ErrorPage />,
+			},
 		],
 	},
 	{
@@ -135,6 +142,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<RouterProvider router={router} />
+			<Toaster containerStyle={{ top: 20, right: 20 }} />
 		</Provider>
 	</React.StrictMode>
 );

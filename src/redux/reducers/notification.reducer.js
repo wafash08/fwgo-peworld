@@ -1,6 +1,7 @@
 const initialState = {
 	notifications: [],
-	total: 0,
+	sent: 0,
+	received: 0,
 	status: 'idle',
 	error: null,
 };
@@ -14,11 +15,18 @@ export function notificationsReducer(state = initialState, action) {
 				notifications: action.payload,
 			};
 		}
-		case 'notifications/notificationsAdded': {
+		case 'notifications/notificationsSentAdded': {
 			return {
 				...state,
 				status: 'new',
-				total: state.total + action.payload,
+				total: state.sent + action.payload,
+			};
+		}
+		case 'notifications/notificationsReceivedAdded': {
+			return {
+				...state,
+				status: 'new',
+				total: state.received + action.payload,
 			};
 		}
 		case 'notifications/notificationsRead': {

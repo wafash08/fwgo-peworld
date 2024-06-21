@@ -1,5 +1,5 @@
 import { checkRole } from '../../services/role.services';
-import { getSentHire } from '../../services/hire.services';
+import { getReceivedHire, getSentHire } from '../../services/hire.services';
 import { sortByCreatedAtDesc } from '../../utils';
 
 function notificationsLoading() {
@@ -21,7 +21,12 @@ export function notificationsLoaded(token) {
 			dispatch(notificationsLoading());
 			const role = await checkRole(token);
 			if (role === 'worker') {
-				console.log('worker');
+				const notifications = await getReceivedHire(token);
+				const notificationsSorted = sortByCreatedAtDesc(notifications);
+				dispatch({
+					type: 'notifications/notificationsLoaded',
+					payload: notificationsSorted,
+				});
 			} else if (role === 'recruiter') {
 				const notifications = await getSentHire(token);
 				const notificationsSorted = sortByCreatedAtDesc(notifications);
@@ -36,9 +41,16 @@ export function notificationsLoaded(token) {
 	};
 }
 
-export function notificationsAdded(amount = 1) {
+export function notificationsSentAdded(amount = 1) {
 	return {
-		type: 'notifications/notificationsAdded',
+		type: 'notifications/notificationsSentAdded',
+		payload: amount,
+	};
+}
+
+export function notificationsReceivedAdded(amount = 1) {
+	return {
+		type: 'notifications/notificationsReceivedAdded',
 		payload: amount,
 	};
 }

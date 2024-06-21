@@ -75,6 +75,7 @@ export default function Navbar() {
 									label='Lihat pesan masuk'
 									icon={<MailIcon />}
 									to='/messages'
+									disabled
 								/>
 							</li>
 							<NavItemLinkAvatar
@@ -108,10 +109,21 @@ export default function Navbar() {
 	);
 }
 
-function NavItemWithIcon({ label, icon, className, to, ...props }) {
+function NavItemWithIcon({
+	label,
+	icon,
+	className,
+	to,
+	disabled = false,
+	...props
+}) {
 	return (
 		<Link
-			className={clsx('text-roman-silver transition-colors', className)}
+			className={clsx(
+				'text-roman-silver transition-colors',
+				className,
+				disabled && 'pointer-events-none'
+			)}
 			to={to}
 			{...props}
 		>

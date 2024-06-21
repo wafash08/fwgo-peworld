@@ -69,25 +69,28 @@ export function sortByCreatedAtDesc(list) {
 
 export function formatDate(createdAt) {
 	const now = moment();
-	const date = moment(createdAt);
+	const ago = moment(createdAt);
 
-	const diffMinutes = now.diff(date, 'minutes');
-	const diffHours = now.diff(date, 'hours');
-	const diffDays = now.diff(date, 'days');
-	const diffMonths = now.diff(date, 'months');
-	const diffYears = now.diff(date, 'years');
+	const diffSeconds = now.diff(ago, 'seconds');
+	const diffMinutes = now.diff(ago, 'minutes');
+	const diffHours = now.diff(ago, 'hours');
+	const diffDays = now.diff(ago, 'days');
+	const diffMonths = now.diff(ago, 'months');
+	const diffYears = now.diff(ago, 'years');
 
-	if (diffMinutes < 1) {
+	if (Math.abs(diffSeconds) < 60) {
 		return 'just now';
-	} else if (diffMinutes < 60) {
-		return diffMinutes + ' minutes ago';
-	} else if (diffHours < 24) {
-		return diffHours + ' hours ago';
-	} else if (diffDays < 30) {
-		return diffDays + ' days ago';
-	} else if (diffMonths < 12) {
-		return diffMonths + ' months ago';
+	} else if (Math.abs(diffMinutes) < 60) {
+		return Math.abs(diffMinutes) + ' minutes ago';
+	} else if (Math.abs(diffHours) < 24) {
+		return Math.abs(diffHours) + ' hours ago';
+	} else if (Math.abs(diffDays) < 30) {
+		return Math.abs(diffDays) + ' days ago';
+	} else if (Math.abs(diffMonths) < 12) {
+		return Math.abs(diffMonths) + ' months ago';
 	} else {
-		return diffYears + ' years ago';
+		return Math.abs(diffYears) + ' years ago';
 	}
+	// const date = moment(createdAt);
+	// return moment(date).fromNow();
 }

@@ -15,7 +15,7 @@
   9. [Job Offers by Recruiters](#job-offers)
   10. [View Job Offers](#view-job-offers)
 - [Pages](#pages)
-- [Resources](#resources)
+- [Additional Resources](#resources)
 
 ## About
 

@@ -19,8 +19,6 @@ import { loader as profileLoader } from './pages/profile/profile.loader.js';
 import ProfilePortfolio from './pages/profile/portfolio';
 import ProfileExperience from './pages/profile/experience';
 import EditProfile from './pages/profile/edit';
-import { action as editProfileAction } from './pages/profile/edit/edit.action.js';
-import { loader as editProfileLoader } from './pages/profile/edit/edit.loader.js';
 import { loader as loginLoader } from './pages/login/login.loader.js';
 import RecruiterPage from './pages/recruiter/index.jsx';
 import EditRecruiterPage from './pages/recruiter/edit/index.jsx';
@@ -30,6 +28,8 @@ import { action as rootAction } from './pages/root.action.js';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
 import { loader as signupLoader } from './pages/signup/signup.loader.js';
+import NotificationsPage from './pages/notifications/index.jsx';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
 	{
@@ -98,8 +98,6 @@ const router = createBrowserRouter([
 					{
 						path: 'edit',
 						element: <EditProfile />,
-						action: editProfileAction,
-						loader: editProfileLoader,
 						errorElement: <ErrorPage />,
 					},
 				],
@@ -118,6 +116,11 @@ const router = createBrowserRouter([
 						errorElement: <ErrorPage />,
 					},
 				],
+			},
+			{
+				path: 'notifications',
+				element: <NotificationsPage />,
+				errorElement: <ErrorPage />,
 			},
 		],
 	},
@@ -139,6 +142,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<RouterProvider router={router} />
+			<Toaster containerStyle={{ top: 20, right: 20 }} />
 		</Provider>
 	</React.StrictMode>
 );

@@ -11,8 +11,8 @@ export default function SkillTalentSection() {
 						Skill Talent
 					</h2>
 					<p className='text-lg text-davys-gray mb-8'>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-						ipsum et dui rhoncus auctor.
+						Discover top-tier talent with expertise in various programming
+						languages, frameworks, and technologies.
 					</p>
 					<ul className='grid justify-center md:grid-cols-2 gap-x-4 gap-y-8'>
 						<li className='flex items-center gap-6'>
@@ -45,7 +45,7 @@ export default function SkillTalentSection() {
 						</li>
 						<li className='flex items-center gap-6'>
 							<YellowTickIcon />
-							<span>10+ Bahasa lainnya</span>
+							<span>10+ Other Languages</span>
 						</li>
 					</ul>
 				</div>

@@ -19,50 +19,50 @@ export default function SignupRecruiterForm({ role, validationError }) {
 				<input type='hidden' id='role' name='role' value={role} readOnly />
 
 				<Input
-					label='Nama'
+					label='Name'
 					name='name'
-					placeholder='Masukan nama panjang'
+					placeholder='Enter your name'
 					required
 				/>
 				<Input
 					label='Email'
 					name='email'
 					type='email'
-					placeholder='Masukan alamat email'
+					placeholder='Enter your email'
 					required
 				/>
 				<Input
-					label='Perusahaan'
+					label='Company'
 					name='company'
-					placeholder='Masukan nama perusahaan'
+					placeholder='Enter your company name'
 					required
 				/>
 				<Input
-					label='Jabatan'
+					label='Position'
 					name='position'
-					placeholder='Posisi di perusahaan anda'
+					placeholder='What is your position?'
 					required
 				/>
 				<Input
-					label='No handphone'
+					label='phone'
 					name='phone'
 					type='tel'
-					placeholder='Masukan no handphone'
+					placeholder='Enter your phone'
 					required
 				/>
 				<Input
-					label='Kata sandi'
+					label='Password'
 					name='password'
 					type='password'
-					placeholder='Masukan kata sandi'
+					placeholder='Enter your password'
 					required
 					minLength={4}
 				/>
 				<Input
-					label='Konfirmasi kata sandi'
+					label='Confirm password'
 					name='confirmPassword'
 					type='password'
-					placeholder='Masukan konfirmasi kata sandi'
+					placeholder='Confirm password'
 					required
 					minLength={4}
 				/>
@@ -90,7 +90,7 @@ export default function SignupRecruiterForm({ role, validationError }) {
 						<span className='sr-only'>Mendaftar</span>
 					</>
 				) : (
-					'Daftar'
+					'Sign up'
 				)}
 			</Button>
 		</>

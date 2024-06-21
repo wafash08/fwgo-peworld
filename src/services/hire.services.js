@@ -20,3 +20,11 @@ export async function getSentHire(token) {
 
 	return result.data.data;
 }
+
+export async function getReceivedHire(token) {
+	const result = await axios.get(hireWithWorkersUrl, {
+		headers: { Authorization: `Bearer ${token}` },
+	});
+
+	return result.data.data;
+}

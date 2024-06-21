@@ -205,15 +205,15 @@ export default function HomePage() {
 
 const sortList = [
 	{
-		label: 'nama',
+		label: 'name',
 		sort: 'name',
 	},
 	{
-		label: 'waktu dibuat',
+		label: 'created at',
 		sort: 'created_at',
 	},
 	{
-		label: 'lokasi',
+		label: 'domicile',
 		sort: 'domicile',
 	},
 ];
@@ -276,7 +276,7 @@ function SortItem({ label, sort, onSort, sortCategory }) {
 				className='flex justify-between gap-2 px-6 py-5 text-sm text-yankees-blue'
 				onClick={() => onSort(sort)}
 			>
-				<span>Sortir berdasarkan {label}</span>
+				<span>Sort by {label}</span>
 				{sort === sortCategory && <span>✔️</span>}
 			</button>
 		</li>

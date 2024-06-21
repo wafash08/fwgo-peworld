@@ -58,22 +58,24 @@ export default function SignupPage() {
 						/>
 					</Link>
 					<h1 className='md:mx-8 lg:mx-16 md:mt-20 lg:mt-44 max-w-[456px] text-white md:text-4xl md:leading-relaxed lg:text-[44px] font-bold'>
-						Temukan developer berbakat & terbaik di berbagai bidang keahlian
+						Discover talented and top-notch developers in various fields of
+						expertise.
 					</h1>
 				</section>
 				<section className='flex-1'>
 					<h2 className='text-[32px] text-yankees-blue font-semibold mt-8 mb-4'>
-						Halo, Pewpeople
+						Hi, Pewpeople
 					</h2>
 					<p className='text-lg text-davys-gray mb-4'>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-						ipsum et dui rhoncus auctor.
+						Create your Peworld account to connect with leading tech
+						professionals and explore exciting career opportunities. Join us
+						today!
 					</p>
 					<div className='mb-6'>
-						<p>Daftar sebagai:</p>
+						<p>Sign up as:</p>
 						<div className='flex justify-start gap-8'>
 							<div className='flex items-center gap-2'>
-								<label htmlFor='worker'>Pekerja</label>
+								<label htmlFor='worker'>Worker</label>
 								<input
 									type='radio'
 									name='role'
@@ -84,7 +86,7 @@ export default function SignupPage() {
 								/>
 							</div>
 							<div className='flex items-center gap-2'>
-								<label htmlFor='recruiter'>Perekrut</label>
+								<label htmlFor='recruiter'>Recruiter</label>
 								<input
 									type='radio'
 									name='role'
@@ -107,9 +109,9 @@ export default function SignupPage() {
 						)}
 					</form>
 					<p className='mt-7 text-yankees-blue text-center'>
-						Anda sudah punya akun?{' '}
+						Do you already have an account?{' '}
 						<Link to='/login' className='text-primary-yellow'>
-							Masuk di sini
+							Sign in here.
 						</Link>
 					</p>
 				</section>

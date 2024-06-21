@@ -10,10 +10,12 @@ import { useEffect } from 'react';
 import { profileFailed, profileLoaded } from '../redux/actions/profile.action';
 import { getRoleFromLocalStorage, getTokenFromLocalStorage } from '../utils';
 import { recruiterLoaded } from '../redux/actions/recruiter.action';
+import { useNotifications } from '../hooks';
 
 export default function Navbar() {
-	const { profile } = useSelector(state => state.profile);
+	const profile = useSelector(state => state.profile.profile);
 	const { recruiter } = useSelector(state => state.recruiter);
+	const { status: notificationsStatus, total } = useNotifications();
 	const token = getTokenFromLocalStorage();
 	const role = getRoleFromLocalStorage();
 	const dispatch = useDispatch();
@@ -25,7 +27,6 @@ export default function Navbar() {
 		try {
 			if (role === 'worker') {
 				dispatch(profileLoaded(token));
-				dispatch();
 			} else if (role === 'recruiter') {
 				dispatch(recruiterLoaded(token));
 			}
@@ -35,9 +36,9 @@ export default function Navbar() {
 	}, []);
 
 	const handleLogout = async e => {
-		e.preventDefault();
 		try {
-			await dispatch(authLoggedOut());
+			e.preventDefault();
+			dispatch(authLoggedOut());
 			navigate('/');
 		} catch (error) {
 			authFailed(error.message);
@@ -54,18 +55,27 @@ export default function Navbar() {
 				<ul className='flex items-center gap-4 sm:gap-6'>
 					{token ? (
 						<>
-							<li className='relative'>
+							<li className='relative group hidden sm:block'>
 								<NavItemWithIcon
 									label='Lihat pemberitahuan'
 									icon={<BellIcon />}
-									className='hidden sm:block'
+									to='/notifications'
 								/>
+								<span
+									className={clsx(
+										'absolute -top-1 -right-1 inline-flex items-center justify-center min-w-4 aspect-square rounded-full text-[10px] bg-red-500 text-white transition-transform duration-300',
+										notificationsStatus === 'new' ? 'scale-100' : 'scale-0'
+									)}
+								>
+									{total}
+								</span>
 							</li>
-							<li>
+							<li className='relative group hidden sm:block'>
 								<NavItemWithIcon
 									label='Lihat pesan masuk'
 									icon={<MailIcon />}
-									className='hidden sm:block'
+									to='/messages'
+									disabled
 								/>
 							</li>
 							<NavItemLinkAvatar
@@ -73,7 +83,8 @@ export default function Navbar() {
 								alt={user.name ? user.name : ''}
 								to={role === 'worker' ? 'profile' : 'recruiter/profile'}
 							/>
-							<form method='post' onSubmit={handleLogout}>
+							{/* ubah method */}
+							<form method='get' onSubmit={handleLogout}>
 								<button
 									type='submit'
 									className='border border-red-500 bg-red-500 text-white rounded inline-flex justify-center items-center w-20 h-10 text-sm font-bold'
@@ -98,16 +109,27 @@ export default function Navbar() {
 	);
 }
 
-function NavItemWithIcon({ label, icon, className, ...props }) {
+function NavItemWithIcon({
+	label,
+	icon,
+	className,
+	to,
+	disabled = false,
+	...props
+}) {
 	return (
-		<button
-			type='button'
-			className={clsx('text-roman-silver', className)}
+		<Link
+			className={clsx(
+				'text-roman-silver transition-colors',
+				className,
+				disabled && 'pointer-events-none'
+			)}
+			to={to}
 			{...props}
 		>
 			<span className='sr-only'>{label}</span>
 			{icon}
-		</button>
+		</Link>
 	);
 }
 

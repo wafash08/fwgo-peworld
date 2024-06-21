@@ -1,5 +1,4 @@
-import { getRecruiterProfile } from '../../pages/root.service';
-import { updateRecruiterProfile } from '../../services/recruiter.services';
+import { getRecruiterProfile, updateRecruiterProfile } from '../../services';
 
 export function recruiterLoaded(token) {
 	return async dispatch => {

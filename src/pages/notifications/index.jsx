@@ -19,8 +19,6 @@ export default function NotificationsPage() {
 
 	let notificationList = null;
 
-	console.log('notification status > ', notificationsStatus);
-
 	if (notificationsStatus === 'loading') {
 		notificationList = <NotificationsSkeleton />;
 	} else if (notificationsStatus === 'succeed') {
@@ -54,7 +52,7 @@ function NotificationList({ notifications, role }) {
 							key={id}
 							createdAt={created_at}
 							messagePurpose={message_purpose}
-							photo={role === 'recruiter' ? recruiter_photo : worker_photo}
+							photo={role === 'recruiter' ? worker_photo : recruiter_photo}
 							recruiter={recruiter_name}
 							worker={worker_name}
 							role={role}

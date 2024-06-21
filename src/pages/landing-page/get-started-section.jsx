@@ -10,7 +10,7 @@ export default function GetStartedSection() {
 						Find Your Tech Talent Now!
 					</h2>
 					<CustomLink to='home' variant='white'>
-						Mulai dari sekarang
+						Let's start now!
 					</CustomLink>
 				</div>
 			</Container>

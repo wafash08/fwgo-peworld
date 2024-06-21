@@ -1,58 +1,111 @@
 # Peworld - Hire Job App
 
-## Deskripsi
+## Table of Contents
 
-Peworld merupakan aplikasi penghubung antara pencari kerja dengan perusahaan
+- [About](#about)
+- [Features](#features)
+- [Pages](#pages)
+- [Resources](#resources)
 
-repo ini merupakan repo latihan slicing design website responsif Tailwindcss dan latihan integrasi dengan backend
+## About
 
-hasil dari latihan ini bisa dilihat pada [link ini](https://wafash-peworld-react.netlify.app/)
+Peworld is an innovative job search application designed to connect leading companies in the technology industry with job seekers.
 
-## Fitur
+Companies can find the best talent in the technology field with Peworld!
 
-Fitur-fitu yang ada di website ini antara lain
+This website is built with following technologies:
 
-### semua halaman sudah menerapkan desain yang responsif
+- ReactJS
+- Redux
+- Tailwind CSS
+- Netlify
 
-### halaman landing page
+## Features
 
-- mampu membuat carousel yang responsif
+1. Responsive Design
 
-### halaman register
+Peworld is fully responsive, ensuring an optimal user experience across all devices, including desktops, tablets, and smartphones.
 
-- mampu register sebagai worker
-- mampu register sebagai recruiter
+2. Sign Up as Worker or Recruiter
 
-### halaman login
+New users can sign up either as a worker or a recruiter, allowing them to access the relevant features and functionalities.
 
-- mampu melakukan login dengan akun yang sudah dibuat sebelumnya
-- mampu logout
-- mampu menampilkan error ketika email atau kata sandi tidak sesuai
+3. Login
 
-### protected route
+Securely log in to your account to access personalized features and manage your profile and interactions.
 
-### menampilkan fitur sesuai role
+4. Protected Route
 
-### halaman home
+Our website ensures that only authenticated users can access certain routes, providing a secure environment for sensitive information.
 
-- menampilkan list workers (read)
-- pagination (read)
-- searching (read)
-- sorting (read)
+5. View Worker Profiles
 
-### halaman worker
+Employers can view detailed profiles of workers, including their skills, experience, and portfolio, making it easier to find the right candidate.
 
-- menampilkan worker profile (read)
-- menampilkan worker portfolio (read)
-- menampilkan worker experience (read)
+6. Edit and Update Profiles
 
-### halaman profil
+Both workers and recruiters can edit and update their profiles, ensuring their information is always current and accurate.
 
-- menampilkan profil, portfolio, dan experience (read)
-- mampu mengubah foto profil dan data diri (update)
-- mampu menambahkan skill, pengalaman, dan portfolio (post)
+7. Manage Skills, Portfolio, and Work Experience
 
-### halaman recruiter
+Workers can display, add, update, and delete their skills, portfolio, and work experience, allowing them to showcase their professional growth and capabilities.
 
-- mampu menampikan profil recruiter (read)
-- mampu mengubah profil recruiter (update)
+8. Search and Sort Functionality
+
+Easily find and organize information with advanced search and sort features, providing quick and relevant results.
+
+9.  Job Offers by Recruiters
+
+Recruiters can send job offers directly to workers, facilitating direct communication and hiring processes.
+
+10. View Job Offers
+
+Both recruiters and workers can view the job offers they have sent and received, keeping track of their interactions and opportunities.
+
+## Pages
+
+### Register Page
+
+- Recruiter
+
+- Worker
+
+### Login Page
+
+### Landing Page
+
+### Home Page
+
+### Worker Profile Page
+
+### Worker Edit Profile Page
+
+### Notifications Page
+
+### Recuiter Profile Page
+
+### Recruiter Profile Edit Page
+
+### Hire Page
+
+## Resources
+
+This section provides essential links and brief descriptions to backend development, API testing, and design guidelines.
+
+- ### Back End Repository
+
+Access comprehensive backend repository built by [Muhammad Risano](https://github.com/muhammadrisano) to understand the structure and functionality of our server-side logic. This documentation includes detailed information on endpoints, request and response formats, authentication methods, and more.
+
+Visit [Back End Repository](https://github.com/wafash08/be-peworld)
+
+- ### Postman Collection
+
+Utilize the Postman collection for efficient API testing and interaction. This collection includes pre-configured requests, environment variables, and detailed examples to help you test and integrate with our API seamlessly.
+
+Visit [Postman Collection](https://documenter.getpostman.com/view/7675329/2s9YysDhDY)
+
+- ### Figma Design Website
+
+Explore the Figma design files to gain insights into the visual and interactive aspects of our website. These files offer detailed views of the design elements, user interface components, and overall layout, ensuring consistency and clarity in the development process.
+
+Visit [Figma Design](https://www.figma.com/design/ZhfxykSA0qzko0PMs9aPOp/HireJob?node-id=0-1&t=TIZ8mPdepplWCBp1-0)

@@ -11,21 +11,23 @@ const TESTIMONY_LIST = [
 		name: 'Harry Styles',
 		position: 'Web Developer',
 		testimony:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+			"Peworld made it incredibly easy to find the right tech talent for our team. The platform's efficiency saved us a lot of time and effort.",
 	},
 	{
 		id: 2,
 		avatar: niallHoranAvatar,
 		name: 'Niall Horan',
 		position: 'Web Developer',
-		testimony: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+		testimony:
+			'Thanks to Peworld, I found my dream job in tech. The job matching process was seamless, and the opportunities were top-notch.',
 	},
 	{
 		id: 3,
 		avatar: louisTomlinsonAvatar,
 		name: 'Louis Tomlinson',
 		position: 'Web Developer',
-		testimony: 'Lorem ipsum dolor sit amet, consectetur.',
+		testimony:
+			"We've hired several excellent developers through Peworld. The quality of candidates is unmatched, and the support team is fantastic.",
 	},
 	{
 		id: 4,
@@ -33,21 +35,23 @@ const TESTIMONY_LIST = [
 		name: 'Harry Styles',
 		position: 'Web Developer',
 		testimony:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.',
+			'Peworld provided me with a range of exciting job opportunities in the tech industry. The platform is user-friendly and highly effective.',
 	},
 	{
 		id: 5,
 		avatar: niallHoranAvatar,
 		name: 'Niall Horan',
 		position: 'Web Developer',
-		testimony: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+		testimony:
+			'Using Peworld has transformed our hiring process. The ability to connect with highly skilled tech professionals has been a game-changer for us.',
 	},
 	{
 		id: 6,
 		avatar: louisTomlinsonAvatar,
 		name: 'Louis Tomlinson',
 		position: 'Web Developer',
-		testimony: 'Lorem ipsum dolor sit amet, consectetur.',
+		testimony:
+			"The talent we found on PEWorld brought incredible expertise to our projects. The platform's advanced filters made finding the perfect candidates a breeze.",
 	},
 ];
 

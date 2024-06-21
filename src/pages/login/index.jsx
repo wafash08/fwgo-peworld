@@ -46,16 +46,17 @@ export default function LoginPage() {
 						/>
 					</Link>
 					<h1 className='md:mx-8 md:mt-20 md:text-4xl md:leading-relaxed lg:mx-16 lg:mt-44 max-w-[456px] text-white lg:text-[44px] font-bold'>
-						Temukan developer berbakat & terbaik di berbagai bidang keahlian
+						Discover talented and top-notch developers in various fields of
+						expertise.
 					</h1>
 				</section>
 				<section className='flex-1'>
 					<h2 className='text-[32px] text-yankees-blue font-semibold mt-24 mb-4'>
-						Halo, Pewpeople
+						Hi, Pewpeople
 					</h2>
-					<p className='text-lg text-davys-gray mb-12'>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-						ipsum et dui rhoncus auctor.
+					<p className='text-lg text-davys-gray mb-12 max-w-lg'>
+						Unlock access to a vibrant community of tech professionals and
+						innovative employers. Your next career move awaits!
 					</p>
 					<form method='post' onSubmit={handleLogin}>
 						<div className='grid gap-8 mb-12'>
@@ -64,14 +65,14 @@ export default function LoginPage() {
 								label='Email'
 								name='email'
 								type='email'
-								placeholder='Masukan alamat email'
+								placeholder='Enter your email'
 								required
 							/>
 							<Input
-								label='Kata sandi'
+								label='Password'
 								name='password'
 								type='password'
-								placeholder='Masukan kata sandi'
+								placeholder='Enter your password'
 								required
 								minLength={4}
 							/>
@@ -80,7 +81,7 @@ export default function LoginPage() {
 							) : null}
 						</div>
 						<p className='text-yankees-blue text-right mb-6'>
-							<Link to='/signup'>Lupa kata sandi?</Link>
+							<Link to='/signup'>Forgot password?</Link>
 						</p>
 						<Button type='submit' fullWidth>
 							{status === 'loading' ? (
@@ -99,14 +100,14 @@ export default function LoginPage() {
 									<span className='sr-only'>Sedang masuk</span>
 								</>
 							) : (
-								'Masuk'
+								'Sign In'
 							)}
 						</Button>
 					</form>
 					<p className='mt-7 text-yankees-blue text-center'>
-						Anda belum punya akun?{' '}
+						Don't have an account yet?{' '}
 						<Link to='/signup' className='text-primary-yellow'>
-							Daftar di sini
+							Sign up here.
 						</Link>
 					</p>
 				</section>

@@ -8,13 +8,13 @@ export default function HeroSection() {
 			<Container className='flex items-center gap-14'>
 				<div className='flex-1 text-center lg:text-left'>
 					<h1 className='text-[44px] text-yankees-blue font-semibold lg:max-w-lg mb-5'>
-						Talenta terbaik negri untuk perubahan revolusi 4.0
+						Connect with Top Tech Talent and Innovative Employers
 					</h1>
 					<p className='text-lg text-davys-gray lg:max-w-lg mb-14'>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-						ipsum et dui rhoncus auctor.
+						Platform bridging tech recruiters & job seekers. Simplify hiring &
+						job searching in tech.
 					</p>
-					<CustomLink to='home'>Mulai dari sekarang</CustomLink>
+					<CustomLink to='home'>Let's Start</CustomLink>
 				</div>
 				<div className='hidden lg:block md:flex-1'>
 					<div className='relative w-[500px]'>

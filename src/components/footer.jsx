@@ -16,8 +16,8 @@ export default function Footer() {
 				</Link>
 
 				<p className='mb-16 w-full max-w-96'>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-					ipsum et dui rhoncus auctor.
+					Platform bridging tech recruiters & job seekers. Simplify hiring & job
+					searching in tech.
 				</p>
 
 				<div className='bg-white w-full h-[1px] mb-[30px]' />
@@ -25,7 +25,7 @@ export default function Footer() {
 				<div className='flex flex-col-reverse gap-4 md:flex-row md:justify-between'>
 					<p>{new Date().getFullYear()} Peworld. All right reserved</p>
 					<div className='flex items-center gap-10 lg:gap-20'>
-						<p>Telepon</p>
+						<p>Phone</p>
 						<p>Email</p>
 					</div>
 				</div>

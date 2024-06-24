@@ -32,7 +32,7 @@
   9. [Your Profile Page as Recruiter](#your-profile-recruiter-page)
   10. [Your Profile Edit Page as Recruiter](#edit-profile-recruiter-page)
   11. [Hire Page](#hire-page)
-- [Resources](#resources)
+- [Additional Resources](#resources)
 - [Related Projects](#related-projects)
 
 ## About
@@ -48,9 +48,7 @@ This website is built with following technologies:
 - Tailwind CSS
 - Netlify
 
-Explore the platform and experience its full range of features.
-
-Visit [Peworld](https://wafash-peworld-react.netlify.app/)
+Explore the platform by visiting [Peworld](https://wafash-peworld-react.netlify.app/) and experience its full range of features.
 
 ## Features
 

@@ -1,5 +1,11 @@
 # Peworld - Hire Job App
 
+![Peworld Logo](./src/assets/peworld-logo-purple.webp)
+
+<div align="center">
+  <a href="https://wafash-peworld-react.netlify.app/">View Demo</a>
+</div>
+
 ## Table of Contents
 
 - [About](#about)
@@ -15,7 +21,19 @@
   9. [Job Offers by Recruiters](#job-offers)
   10. [View Job Offers](#view-job-offers)
 - [Pages](#pages)
+  1. [Register Page](#register-page)
+  2. [Login Page](#login-page)
+  3. [Landing Page](#landing-page)
+  4. [Home Page](#home-page)
+  5. [Detail Worker Page](#detail-worker-page)
+  6. [Your Profile Page as Worker](#your-profile-worker-page)
+  7. [Edit Profile Worker Page](#edit-profile-worker-page)
+  8. [Notifications Page](#notifications-page)
+  9. [Your Profile Page as Recruiter](#your-profile-recruiter-page)
+  10. [Your Profile Edit Page as Recruiter](#edit-profile-recruiter-page)
+  11. [Hire Page](#hire-page)
 - [Resources](#resources)
+- [Related Projects](#related-projects)
 
 ## About
 
@@ -78,7 +96,7 @@ Both recruiters and workers can view the job offers they have sent and received,
 
 ## Pages
 
-### Register Page
+1. <a id="register-page">Register Page</a>
 
 - Worker
 
@@ -88,29 +106,75 @@ Both recruiters and workers can view the job offers they have sent and received,
 
 ![Register for recruiter page](./screenshots/signup-recruiter.png)
 
-### Login Page
+2. <a id="login-page">Login Page</a>
+
+- Worker
 
 ![Register for recruiter page](./screenshots/login-page.png)
 
-### Landing Page
+- Recruiter
+
+![Register for recruiter page](./screenshots/login-page.png)
+
+3. <a id="landing-page">Landing Page</a>
 
 ![Register for recruiter page](./screenshots/landing-page-login.png)
 
-### Home Page
+4. <a id="home-page">Home Page</a>
 
-### Worker Profile Page
+In home page, there are several features user can try. User can do search, sort, and filter.
 
-![Worker profile page](./screenshots/profile-worker.png)
+- Search worker
 
-### Worker Edit Profile Page
+![Search Worker](./screenshots/home-search.png)
 
-### Notifications Page
+- Sort and filter worker
 
-### Recuiter Profile Page
+![sort and filter Worker](./screenshots/home-sort-and-filter.png)
 
-### Recruiter Profile Edit Page
+5. <a id="detail-worker-page">Detail Worker Page</a>
 
-### Hire Page
+There are two sections in this page, first portfolio section that allows other users to see the project the worker has built. and the second is experiences section that allows other users to see worker's experience
+
+- Worker's portfolios
+
+![Register for recruiter page](./screenshots/worker-portfolio.png)
+
+- Worker's experiences
+
+![Register for recruiter page](./screenshots/worker-experience.png)
+
+6. <a id="your-profile-worker-page">Your Profile Page as Worker</a>
+
+In this page, you can see your profile information including portfolios and experiences
+
+- Your portfolios
+
+![Your portfolio page](./screenshots/your-portfolios.png)
+
+- Your experiences
+
+![Your experiences page](./screenshots/your-experiences.png)
+
+7. <a id="edit-profile-worker-page">Edit Profile Page as Worker</a>
+
+![Edit your profile page](./screenshots/your-edit-profile.png)
+
+8. <a id="notifications-page">Notifications Page</a>
+
+![Notifications page](./screenshots/notifications-page.png)
+
+9. <a id="your-profile-recruiter-page">Your Profile Page as Recruiter</a>
+
+![Your profile page as recruiter](./screenshots/recruiter-profile.png)
+
+10. <a id="edit-profile-recruiter-page">Your Profile Edit Page as Recruiter</a>
+
+![Edit your profile page as recruiter](./screenshots/recruiter-edit-profile.png)
+
+11. <a id="hire-page">Hire Page</a>
+
+![Hire page](./screenshots/hire-page.png)
 
 ## <a id="resources">Additional Resources</a>
 
@@ -122,14 +186,8 @@ Access comprehensive backend repository built by [Muhammad Risano](https://githu
 
 Visit [Back End Repository](https://github.com/wafash08/be-peworld)
 
-- ### Postman Collection
+## <a id="related-projects">Related Projects</a>
 
-Utilize the Postman collection for efficient API testing and interaction. This collection includes pre-configured requests, environment variables, and detailed examples to help you test and integrate with our API seamlessly.
-
-Visit [Postman Collection](https://documenter.getpostman.com/view/7675329/2s9YysDhDY)
-
-- ### Figma Design Website
-
-Explore the Figma design files to gain insights into the visual and interactive aspects of our website. These files offer detailed views of the design elements, user interface components, and overall layout, ensuring consistency and clarity in the development process.
-
-Visit [Figma Design](https://www.figma.com/design/ZhfxykSA0qzko0PMs9aPOp/HireJob?node-id=0-1&t=TIZ8mPdepplWCBp1-0)
+- [Mama Recipe](https://github.com/wafash08/recipe-app) 🧑‍🍳
+- [Blanja](https://github.com/echestratus/BlanjaWebsiteProject) 🛒
+- [Peworld BE](https://github.com/wafash08/be-peworld)

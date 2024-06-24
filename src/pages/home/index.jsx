@@ -226,7 +226,7 @@ function SortList({
 	sortByCategory,
 }) {
 	return (
-		<ul className='sort-list z-50 bg-white rounded absolute top-[calc(100%+36px)] right-10 shadow-[0px_0px_20px_0px] shadow-[#afafaf]/25'>
+		<ul className='sort-list z-50 bg-white rounded absolute top-[calc(100%+32px)] left-[calc(76%)] shadow-[0px_0px_20px_0px] shadow-[#afafaf]/25'>
 			<li className='flex justify-evenly gap-2 border-b border-b-[#F2F3F4] py-2 px-6'>
 				<button
 					type='button'

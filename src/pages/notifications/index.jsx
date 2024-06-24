@@ -95,7 +95,7 @@ function NotificationItem({
 			<div className='flex items-center'>
 				<div className='relative inline-block shrink-0'>
 					<img
-						className='w-12 h-12 rounded-full'
+						className='w-12 h-12 rounded-full object-cover'
 						src={photo ? photo : emptyAvatar}
 						alt={recruiter}
 					/>

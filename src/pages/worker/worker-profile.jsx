@@ -22,7 +22,7 @@ export default function WorkerProfile({
 			{!inHirePage && isRecruiter ? (
 				<Link
 					to='hire'
-					className='inline-flex items-center justify-center w-full text-white bg-primary-purple rounded font-bold p-4 mb-9'
+					className='inline-flex items-center justify-center w-full text-white bg-primary-yellow rounded font-bold p-4 mb-9'
 				>
 					Hire
 				</Link>

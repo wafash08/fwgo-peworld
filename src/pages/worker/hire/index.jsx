@@ -59,36 +59,24 @@ export default function HirePage() {
 	return (
 		<section>
 			<h1 className='text-4xl font-semibold text-yankees-blue mb-5'>
-				Hubungi {profile.name}
+				Send a job offer to {profile.name}
 			</h1>
 			<p className='text-lg text-davys-gray mb-10'>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-				ipsum et dui rhoncus auctor.
+				Quickly send compelling job offers. Highlight roles, qualifications, and
+				benefits to attract top talent!
 			</p>
 
 			<form method='post' onSubmit={handleHire}>
 				<div className='grid gap-8'>
-					<Input
-						label='Tujuan tentang pesan ini'
-						name='message_purpose'
-						placeholder='Projek'
-					/>
-					<Input
-						label='Nama lengkap'
-						name='name'
-						placeholder='Masukkan nama lengkap'
-					/>
+					<Input label='Purpose' name='message_purpose' placeholder='Project' />
+					<Input label='Name' name='name' placeholder='Your name' />
 					<Input
 						label='Email'
 						name='email'
-						placeholder='Masukkan email'
+						placeholder='youremail@mail.com'
 						type='email'
 					/>
-					<Input
-						label='No handphone'
-						name='phone'
-						placeholder='Masukkan no handphone'
-					/>
+					<Input label='Phone' name='phone' placeholder='62 821 **** ****' />
 					<div className='relative'>
 						<label
 							htmlFor='desciption'
@@ -155,7 +143,7 @@ export default function HirePage() {
 							navigate(-1);
 						}}
 					>
-						Batal
+						Cancel
 					</button>
 				</div>
 			</form>

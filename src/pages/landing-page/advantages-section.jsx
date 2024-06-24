@@ -38,7 +38,7 @@ export default function AdvantagesSection() {
 				</div>
 				<div className='flex-1'>
 					<h2 className='text-4xl text-yankees-blue font-semibold mb-9 max-w-md text-center lg:text-left lg:max-w-full'>
-						why you should look for talent on Peworld
+						Why you should look for talent on Peworld
 					</h2>
 					<ul className='grid gap-7 justify-center lg:justify-start'>
 						<li className='flex items-center gap-6'>

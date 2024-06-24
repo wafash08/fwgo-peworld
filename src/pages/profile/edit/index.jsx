@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UploadPhotoProfil from '../../../components/upload-photo-profil';
-import Button from '../../../components/button';
+import { Button } from '../../../components/button';
 import Input from '../../../components/input';
 import {
 	EditForm,

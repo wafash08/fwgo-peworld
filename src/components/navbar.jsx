@@ -87,7 +87,11 @@ export default function Navbar() {
 							<form method='get' onSubmit={handleLogout}>
 								<button
 									type='submit'
-									className='border border-red-500 bg-red-500 text-white rounded inline-flex justify-center items-center w-20 h-10 text-sm font-bold'
+									className={clsx(
+										'border border-red-500 bg-red-500 text-white rounded inline-flex justify-center items-center w-20 h-10 text-sm font-bold',
+										'ring-2 ring-offset-0 ring-transparent',
+										'hover:ring-red-500 focus:ring-red-500 hover:ring-offset-2 focus:ring-offset-2 transition-all focus:outline-none'
+									)}
 								>
 									Logout
 								</button>
@@ -96,10 +100,10 @@ export default function Navbar() {
 					) : (
 						<>
 							<CustomLink to='/login' variant='ghost' size='sm'>
-								Masuk
+								Login
 							</CustomLink>
 							<CustomLink to='/signup' variant='purple' size='sm'>
-								Daftar
+								Signup
 							</CustomLink>
 						</>
 					)}

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Input from '../../components/input';
-import Button from '../../components/button';
+import { Button } from '../../components/button';
 
 export default function SignupWorker({ role, validationError }) {
 	const status = useSelector(state => state.auth.status);

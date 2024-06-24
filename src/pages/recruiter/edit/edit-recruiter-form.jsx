@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UploadPhotoProfil from '../../../components/upload-photo-profil';
 import { EditForm, EditTextarea } from '../../../components/edit';
 import Input from '../../../components/input';
-import Button from '../../../components/button';
+import { Button } from '../../../components/button';
 import {
 	recruiterFailed,
 	recruiterUpdated,

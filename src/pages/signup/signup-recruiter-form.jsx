@@ -1,5 +1,5 @@
 import Input from '../../components/input';
-import Button from '../../components/button';
+import { Button } from '../../components/button';
 import { useSelector } from 'react-redux';
 // {
 //   "email": "dodi2@gmail.com",

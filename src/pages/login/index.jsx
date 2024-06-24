@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Container from '../../components/container';
 import whitePeworldLogo from '../../assets/peworld-logo-white.webp';
 import Input from '../../components/input';
-import Button from '../../components/button';
+import { Button } from '../../components/button';
 import { authFailed, authLoggedIn } from '../../redux/actions/auth.action';
 
 export default function LoginPage() {

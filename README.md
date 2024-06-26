@@ -105,73 +105,53 @@ Here are some screenshots of Peworld showcasing various pages of the application
     </tr>
     <tr>
       <td>Landing Page</td>
-      <td>Home Page</td>
+      <td>Home Page (Search Feature)</td>
     </tr>
     <tr>
       <td><img src="./screenshots/landing-page-login.png" style="width:100%;"></td>
       <td><img src="./screenshots/home-search.png" style="width:100%;"></td>
     </tr>
+    <tr>
+      <td>Home Page (Sort and Filter Feature)</td>
+      <td>Worker's Portfolio Page</td>
+    </tr>
+    <tr>
+      <td><img src="./screenshots/home-sort-and-filter.png" style="width:100%;"></td>
+      <td><img src="./screenshots/worker-portfolio.png" style="width:100%;"></td>
+    </tr>
+    <tr>
+      <td>Worker's Experiences Page</td>
+      <td>Your Portfolios Page (As Worker)</td>
+    </tr>
+    <tr>
+      <td><img src="./screenshots/worker-experience.png" style="width:100%;"></td>
+      <td><img src="./screenshots/your-portfolios.png" style="width:100%;"></td>
+    </tr>
+    <tr>
+      <td>Your Experiences Page (As Worker)</td>
+      <td>Edit Your Profile Page (As Worker)</td>
+    </tr>
+    <tr>
+      <td><img src="./screenshots/your-experiences.png" style="width:100%;"></td>
+      <td><img src="./screenshots/your-edit-profile.png" style="width:100%;"></td>
+    </tr>
+    <tr>
+      <td>Notifications Page</td>
+      <td>Your Profile Page (As Recruiter)</td>
+    </tr>
+    <tr>
+      <td><img src="./screenshots/notifications-page.png" style="width:100%;"></td>
+      <td><img src="./screenshots/recruiter-profile.png" style="width:100%;"></td>
+    </tr>
+    <tr>
+      <td>Edit Your Profile Page (As Recruiter)</td>
+      <td>Hire Page</td>
+    </tr>
+    <tr>
+      <td><img src="./screenshots/recruiter-edit-profile.png" style="width:100%;"></td>
+      <td><img src="./screenshots/hire-page.png" style="width:100%;"></td>
+    </tr>
 </table>
-
-3. <a id="landing-page">Landing Page</a>
-
-![Register for recruiter page](./screenshots/landing-page-login.png)
-
-4. <a id="home-page">Home Page</a>
-
-In home page, there are several features user can try. User can do search, sort, and filter.
-
-- Search worker
-
-![Search Worker](./screenshots/home-search.png)
-
-- Sort and filter worker
-
-![sort and filter Worker](./screenshots/home-sort-and-filter.png)
-
-5. <a id="detail-worker-page">Detail Worker Page</a>
-
-There are two sections in this page, first portfolio section that allows other users to see the project the worker has built. and the second is experiences section that allows other users to see worker's experience
-
-- Worker's portfolios
-
-![Register for recruiter page](./screenshots/worker-portfolio.png)
-
-- Worker's experiences
-
-![Register for recruiter page](./screenshots/worker-experience.png)
-
-6. <a id="your-profile-worker-page">Your Profile Page as Worker</a>
-
-In this page, you can see your profile information including portfolios and experiences
-
-- Your portfolios
-
-![Your portfolio page](./screenshots/your-portfolios.png)
-
-- Your experiences
-
-![Your experiences page](./screenshots/your-experiences.png)
-
-7. <a id="edit-profile-worker-page">Edit Profile Page as Worker</a>
-
-![Edit your profile page](./screenshots/your-edit-profile.png)
-
-8. <a id="notifications-page">Notifications Page</a>
-
-![Notifications page](./screenshots/notifications-page.png)
-
-9. <a id="your-profile-recruiter-page">Your Profile Page as Recruiter</a>
-
-![Your profile page as recruiter](./screenshots/recruiter-profile.png)
-
-10. <a id="edit-profile-recruiter-page">Your Profile Edit Page as Recruiter</a>
-
-![Edit your profile page as recruiter](./screenshots/recruiter-edit-profile.png)
-
-11. <a id="hire-page">Hire Page</a>
-
-![Hire page](./screenshots/hire-page.png)
 
 ## Getting Started
 
@@ -289,6 +269,8 @@ Open a pull request to the main repository by navigating to the original reposit
 If you encounter any issues, please open an issue in the GitHub repository. Provide as much detail as possible to help us resolve the problem quickly.
 
 ## License
+
+This project is licensed under the MIT License. For more details, please refer to the [LICENSE](./LICENSE) file.
 
 ## Contact
 

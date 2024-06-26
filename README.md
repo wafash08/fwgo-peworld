@@ -86,25 +86,32 @@ Visit the backend repository for server-side code and API details. The live demo
 
 Here are some screenshots of Peworld showcasing various pages of the application:
 
-1. <a id="register-page">Register Page</a>
-
-- Worker
-
-![Register for worker page](./screenshots/signup-worker.png)
-
-- Recruiter
-
-![Register for recruiter page](./screenshots/signup-recruiter.png)
-
-2. <a id="login-page">Login Page</a>
-
-- Worker
-
-![Register for recruiter page](./screenshots/login-page.png)
-
-- Recruiter
-
-![Register for recruiter page](./screenshots/login-page.png)
+<table>
+    <tr>
+      <td>Register Worker</td>
+      <td>Register Recruiter</td>
+    </tr>
+    <tr>
+      <td><img src="./screenshots/signup-worker.png" style="width:100%;"></td>
+      <td><img src="./screenshots/signup-recruiter.png" style="width:100%;"></td>
+    </tr>
+    <tr>
+      <td>Login Worker</td>
+      <td>Login Recruiter</td>
+    </tr>
+    <tr>
+      <td><img src="./screenshots/login-page.png" style="width:100%;"></td>
+      <td><img src="./screenshots/login-page.png" style="width:100%;"></td>
+    </tr>
+    <tr>
+      <td>Landing Page</td>
+      <td>Home Page</td>
+    </tr>
+    <tr>
+      <td><img src="./screenshots/landing-page-login.png" style="width:100%;"></td>
+      <td><img src="./screenshots/home-search.png" style="width:100%;"></td>
+    </tr>
+</table>
 
 3. <a id="landing-page">Landing Page</a>
 

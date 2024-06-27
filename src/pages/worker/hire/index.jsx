@@ -21,8 +21,7 @@ export default function HirePage() {
 
 		try {
 			dispatch(hireSentAdded({ ...data, worker_id: workerId }, token));
-			toast('Permintaan rekrut kamu berhasil terkirim', {
-				position: 'top-right',
+			toast('Your offering has successfully sent', {
 				icon: '🤗',
 				style: { backgroundColor: '#4ade80', color: '#fff' },
 			});
@@ -30,8 +29,7 @@ export default function HirePage() {
 				navigate(-1);
 			}, [500]);
 		} catch (error) {
-			toast('Permintaan rekrut kamu berhasil terkirim', {
-				position: 'top-right',
+			toast('Failed to send your offering due to ' + error.message, {
 				icon: '🤗',
 				style: { backgroundColor: '#ef4444', color: '#fff' },
 			});

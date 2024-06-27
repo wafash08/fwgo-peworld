@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { BellIcon, MailIcon } from './icons';
 import peworldLogo from '../assets/peworld-logo-purple.webp';
@@ -20,6 +20,9 @@ export default function Navbar() {
 	const role = getRoleFromLocalStorage();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const { pathname } = useLocation();
+	const paths = pathname.split('/');
+	const inHomePage = paths.every(path => path === '');
 
 	const user = role === 'worker' ? profile : recruiter;
 
@@ -54,7 +57,10 @@ export default function Navbar() {
 
 				<Link
 					to='/home'
-					className='text-lg text-yankees-blue font-semibold py-2 px-4 rounded transition-colors bg-white hover:bg-slate-100 focus:bg-slate-100 focus:outline-none'
+					className={clsx(
+						'hidden text-lg text-yankees-blue font-semibold py-2 px-4 rounded transition-colors bg-transparent hover:bg-slate-100 focus:bg-slate-100 focus:outline-none',
+						inHomePage ? 'md:block' : 'hidden'
+					)}
 				>
 					Home
 				</Link>
@@ -97,19 +103,19 @@ export default function Navbar() {
 								<button
 									type='submit'
 									className={clsx(
-										'border border-red-500 bg-red-500 text-white rounded inline-flex justify-center items-center w-20 h-10 text-sm font-bold',
+										'border border-red-500 bg-red-500 text-white rounded inline-flex justify-center items-center px-4 py-2 text-xs font-bold',
 										'ring-2 ring-offset-0 ring-transparent',
 										'hover:ring-red-500 focus:ring-red-500 hover:ring-offset-2 focus:ring-offset-2 transition-all focus:outline-none'
 									)}
 								>
-									Logout
+									Signout
 								</button>
 							</form>
 						</>
 					) : (
 						<>
 							<CustomLink to='/login' variant='ghost' size='sm'>
-								Login
+								Singin
 							</CustomLink>
 							<CustomLink to='/signup' variant='purple' size='sm'>
 								Signup

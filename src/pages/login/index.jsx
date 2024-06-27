@@ -5,6 +5,7 @@ import whitePeworldLogo from '../../assets/peworld-logo-white.webp';
 import Input from '../../components/input';
 import { Button } from '../../components/button';
 import { authFailed, authLoggedIn } from '../../redux/actions/auth.action';
+import toast from 'react-hot-toast';
 
 export default function LoginPage() {
 	const navigate = useNavigate();
@@ -23,6 +24,10 @@ export default function LoginPage() {
 		const redirectTo = formData.get('redirectTo');
 		try {
 			await dispatch(authLoggedIn({ email, password }));
+			toast("You've successfully signed in", {
+				icon: '🤗',
+				style: { backgroundColor: '#4ade80', color: '#fff' },
+			});
 			navigate(redirectTo);
 		} catch (error) {
 			dispatch(authFailed(error.message));

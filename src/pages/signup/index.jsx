@@ -35,8 +35,16 @@ export default function SignupPage() {
 		const user = createNewUser(formData);
 		try {
 			await dispatch(authSignedUp(user, role));
+			toast("You've successfully registered", {
+				icon: '🤗',
+				style: { backgroundColor: '#4ade80', color: '#fff' },
+			});
 			navigate('/login');
 		} catch (error) {
+			toast('Failed to create your account due to ' + error.message, {
+				icon: '🤗',
+				style: { backgroundColor: '#ef4444', color: '#fff' },
+			});
 			dispatch(authFailed(error.message));
 		}
 	};

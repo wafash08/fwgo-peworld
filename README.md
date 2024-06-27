@@ -75,9 +75,9 @@ This structure helps in keeping the project organized and maintainable, making i
 
 ## Project Repository
 
-This project consists of both frontend and backend repositories. You can find the links to both below:
+This project consists of both frontend and backend repositories. You can find link of backend repositoy and the deployed version of this website below:
 
-- Backend Repository: [Peworld Backend](https://github.com/wafash08/be-peworld)
+- Back End Repository: [Peworld Back End](https://github.com/wafash08/be-peworld)
 - Live Demo: [Peworld Live Demo](https://wafash-peworld-react.netlify.app/)
 
 Visit the backend repository for server-side code and API details. The live demo link will take you to the deployed version of the Peworld application.

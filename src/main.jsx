@@ -142,7 +142,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<RouterProvider router={router} />
-			<Toaster containerStyle={{ top: 20, right: 20 }} />
+			<Toaster position='top-center' containerStyle={{ top: 80, right: 80 }} />
 		</Provider>
 	</React.StrictMode>
 );

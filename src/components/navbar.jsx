@@ -47,9 +47,18 @@ export default function Navbar() {
 
 	return (
 		<div className='flex justify-between items-center h-20'>
-			<Link to='/'>
-				<img src={peworldLogo} alt='Logo Peworld' width={127} height={35} />
-			</Link>
+			<div className='flex items-center gap-28'>
+				<Link to='/'>
+					<img src={peworldLogo} alt='Logo Peworld' width={127} height={35} />
+				</Link>
+
+				<Link
+					to='/home'
+					className='text-lg text-yankees-blue font-semibold py-2 px-4 rounded transition-colors bg-white hover:bg-slate-100 focus:bg-slate-100 focus:outline-none'
+				>
+					Home
+				</Link>
+			</div>
 
 			<nav>
 				<ul className='flex items-center gap-4 sm:gap-6'>

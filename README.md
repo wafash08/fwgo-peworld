@@ -22,7 +22,7 @@
 
 ## Project Description
 
-Peworld is an innovative job search application designed to connect leading companies in the technology industry with job seekers. Our platform allows companies to easily find and recruit the best talent in the technology field. Whether you are a company looking for skilled professionals or a job seeker aiming for your dream job, Peworld provides a seamless and efficient experience for both parties. Join Peworld today and take the next step in your career or hiring journey!
+Peworld is an innovative job search website designed to connect leading companies in the technology industry with job seekers. Our platform allows companies to easily find and recruit the best talent in the technology field. Whether you are a company looking for skilled professionals or a job seeker aiming for your dream job, Peworld provides a seamless and efficient experience for both parties. Join Peworld today and take the next step in your career or hiring journey!
 
 ## Technologies Used
 

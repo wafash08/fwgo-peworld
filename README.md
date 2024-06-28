@@ -22,7 +22,7 @@
 
 ## Project Description
 
-Peworld is an innovative job search application designed to connect leading companies in the technology industry with job seekers. Our platform allows companies to easily find and recruit the best talent in the technology field. Whether you are a company looking for skilled professionals or a job seeker aiming for your dream job, Peworld provides a seamless and efficient experience for both parties. Join Peworld today and take the next step in your career or hiring journey!
+Peworld is an innovative job search website designed to connect leading companies in the technology industry with job seekers. Our platform allows companies to easily find and recruit the best talent in the technology field. Whether you are a company looking for skilled professionals or a job seeker aiming for your dream job, Peworld provides a seamless and efficient experience for both parties. Join Peworld today and take the next step in your career or hiring journey!
 
 ## Technologies Used
 
@@ -202,6 +202,28 @@ npm run storybook
 ```
 
 This will start Storybook and open it in your default web browser. If it doesn't, you can access it at http://localhost:6006.
+
+### Test User Accounts
+
+Access pre-configured user accounts for testing purposes. Use these accounts to simulate different scenarios and ensure your job offers are working as expected.
+
+- Recruiter Account
+
+```json
+{
+  "email": "albertdera@gmail.com",
+  "password": "asdf1234"
+}
+```
+
+- Worker Account
+
+```json
+{
+  "email": "charliegreen@gmail.com",
+  "password": "asdf1234"
+}
+```
 
 ## Contributions
 

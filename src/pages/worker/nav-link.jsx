@@ -7,7 +7,7 @@ export default function NavLink({ children, to, category }) {
 	const currentCategory = params === category;
 
 	return (
-		<li>
+		<li className='shrink-0'>
 			<Link
 				to={to}
 				className={clsx(

@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 export default function PortfolioList({ portfolio }) {
 	return (
 		<ul className='grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-[30px]'>
@@ -18,10 +16,11 @@ export default function PortfolioList({ portfolio }) {
 }
 
 function PortfolioItem({ src, name, to }) {
+	const startWithHttp = to.startsWith('http');
 	return (
 		<li>
-			<Link
-				to={to}
+			<a
+				href={startWithHttp ? to : 'https://' + to}
 				target='_blank'
 				rel='noopener noreferrer'
 				className='rounded block'
@@ -30,7 +29,7 @@ function PortfolioItem({ src, name, to }) {
 					<img src={src} alt={name} className='h-full w-full object-cover' />
 				</div>
 				<p className='text-center text-sm text-yankees-blue'>{name}</p>
-			</Link>
+			</a>
 		</li>
 	);
 }

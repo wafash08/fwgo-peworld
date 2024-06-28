@@ -7,7 +7,7 @@ export default function NavLinkProfile({ children, to, category, className }) {
 	const currentCategory = currentPath === category;
 
 	return (
-		<li>
+		<li className='shrink-0'>
 			<Link
 				to={to}
 				className={clsx(

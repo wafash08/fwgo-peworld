@@ -7,7 +7,7 @@ export default function WorkerLayout({ children }) {
 	return (
 		<section className='w-full bg-white rounded-lg p-[30px]'>
 			<nav className='mb-7'>
-				<ul className='flex flex-col md:flex-row items-center gap-[30px]'>
+				<ul className='flex flex-row items-center gap-[30px] overflow-auto'>
 					<NavLink
 						to={`/workers/${worker.id}?category=portfolio`}
 						category='portfolio'

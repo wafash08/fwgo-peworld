@@ -203,6 +203,28 @@ npm run storybook
 
 This will start Storybook and open it in your default web browser. If it doesn't, you can access it at http://localhost:6006.
 
+### Test User Accounts
+
+Access pre-configured user accounts for testing purposes. Use these accounts to simulate different scenarios and ensure your job offers are working as expected.
+
+- Recruiter Account
+
+```json
+  {
+    "email": "albertdera@gmail.com",
+    "password": "asdf1234"
+  }
+```
+
+- Worker Account
+
+```json
+  {
+    "email": "charliegreen@gmail.com",
+    "password": "asdf1234"
+  }
+```
+
 ## Contributions
 
 Any contribution to Peworld is welcomed! If you have an idea for a new feature or have found a bug, please follow these steps to contribute:

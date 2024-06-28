@@ -210,19 +210,19 @@ Access pre-configured user accounts for testing purposes. Use these accounts to 
 - Recruiter Account
 
 ```json
-  {
-    "email": "albertdera@gmail.com",
-    "password": "asdf1234"
-  }
+{
+  "email": "albertdera@gmail.com",
+  "password": "asdf1234"
+}
 ```
 
 - Worker Account
 
 ```json
-  {
-    "email": "charliegreen@gmail.com",
-    "password": "asdf1234"
-  }
+{
+  "email": "charliegreen@gmail.com",
+  "password": "asdf1234"
+}
 ```
 
 ## Contributions

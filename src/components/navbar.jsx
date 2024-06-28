@@ -55,15 +55,17 @@ export default function Navbar() {
 					<img src={peworldLogo} alt='Logo Peworld' width={127} height={35} />
 				</Link>
 
-				<Link
-					to='/home'
-					className={clsx(
-						'hidden text-lg text-yankees-blue font-semibold py-2 px-4 rounded transition-colors bg-transparent hover:bg-slate-100 focus:bg-slate-100 focus:outline-none',
-						inHomePage ? 'md:block' : 'hidden'
-					)}
-				>
-					Home
-				</Link>
+				{token !== null ? (
+					<Link
+						to='/home'
+						className={clsx(
+							'hidden text-lg text-yankees-blue font-semibold py-2 px-4 rounded transition-colors bg-transparent hover:bg-slate-100 focus:bg-slate-100 focus:outline-none',
+							inHomePage ? 'md:block' : 'hidden'
+						)}
+					>
+						Home
+					</Link>
+				) : null}
 			</div>
 
 			<nav>

@@ -1,6 +1,6 @@
 import Container from '../../components/container';
 import talentTerbaik from '../../assets/talenta-terbaik.webp';
-import CustomLink from '../../components/custom-link';
+import { CustomLink } from '../../components/custom-link';
 
 export default function HeroSection() {
 	return (

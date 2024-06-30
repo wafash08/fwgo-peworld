@@ -1,5 +1,5 @@
 import Container from '../../components/container';
-import CustomLink from '../../components/custom-link';
+import { CustomLink } from '../../components/custom-link';
 
 export default function GetStartedSection() {
 	return (

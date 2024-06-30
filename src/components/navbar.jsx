@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { BellIcon, MailIcon } from './icons';
 import peworldLogo from '../assets/peworld-logo-purple.webp';
 import emptyAvatar from '../assets/empty-avatar.webp';
-import CustomLink from './custom-link';
+import { CustomLink } from './custom-link';
 import { authFailed, authLoggedOut } from '../redux/actions/auth.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -116,7 +116,7 @@ export default function Navbar() {
 						</>
 					) : (
 						<>
-							<CustomLink to='/login' variant='ghost' size='sm'>
+							<CustomLink to='/login' variant='ghost-purple' size='sm'>
 								Singin
 							</CustomLink>
 							<CustomLink to='/signup' variant='purple' size='sm'>

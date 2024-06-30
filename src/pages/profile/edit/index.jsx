@@ -30,8 +30,7 @@ import {
 	portfolioFailed,
 	portfolioLoaded,
 } from '../../../redux/actions/portfolio.action';
-import PortfolioSkeleton from '../../../components/portfolio-skeleton';
-import PortfolioList from '../../../components/portfolio-list';
+import { PortfolioList } from '../../../components/portfolio-list';
 
 export default function EditProfile() {
 	const dispatch = useDispatch();
@@ -323,13 +322,11 @@ export default function EditProfile() {
 					Tambah portofolio
 				</Button>
 
-				{portfolioStatus === 'loading' ? (
-					<PortfolioSkeleton />
-				) : portfolio.length > 0 ? (
-					<PortfolioList portfolio={portfolio} />
-				) : (
-					<p>Kamu belum memiliki portofolio</p>
-				)}
+				<PortfolioList
+					name='Kamu'
+					portfolio={portfolio}
+					status={portfolioStatus}
+				/>
 			</EditForm>
 			<div className='grid gap-4'>
 				<Button

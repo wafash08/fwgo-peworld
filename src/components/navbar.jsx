@@ -117,7 +117,7 @@ export default function Navbar() {
 					) : (
 						<>
 							<CustomLink to='/login' variant='ghost-purple' size='sm'>
-								Singin
+								Login
 							</CustomLink>
 							<CustomLink to='/signup' variant='purple' size='sm'>
 								Signup

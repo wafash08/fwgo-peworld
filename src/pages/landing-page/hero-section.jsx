@@ -2,7 +2,7 @@ import Container from '../../components/container';
 import talentTerbaik from '../../assets/talenta-terbaik.webp';
 import { CustomLink } from '../../components/custom-link';
 
-export default function HeroSection() {
+export default function HeroSection({ authenticated }) {
 	return (
 		<section className='mt-28'>
 			<Container className='flex items-center gap-14'>
@@ -14,7 +14,9 @@ export default function HeroSection() {
 						Platform bridging tech recruiters & job seekers. Simplify hiring &
 						job searching in tech.
 					</p>
-					<CustomLink to='home'>Let's Start</CustomLink>
+					<CustomLink to={authenticated ? '/home' : '/login'}>
+						Let's Start
+					</CustomLink>
 				</div>
 				<div className='hidden lg:block md:flex-1'>
 					<div className='relative w-[500px]'>

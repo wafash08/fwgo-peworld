@@ -1,7 +1,7 @@
 import Container from '../../components/container';
 import { CustomLink } from '../../components/custom-link';
 
-export default function GetStartedSection() {
+export default function GetStartedSection({ authenticated }) {
 	return (
 		<section className='my-40'>
 			<Container>
@@ -9,7 +9,7 @@ export default function GetStartedSection() {
 					<h2 className='text-center md:text-left text-2xl md:text-4xl font-semibold max-w-xs md:leading-relaxed'>
 						Find Your Tech Talent Now!
 					</h2>
-					<CustomLink to='home' variant='white'>
+					<CustomLink to={authenticated ? '/home' : '/login'} variant='white'>
 						Let's start now!
 					</CustomLink>
 				</div>

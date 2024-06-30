@@ -14,7 +14,7 @@ const variantList = {
 };
 
 const sizeList = {
-	base: 'text-base py-5 px-6',
+	base: 'text-base py-4 px-6',
 	sm: 'text-sm py-[10px] px-5',
 };
 

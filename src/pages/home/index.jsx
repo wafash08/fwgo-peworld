@@ -185,7 +185,7 @@ export default function HomePage() {
 								return <WorkerItem key={worker.id} worker={worker} />;
 							})
 						) : (
-							<p>Pekerja dengan nama {params.search} tidak ditemukan</p>
+							<p>There is no user with name "{params.search}"</p>
 						)}
 					</WorkerList>
 

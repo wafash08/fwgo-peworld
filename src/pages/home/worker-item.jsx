@@ -55,7 +55,7 @@ export default function WorkerItem({ worker }) {
 				to={`/workers/${id}`}
 				className='text-white font-semibold bg-primary-purple rounded py-4 px-8 lg:mr-12'
 			>
-				Lihat Profil
+				View Profile
 			</Link>
 		</li>
 	);
